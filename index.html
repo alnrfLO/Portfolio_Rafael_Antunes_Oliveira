@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>Accueil - Rafael Antunes Oliveira | Portfolio Pro</title>
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/menu-hamburger.css" />
+  
+  <script src="js/etoile.js" defer></script>
+  <script src="js/menu-hamburger.js" defer></script> 
+  <script src="js/theme.js" defer></script> 
+  <style>
+    .typewriter-text::after {
+      content: '|';
+      animation: blink 1s infinite;
+      margin-left: 2px;
+      color: var(--primary-color, cyan); /* Utilisation de la variable CSS */
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    
+    /* STYLE AJOUTÉ POUR LA MISE EN PAGE MINIMALISTE */
+    .hero-minimal {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 50px 20px;
+    }
+    
+    .hero-minimal h1 {
+        font-size: clamp(2em, 8vw, 4em); /* Taille adaptable */
+        margin-bottom: 0.2em;
+        font-weight: 500;
+    }
+    
+    .hero-minimal h2 {
+        font-size: clamp(1em, 3.5vw, 1.5em);
+        color: var(--text-color-secondary);
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+    
+    .cta-container {
+        display: flex;
+        flex-wrap: wrap; /* Gère le responsive des boutons */
+        gap: 20px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    
+    .cta-button {
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: transform 0.2s, opacity 0.2s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cta-button:hover {
+        transform: translateY(-2px);
+    }
+    
+    /* Bouton Projets (Primaire) */
+    .cta-projets {
+        background-color: var(--primary-color, cyan);
+        color: var(--background-color-dark, #1a1a1a);
+    }
+
+    /* Bouton À Propos (Secondaire) */
+    .cta-a-propos {
+        border: 2px solid var(--primary-color, cyan);
+        background-color: transparent;
+        color: var(--primary-color, cyan);
+    }
+    
+    /* Responsive pour les boutons */
+    @media (max-width: 480px) {
+        .cta-container {
+            flex-direction: column;
+            width: 100%;
+        }
+        .cta-button {
+            width: 100%;
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  
+  <div class="top-controls">
+    <select id="langSelect">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="pt">Portugais</option>
+    </select>
+    <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  </div>
+  
+  <div class="navbar">
+    <div class="menu-toggle" onclick="toggleMenu(this)"> 
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <nav class="menu" id="mobileMenu">
+    <a href="index.html">Accueil</a>
+    <a href="Pages/projets.html">Projets</a>
+    <a href="Pages/contact.html">Contact</a>
+    <a href="Pages/Info.html">À propos</a>
+  </nav>
+
+  <main class="main-content hero-minimal">
+
+    <h1 id="title">
+      <span class="typewriter-text" id="typewriter-text"></span>
+    </h1>
+    
+    <h2 id="projectsTitle">Développeur Web Full Stack | Créateur d'Expériences Digitales</h2>
+    
+    <div class="cta-container">
+      
+      <a href="Pages/projets.html" class="cta-button cta-projets">
+        Voir Mes Projets 🚀
+      </a>
+      
+      <a href="Pages/Info.html" class="cta-button cta-a-propos">
+        En Apprendre Plus Sur Moi 👤
+      </a>
+      
+    </div>
+
+  </main>
+  
+  <footer>
+    Rafael Antunes Oliveira — Tous droits réservés
+  </footer>
+
+<script>
+    const text = "Salut, je suis Rafael Antunes Oliveira";
+    const speed = 50;
+    const typewriterElement = document.getElementById("typewriter-text");
+    
+    function typeWriter(i = 0) {
+      if (i < text.length) {
+        typewriterElement.innerHTML += text.charAt(i);
+        setTimeout(() => typeWriter(i + 1), speed); // <-- Appel récursif
+      }
+    }
+    
+    // Lancement de l'animation après le chargement de la page
+    window.addEventListener('load', () => setTimeout(typeWriter, 500)); 
+</script>
+</body>
+</html>

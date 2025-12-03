@@ -1,0 +1,211 @@
+header {
+  background: transparent;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#title {
+  font-size: 1.8rem;
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+body.light-theme #title {
+  color: #0077cc;
+}
+
+header > div {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body.light-theme header h1 {
+  color: #0077cc;
+}
+
+select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.theme-toggle {
+  margin-left: 1rem;
+  cursor: pointer;
+  background: none;
+  border: 2px solid #0ff;
+  color: #0ff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.theme-toggle:hover {
+  background: #0ff;
+  color: #000;
+}
+
+body.light-theme .theme-toggle {
+  border-color: #0077cc;
+  color: #0077cc;
+}
+
+body.light-theme .theme-toggle:hover {
+  background: #0077cc;
+  color: white;
+}
+
+.portfolio {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.portfolio h2 {
+  font-size: 2.5rem;
+  color: #00ffff;
+  margin-bottom: 2rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body.light-theme .portfolio h2 {
+  color: #0077cc;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.card {
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 15px;
+  width: 280px;
+  box-shadow: 0 0 15px #0ff4;
+  transition: transform 0.3s ease, background 0.5s ease;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card:nth-child(1) { animation-delay: 0.3s; }
+.card:nth-child(2) { animation-delay: 0.6s; }
+.card:nth-child(3) { animation-delay: 0.9s; }
+
+.card h3 {
+  color: #ffbe0b;
+}
+
+.card p {
+  color: #ccc;
+}
+
+body.light-theme .card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #222;
+  box-shadow: 0 0 15px #80dfff;
+}
+
+body.light-theme .card h3 {
+  color: #0077cc;
+}
+
+body.light-theme .card p {
+  color: #333;
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0ff;
+  color: #000;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #0ff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+.skills {
+  padding: 2rem;
+  text-align: center;
+}
+
+#skill-filters {
+  margin-bottom: 1rem;
+}
+
+#skill-filters button {
+  background: none;
+  border: 2px solid #0ff;
+  color: #0ff;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#skill-filters button.active,
+#skill-filters button:hover {
+  background: #0ff;
+  color: #000;
+}
+
+.skill-item {
+  margin: 1rem auto;
+  max-width: 400px;
+  display: none;
+}
+
+.skill-item.show {
+  display: block;
+}
+
+.bar {
+  background: #444;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #0ff;
+  width: 0;
+  animation: fill 1s ease forwards;
+}
+
+@keyframes fill {
+  to {
+    width: var(--fill-width);
+  }
+}

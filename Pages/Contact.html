@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style3.css" />
+  <link rel="stylesheet" href="../css/menu-hamburger.css" />
+
+  <script src="../js/menu-hamburger.js" defer></script>
+  <script src="../js/script3.js" defer></script>
+  <script src="../js/etoile.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+</head>
+<body class="fade-out">
+  <canvas id="stars"></canvas>
+
+  <div class="top-controls">
+    <select id="langSelect">
+      <option value="fr" selected>Français</option>
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+    <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  </div>
+
+  <div class="navbar">
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <nav class="menu" id="mobileMenu">
+    <a href="../index.html">Accueil</a>
+    <a href="Projets.html">Projets</a>
+    <a href="Contact.html">Contact</a>
+    <a href="Info.html">À propos</a>
+  </nav>
+
+  <div class="hero">
+    <h1 id="contactTitle">Contacte-moi</h1>
+    <form class="contact-form">
+      <input type="text" placeholder="Votre nom" required />
+      <input type="email" placeholder="Votre email" required />
+      <textarea rows="5" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+  
+</body>
+</html>
