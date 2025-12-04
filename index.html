@@ -1,297 +1,246 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-  <title>Rafael Antunes Oliveira | Portfolio Pro</title>
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/menu-hamburger.css" />
-  
-  <script src="js/etoile.js" defer></script>
-  <script src="js/menu-hamburger.js" defer></script> 
-  <script src="js/theme.js" defer></script> 
-  <script src="js/script5.js" defer ></script>
-  <style>
-    .typewriter-text::after {
-      content: '|';
-      animation: blink 1s infinite;
-      margin-left: 2px;
-      color: var(--primary-color, cyan); /* Utilisation de la variable CSS */
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+<title>Rafael Antunes Oliveira | Portfolio Pro</title>
 
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
-    }
-    
-    /* STYLE AJOUTÉ POUR LA MISE EN PAGE MINIMALISTE */
-    .hero-minimal {
-        min-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 50px 20px;
-    }
-    
-    .hero-minimal h1 {
-        font-size: clamp(2em, 8vw, 4em); /* Taille adaptable */
-        margin-bottom: 0.2em;
-        font-weight: 500;
-    }
-    
-    .hero-minimal h2 {
-        font-size: clamp(1em, 3.5vw, 1.5em);
-        color: var(--text-color-secondary);
-        margin-top: 0;
-        margin-bottom: 40px;
-    }
-    
-    .cta-container {
-        display: flex;
-        flex-wrap: wrap; /* Gère le responsive des boutons */
-        gap: 20px;
-        justify-content: center;
-        margin-top: 30px;
-    }
-    
-    .cta-button {
-        text-decoration: none;
-        padding: 12px 25px;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: transform 0.2s, opacity 0.2s;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-    
-    .cta-button:hover {
-        transform: translateY(-2px);
-    }
-    
-    /* Bouton Projets (Primaire) */
-    .cta-projets {
-        background-color: var(--primary-color, cyan);
-        color: var(--background-color-dark, #1a1a1a);
-    }
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/menu-hamburger.css" />
 
-    /* Bouton À Propos (Secondaire) */
-    .cta-a-propos {
-        border: 2px solid var(--primary-color, cyan);
-        background-color: transparent;
-        color: var(--primary-color, cyan);
-    }
-    
-    /* Responsive pour les boutons */
-    @media (max-width: 480px) {
-        .cta-container {
-            flex-direction: column;
-            width: 100%;
-        }
-        .cta-button {
-            width: 100%;
-        }
-    }
+<style>
+/* Typewriter */
+.typewriter-text::after {
+  content: '|';
+  animation: blink 1s infinite;
+  margin-left: 2px;
+  color: var(--primary-color, cyan);
+}
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
 
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding-bottom: 140px;
-    }
+/* Hero minimaliste */
+.hero-minimal {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+}
+.hero-minimal h1 {
+  font-size: clamp(2em, 8vw, 4em);
+  margin-bottom: 0.2em;
+  font-weight: 500;
+}
+.hero-minimal h2 {
+  font-size: clamp(1em, 3.5vw, 1.5em);
+  color: var(--text-color-secondary);
+  margin-top: 0;
+  margin-bottom: 40px;
+}
 
-    .hero-minimal {
-      flex: 1;
-    }
+/* CTA buttons */
+.cta-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.cta-button {
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: transform 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.cta-button:hover { transform: translateY(-2px); }
+.cta-projets { background-color: var(--primary-color, cyan); color: var(--background-color-dark, #1a1a1a); }
+.cta-a-propos { border: 2px solid var(--primary-color, cyan); background-color: transparent; color: var(--primary-color, cyan); }
+@media (max-width: 480px) {
+  .cta-container { flex-direction: column; width: 100%; }
+  .cta-button { width: 100%; }
+}
 
-    .main-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 10;
-      margin-top: 0;
-    }
+/* Layout */
+body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom: 140px; }
+.hero-minimal { flex: 1; }
+.main-footer { position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 10; margin-top: 0; }
+#langSelect { font-size: clamp(0.8rem, 2vw, 1rem); padding: clamp(0.4rem, 1vw, 0.5rem); }
+.theme-toggle { font-size: clamp(0.8rem, 2vw, 1rem); padding: clamp(0.4rem,1vw,0.5rem) clamp(0.8rem,2vw,1rem); }
+@media (max-width: 480px) { #langSelect, .theme-toggle { font-size: 0.75rem; padding: 0.3rem 0.5rem; } }
+</style>
 
-    #langSelect {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      padding: clamp(0.4rem, 1vw, 0.5rem);
-    }
-
-    .theme-toggle {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
-    }
-
-    @media (max-width: 480px) {
-      #langSelect,
-      .theme-toggle {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.5rem;
-      }
-    }
-
-  </style>
+<script src="js/etoile.js" defer></script>
+<script src="js/menu-hamburger.js" defer></script>
+<script src="js/theme.js" defer></script>
 </head>
 <body>
-  <script>
-    // Initialize typewriter immediately
-    const translationTexts = {
-      fr: "Salut, je suis Rafael Antunes Oliveira",
-      en: "Hi, I'm Rafael Antunes Oliveira",
-      pt: "Oi, sou Rafael Antunes Oliveira"
-    };
 
-    let currentIndex = 0;
-    let typewriterTimeout = null;
+<canvas id="stars"></canvas>
 
-    function startTypewriter() {
-      const lang = localStorage.getItem('lang') || 'fr';
-      const text = translationTexts[lang];
-      const element = document.getElementById('typewriter-text');
-      
-      if (!element) return;
-      
-      element.textContent = '';
-      currentIndex = 0;
-      
-      function type() {
-        if (currentIndex < text.length) {
-          element.textContent += text.charAt(currentIndex);
-          currentIndex++;
-          typewriterTimeout = setTimeout(type, 150);
-        }
-      }
-      
-      type();
-    }
+<div class="top-controls">
+  <select id="langSelect">
+    <option value="fr">Français</option>
+    <option value="en">English</option>
+    <option value="pt">Portugais</option>
+  </select>
+  <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+</div>
 
-    // Start when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', startTypewriter);
-    } else {
-      startTypewriter();
-    }
-  </script>
-
-  <canvas id="stars"></canvas>
-  
-  <div class="top-controls">
-    <select id="langSelect">
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-      <option value="pt">Portugais</option>
-    </select>
-    <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+<div class="navbar">
+  <div class="menu-toggle" onclick="toggleMenu(this)">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-  
-  <div class="navbar">
-    <div class="menu-toggle" onclick="toggleMenu(this)"> 
-      <span></span>
-      <span></span>
-      <span></span>
+</div>
+
+<nav class="menu" id="mobileMenu">
+  <a href="index.html" data-translate="navAccueil">Accueil</a>
+  <a href="Pages/Projets.html" data-translate="navProjets">Projets</a>
+  <a href="Pages/Contact.html" data-translate="navContact">Contact</a>
+  <div class="submenu">
+    <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
+    <div class="submenu-list">
+      <a href="Pages/Info.html" data-translate="navInfo">Info</a>
+      <a href="Pages/CV.html">CV</a>
     </div>
   </div>
+</nav>
 
-  <nav class="menu" id="mobileMenu">
-    <a href="index.html">Accueil</a>
-    <a href="Pages/Projets.html">Projets</a>
-    <a href="Pages/Contact.html">Contact</a>
-    <div class="submenu">
-      <button class="submenu-toggle">À propos</button>
-      <div class="submenu-list">
-        <a href="Pages/Info.html">Info</a>
-        <a href="Pages/CV.html">CV</a>
-      </div>
-    </div>
-  </nav>
+<main class="main-content hero-minimal">
+  <h1 id="title" data-translate="homeTitle">
+    <span class="typewriter-text" id="typewriter-text"></span>
+  </h1>
+  <h2 id="projectsTitle" data-translate="homeSubtitle">
+    Etudiant en 2e année de MMI | Futur Développeur Web Full Stack
+  </h2>
+  <div class="cta-container">
+    <a href="Pages/Projets.html" class="cta-button cta-projets" data-translate="seeProjects">Voir Mes Projets 🚀</a>
+    <a href="Pages/Info.html" class="cta-button cta-a-propos" data-translate="learnMore">En Apprendre Plus Sur Moi 👤</a>
+  </div>
+</main>
 
-  <main class="main-content hero-minimal">
-
-    <h1 id="title" data-translate="homeTitle">
-      <span class="typewriter-text" id="typewriter-text"></span>
-    </h1>
-    
-    <h2 id="projectsTitle" data-translate="homeSubtitle">Etudiant en 2 eme annee de MMI | Futur Développeur Web Full Stack</h2>
-    
-    <div class="cta-container">
-      
-      <a href="Pages/Projets.html" class="cta-button cta-projets" data-translate="seeProjects">
-        Voir Mes Projets 🚀
-      </a>
-      
-      <a href="Pages/Info.html" class="cta-button cta-a-propos" data-translate="learnMore">
-        En Apprendre Plus Sur Moi 👤
-      </a>
-      
-    </div>
-
-  </main>
-  
-    <footer class="main-footer">
-        <div class="max-w-7xl mx-auto">
-            &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
-        </div>
-    </footer>
+<footer class="main-footer">
+  <div class="max-w-7xl mx-auto">
+    &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés | <a href="Pages/Mentions.html">Mentions Légales</a>
+  </div>
+</footer>
 
 <script>
-    // Language translations
-    const homeTexts = {
-      fr: {
-        subtitle: "Etudiant en 2e année de MMI | Futur Développeur Web Full Stack",
-        seeProjects: "Voir Mes Projets 🚀",
-        learnMore: "En Apprendre Plus Sur Moi 👤"
-      },
-      en: {
-        subtitle: "2nd year MMI Student | Future Full Stack Web Developer",
-        seeProjects: "View My Projects 🚀",
-        learnMore: "Learn More About Me 👤"
-      },
-      pt: {
-        subtitle: "Aluno do 2º ano de MMI | Futuro Desenvolvedor Web Full Stack",
-        seeProjects: "Ver Meus Projetos 🚀",
-        learnMore: "Saiba Mais Sobre Mim 👤"
-      }
-    };
+/* --- Typewriter --- */
+const translationTexts = {
+  fr: "Salut, je suis Rafael Antunes Oliveira",
+  en: "Hi, I'm Rafael Antunes Oliveira",
+  pt: "Oi, sou Rafael Antunes Oliveira"
+};
+let currentIndex = 0;
+let typewriterTimeout = null;
 
-    function updatePageText(lang) {
-      const texts = homeTexts[lang] || homeTexts.fr;
-      
-      // Update subtitle
-      const subtitle = document.getElementById('projectsTitle');
-      if (subtitle) subtitle.textContent = texts.subtitle;
-      
-      // Update buttons
-      const seeBtn = document.querySelector('[data-translate="seeProjects"]');
-      const learnBtn = document.querySelector('[data-translate="learnMore"]');
-      if (seeBtn) seeBtn.textContent = texts.seeProjects;
-      if (learnBtn) learnBtn.textContent = texts.learnMore;
-      
-      // Restart typewriter
-      startTypewriter();
+function startTypewriter() {
+  const lang = localStorage.getItem('lang') || 'fr';
+  const text = translationTexts[lang];
+  const element = document.getElementById('typewriter-text');
+  if (!element) return;
+  element.textContent = '';
+  currentIndex = 0;
+  function type() {
+    if (currentIndex < text.length) {
+      element.textContent += text.charAt(currentIndex);
+      currentIndex++;
+      typewriterTimeout = setTimeout(type, 150);
     }
+  }
+  type();
+}
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const langSelect = document.getElementById('langSelect');
-      const savedLang = localStorage.getItem('lang') || 'fr';
-      
-      if (langSelect) {
-        langSelect.value = savedLang;
-        langSelect.addEventListener('change', (e) => {
-          localStorage.setItem('lang', e.target.value);
-          updatePageText(e.target.value);
-        });
-      }
-      
-      updatePageText(savedLang);
-      
-      // Set current year
-      const yearEl = document.getElementById('currentYear');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
+/* --- Traduction --- */
+const homeTexts = {
+  fr: {
+    homeTitle: translationTexts.fr,
+    subtitle: "Etudiant en 2e année de MMI | Futur Développeur Web Full Stack",
+    seeProjects: "Voir Mes Projets 🚀",
+    learnMore: "En Apprendre Plus Sur Moi 👤",
+    navAccueil: "Accueil",
+    navProjets: "Projets",
+    navContact: "Contact",
+    navAPropos: "À propos",
+    navInfo: "Info"
+  },
+  en: {
+    homeTitle: translationTexts.en,
+    subtitle: "2nd year MMI Student | Future Full Stack Web Developer",
+    seeProjects: "View My Projects 🚀",
+    learnMore: "Learn More About Me 👤",
+    navAccueil: "Home",
+    navProjets: "Projects",
+    navContact: "Contact",
+    navAPropos: "About",
+    navInfo: "Info"
+  },
+  pt: {
+    homeTitle: translationTexts.pt,
+    subtitle: "Aluno do 2º ano de MMI | Futuro Desenvolvedor Web Full Stack",
+    seeProjects: "Ver Meus Projetos 🚀",
+    learnMore: "Saiba Mais Sobre Mim 👤",
+    navAccueil: "Início",
+    navProjets: "Projetos",
+    navContact: "Contato",
+    navAPropos: "Sobre",
+    navInfo: "Info"
+  }
+};
+
+function updatePageText(lang) {
+  const texts = homeTexts[lang] || homeTexts.fr;
+
+  // Tous les éléments avec data-translate
+  document.querySelectorAll('[data-translate]').forEach(el => {
+    const key = el.getAttribute('data-translate');
+    if (texts[key]) el.textContent = texts[key];
+  });
+
+  // Sous-titre
+  const subtitle = document.getElementById('projectsTitle');
+  if (subtitle) subtitle.textContent = texts.subtitle;
+
+  // Redémarrer le typewriter
+  startTypewriter();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const langSelect = document.getElementById('langSelect');
+  const savedLang = localStorage.getItem('lang') || 'fr';
+
+  // Langue initiale
+  if (langSelect) {
+    langSelect.value = savedLang;
+    langSelect.addEventListener('change', e => {
+      const selectedLang = e.target.value;
+      localStorage.setItem('lang', selectedLang);
+      updatePageText(selectedLang);
     });
+  }
+
+  // Appliquer la langue initiale
+  updatePageText(savedLang);
+
+  // Année
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Thème
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light-theme') document.body.classList.add('light-theme');
+});
 </script>
+
 </body>
 </html>

@@ -5,113 +5,106 @@
   <title>À propos - Rafael Antunes Oliveira</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Ajout de Tailwind CSS pour un meilleur style du chatbot -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/style4.css" />
   <link rel="stylesheet" href="../css/menu-hamburger.css" />
   
   <style>
-    :root {
-        --primary-color: #0ff;
-        --background-color-dark: #000; 
-    }
-    
-    .chatbot-interface {
-        background: #111827;
-        border: 1px solid rgba(0, 255, 255, 0.3);
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-        border-radius: 10px;
+
+    .top-controls {
+        position: fixed; 
+        top: 10px;
+        right: 10px;
+        z-index: 10000; /* Priorité maximale pour le clic */
+        display: flex;
+        gap: 10px;
     }
 
-    .chat-messages {
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary-color) #1f2937;
-    }
-
-    .chat-messages::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .chat-messages::-webkit-scrollbar-thumb {
-        background-color: var(--primary-color);
-        border-radius: 4px;
-    }
-    
-    .message-user {
-        background-color: #0c4a6e;
-        margin-left: auto;
-    }
-    .message-bot {
-        background-color: #374151;
-        margin-right: auto;
-    }
-
-    .loading::after {
-        content: '...';
-        animation: pulse 1s infinite;
-    }
-    @keyframes pulse {
-        0% { opacity: 0.5; }
-        50% { opacity: 1; }
-        100% { opacity: 0.5; }
-    }
-    
     body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding-bottom: 140px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding-bottom: 140px;
     }
+    
     main {
-      flex: 1;
+        flex: 1;
     }
+    
     .main-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 10;
-      margin-top: 0;
-    }
-    
-    #langSelect {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      padding: clamp(0.4rem, 1vw, 0.5rem);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 10;
+        margin-top: 0;
     }
 
-    .theme-toggle {
-      font-size: clamp(0.8rem, 2vw, 1rem);
-      padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
-    }
     
-    /* FIX CENTRAGE PHOTO DE PROFIL */
-    .profile-pic {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+    @media (max-width: 768px) {
+        .top-controls {
+            top: 5px;
+            right: 5px;
+        }
     }
-    /* FIN FIX CENTRAGE */
 
-    @media (max-width: 480px) {
-      #langSelect,
-      .theme-toggle {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.5rem;
-      }
-    }
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.5rem auto;
+    text-align: center;
+}
+
+#profile-picture {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    /* Bordure Neon (s’adapte à ton thème sombre ou clair) */
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color);
+
+    transition: 0.4s ease-in-out;
+}
+
+/* Hover stylé */
+#profile-picture:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 30px var(--primary-color);
+}
+
+/* Nom en dessous */
+.profile-name {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Mode clair : adaptatif, doux et propre */
+body.light-theme #profile-picture {
+    border-color: #0077cc;
+    box-shadow: 0 0 15px rgba(0, 119, 204, 0.4);
+}
+
+body.light-theme .profile-name {
+    color: #0077cc;
+}
   </style>
-
-  <script src="../js/etoile.js" defer></script>
-  <script src="../js/script4.js" defer></script>
+  
   <script src="../js/menu-hamburger.js" defer></script>
-  <script src="../js/chatbot.js" defer></script>
+  <script src="../js/etoile.js" defer></script>
   <script src="../js/theme.js" defer></script> 
-</head>
+  <script src="../js/script4.js" defer></script> </head>
 <body>
+  
+  <canvas id="stars"></canvas>
+  
   <div class="top-controls">
     <select id="langSelect">
       <option value="fr">Français</option>
@@ -120,202 +113,101 @@
     </select>
     <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
   </div>
-
+  
   <div class="navbar">
-    <div class="menu-toggle" onclick="toggleMenu(this)">
+    <div class="menu-toggle" onclick="toggleMenu(this)"> 
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
 
-  <nav class="menu" id="mobileMenu">
-    <a href="../index.html">Accueil</a>
-    <a href="Projets.html">Projets</a>
-    <a href="Contact.html">Contact</a>
+<nav class="menu" id="mobileMenu">
+    <a href="../index.html" data-translate="navAccueil">Accueil</a>
+    <a href="Projets.html" data-translate="navProjets">Projets</a>
+    <a href="Contact.html" data-translate="navContact">Contact</a>
     <div class="submenu">
-      <button class="submenu-toggle">À propos</button>
-      <div class="submenu-list">
-        <a href="Info.html">Info</a>
-        <a href="CV.html">CV</a>
-      </div>
+        <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
+        <div class="submenu-list">
+            <a href="Info.html" data-translate="navInfo">Info</a>
+            <a href="CV.html">CV</a>
+        </div>
     </div>
-  </nav>
-
-
-  <canvas id="stars"></canvas>
-
-  <header>
-    <div class="header-left">
-      
-    </div>
-    <div class="header-right">
-      <!-- controls moved to top-controls -->
-    </div>
-  </header>
+</nav>
 
   <main>
-    <div style="text-align: center; margin: 40px auto; padding: 0 20px;">
-      <img src="../img/393466355_1037098627324072_6500774992006951921_n.jpg" alt="Rafael Antunes Oliveira" class="profile-pic" style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
-      <h2>Rafael Antunes Oliveira</h2>
-    </div>
+    <section class="section-content">
+      <div class="section-container">
+<div class="profile-container">
+  <img src="../img/raf.jpg" alt="Photo de Rafael Antunes Oliveira" id="profile-picture">
+  <h2 class="profile-name">Rafael Antunes Oliveira</h2>
+</div>
 
-    <section class="section" id="section-intro">
-      <h3>Introduction</h3>
-      <p></p>
-    </section>
-
-    <section class="section" id="section-sport">
-      <h3>Sport & Karaté</h3>
-      <p></p>
-    </section>
-
-    <section class="section" id="section-cinema">
-      <h3>Cinéma</h3>
-      <p></p>
-    </section>
-
-    <section class="section" id="section-esport">
-      <h3>Esport & Jeux vidéo</h3>
-      <p></p>
-    </section>
-
-    <section class="section" id="section-cuisine">
-      <h3>Cuisine</h3>
-      <p></p>
-    </section>
-
-    <section class="section" id="section-motivation">
-      <p></p>
-    </section>
-    
-    <!-- Nouvelle structure du Chatbot (avec Tailwind) -->
-    <section id="chatbot-section" class="section" style="margin: 40px auto; max-width: 600px;">
-        <h3>Pose-moi une question !</h3>
-        <div class="chatbot-interface flex flex-col h-[400px]">
-            <!-- Zone des messages -->
-            <div id="chat-box" class="chat-messages flex flex-col-reverse overflow-y-auto p-4 flex-grow space-y-2">
-                <!-- Message de bienvenue (initial) -->
-                <div class="message-bot text-white p-3 rounded-xl self-start max-w-[85%]">
-                    Salut ! Je suis le chatbot de Rafael. Pose-moi une question sur ses études, ses projets, ou ses passions !
-                </div>
-            </div>
-
-            <!-- Formulaire de saisie -->
-            <form id="chat-form" class="p-4 flex gap-2 border-t border-gray-700">
-                <input 
-                    type="text" 
-                    id="chat-input" 
-                    placeholder="Écris ici..." 
-                    class="flex-grow p-3 rounded-xl bg-gray-800 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none"
-                    autocomplete="off"
-                />
-                <button 
-                    type="submit" 
-                    id="send-button"
-                    class="px-4 py-3 rounded-xl bg-cyan-600 text-white font-bold hover:bg-cyan-500 disabled:bg-gray-500"
-                >
-                    Envoyer
-                </button>
-            </form>
+        <div id="section-intro">
+          <h3 data-translate="sectionIntroTitle">Introduction</h3>
+          <p data-translate="sectionIntroText">Né au Portugal, je suis passionné par le développement web, à la fois front-end et back-end. Et non, tous les geeks ne passent pas *que* leur vie derrière un écran... parfois, on touche aussi de l’herbe (vraie ou en CSS) .</p>
         </div>
+        
+        <div id="section-sport">
+          <h3 data-translate="sectionSportTitle">Sport & Karaté</h3>
+          <p data-translate="sectionSportText">J'adore énormément le sport, ce qui m’a permis d’avoir une carrière dans le karaté. Toute ma vie tourne autour de ce sport : compétitions, cours donnés à des enfants, coaching d’enfants… Voici quelques résultats marquants :<br>- 2020 : Championnat de France — 3ème place<br>- 2021 : Compétition internationale au Portugal — 1ère place<br>- 2021 : Compétition internationale au Luxembourg — 1ère place<br>- 2022 : Compétition internationale en Belgique — 1ère place</p>
+        </div>
+        
+        <div id="section-cinema">
+          <h3 data-translate="sectionCinemaTitle">Cinéma</h3>
+          <p data-translate="sectionCinemaText">Par la suite, je suis passionné par le cinéma. Je trouve que c’est un vrai bonheur d’aller au cinéma voir de bons films qui, en plus de nous enrichir culturellement, nous font prendre conscience de plein de choses.</p>
+        </div>
+        
+        <div id="section-esport">
+          <h3 data-translate="sectionEsportTitle">Esport & Jeux vidéo</h3>
+          <p data-translate="sectionEsportText">Les jeux vidéo ont aussi beaucoup compté pendant ma jeunesse, où j’étais concentré uniquement sur le sport. En rentrant chez moi, mes sources de motivation étaient les jeux. J’ai donc intégré des équipes Esport qui m’ont permis d’acquérir un esprit d’équipe et de la discipline.</p>
+        </div>
+        
+        <div id="section-cuisine">
+          <h3 data-translate="sectionCuisineTitle">Cuisine</h3>
+          <p data-translate="sectionCuisineText">J’aime beaucoup cuisiner, car la cuisine représente un challenge où je peux exprimer ma créativité, ce qui est un point commun avec le développement web.</p>
+        </div>
+        
+        <div id="section-motivation">
+          <p data-translate="sectionMotivationText">Mon portfolio est le fruit de ma créativité, mais principalement de beaucoup de travail. Je suis toujours à la recherche d'apprendre, d'affronter de nouveaux défis et de créer des expériences web modernes et agréables pour ceux qui visitent mes sites.</p>
+        </div>
+        
+      </div>
+      
     </section>
   </main>
-    <footer class="main-footer">
-        <div class="max-w-7xl mx-auto">
-            &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
-        </div>
-    </footer>
-    
-    <!-- Script d'initialisation et de gestion du Chatbot -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatForm = document.getElementById('chat-form');
-            const messageInput = document.getElementById('chat-input');
-            const chatBox = document.getElementById('chat-box');
-            const sendButton = document.getElementById('send-button');
 
-            function appendMessage(text, sender, isLoading = false) {
-                const messageElement = document.createElement('div');
-                
-                messageElement.classList.add('p-3', 'rounded-xl', 'max-w-[85%]', 'text-white', 'shadow-md');
-                
-                if (sender === 'user') {
-                    messageElement.classList.add('message-user', 'self-end');
-                } else {
-                    messageElement.classList.add('message-bot', 'self-start');
-                }
-                
-                messageElement.innerText = text;
+<footer class="main-footer">
+    <div class="max-w-7xl mx-auto">
+        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés | <a href="Mentions.html">Mentions Légales</a>
+    </div>
+</footer>
 
-                if (isLoading) {
-                    messageElement.classList.add('loading');
-                }
-                
-                if (chatBox) {
-                    chatBox.prepend(messageElement);
-                    chatBox.scrollTop = 0; 
-                }
-
-                return messageElement;
-            }
-
-            function updateLoadingMessage(element, finalContent) {
-                element.classList.remove('loading');
-                element.innerText = finalContent;
-            }
-
-            if (chatForm) {
-                chatForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const userMessage = messageInput.value.trim();
-
-                    if (userMessage === '') return;
-
-                    sendButton.disabled = true;
-                    messageInput.disabled = true;
-
-                    appendMessage(userMessage, 'user');
-                    messageInput.value = '';
-                    
-                    const loadingMessage = appendMessage('', 'bot', true);
-
-                    try {
-                        if (typeof handleChatbotQuery === 'undefined') {
-                            throw new Error("Erreur: Le script chatbot.js n'a pas été chargé ou la fonction est manquante.");
-                        }
-                        
-                        const response = await handleChatbotQuery(userMessage);
-
-                        updateLoadingMessage(loadingMessage, response.response);
-
-                    } catch (error) {
-                        console.error("Erreur du Chatbot:", error);
-                        updateLoadingMessage(loadingMessage, "Erreur du système de chat. Voir la console.");
-                    } finally {
-                        sendButton.disabled = false;
-                        messageInput.disabled = false;
-                        messageInput.focus();
-                    }
-                });
-                
-                messageInput.focus();
-            }
-        });
-
-        // Restore saved language preference
+  <script>
+    // Initialisation de la langue et de l'année
+    document.addEventListener('DOMContentLoaded', () => {
         const savedLang = localStorage.getItem('lang') || 'fr';
         const langSelect = document.getElementById('langSelect');
+        
         if (langSelect) {
           langSelect.value = savedLang;
+          // L'écouteur de changement de langue est géré par script4.js
           langSelect.addEventListener('change', (e) => {
             localStorage.setItem('lang', e.target.value);
+            // La fonction applyText de script4.js s'occupe de la mise à jour
           });
         }
 
         // Set current year
         const yearEl = document.getElementById('currentYear');
         if (yearEl) yearEl.textContent = new Date().getFullYear();
-    </script>
+        
+        // Applique le thème au chargement
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light-theme') {
+            document.body.classList.add('light-theme');
+        }
+    });
+</script>
 </body>
 </html>

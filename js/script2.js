@@ -1,21 +1,25 @@
+// Traductions
 const text = {
   fr: {
+    // Menu Hamburger
+    navAccueil: "Accueil",
+    navProjets: "Projets",
+    navContact: "Contact",
+    navAPropos: "À propos",
+    navInfo: "Info",
+    navCV: "CV",
 
+    // Projets
     proj1title: "🐍 Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
-
     proj2title: "🐍 Script Python Tetris",
     proj2text: "Clicker pour Télécharger un fichier.zip contenant le Tetris",
-
     proj3title: "🐍 Script Python Pong",
     proj3text: "Clicker pour Télécharger un fichier.zip contenant le Pong",
-
     proj4title: "🐍 Script Python TicTacToe",
     proj4text: "Clicker pour Télécharger un fichier.zip contenant le TicTacToe.",
-
     proj5title: "🌐 Site HTML Responsive",
     proj5text: "Site web responsive et accessible réalisé en HTML/CSS/PHP.",
-
     proj6title: "🎮 Jeu en JS",
     proj6text: "Mini-jeu réalisé avec JavaScript.",
 
@@ -24,22 +28,23 @@ const text = {
     modalClose: "Fermer"
   },
   en: {
+    navAccueil: "Home",
+    navProjets: "Projects",
+    navContact: "Contact",
+    navAPropos: "About",
+    navInfo: "Info",
+    navCV: "CV",
 
     proj1title: "🐍 Python Snake Script",
     proj1text: "Click to download a .zip file containing the Snake game.",
-
     proj2title: "🐍 Python Tetris Script",
     proj2text: "Click to download a .zip file containing the Tetris game.",
-
     proj3title: "🐍 Python Pong Script",
     proj3text: "Click to download a .zip file containing the Pong game.",
-
     proj4title: "🐍 Python TicTacToe Script",
     proj4text: "Click to download a .zip file containing the TicTacToe game.",
-
     proj5title: "🌐 Responsive HTML Website",
     proj5text: "Responsive and accessible site made with HTML/CSS/PHP.",
-
     proj6title: "🎮 JS Game",
     proj6text: "Mini-game made with JavaScript.",
 
@@ -48,22 +53,23 @@ const text = {
     modalClose: "Close"
   },
   pt: {
+    navAccueil: "Início",
+    navProjets: "Projetos",
+    navContact: "Contato",
+    navAPropos: "Sobre",
+    navInfo: "Info",
+    navCV: "CV",
 
     proj1title: "🐍 Script Python Snake",
     proj1text: "Clique para baixar um arquivo .zip contendo o jogo Snake.",
-
     proj2title: "🐍 Script Python Tetris",
     proj2text: "Clique para baixar um arquivo .zip contendo o jogo Tetris.",
-
     proj3title: "🐍 Script Python Pong",
     proj3text: "Clique para baixar um arquivo .zip contendo o jogo Pong.",
-
     proj4title: "🐍 Script Python TicTacToe",
     proj4text: "Clique para baixar um arquivo .zip contendo o jogo TicTacToe.",
-
     proj5title: "🌐 Site HTML Responsivo",
     proj5text: "Site responsivo e acessível feito com HTML/CSS/PHP.",
-
     proj6title: "🎮 Jogo JS",
     proj6text: "Mini-jogo feito com JavaScript.",
 
@@ -73,7 +79,7 @@ const text = {
   }
 };
 
-// Project details with descriptions and languages
+// Projet
 const projectDetails = {
   1: {
     title: "🐍 Script Python snake",
@@ -105,7 +111,7 @@ const projectDetails = {
   },
   5: {
     title: "🌐 Site HTML Responsive",
-    description: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec une design moderne et épuré.",
+    description: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec un design moderne et épuré.",
     image: "../img/website.png",
     languages: ["HTML", "CSS", "PHP"],
     link: "http://81.194.40.26/~antunes--oliveira/SAE203/"
@@ -119,82 +125,65 @@ const projectDetails = {
   }
 };
 
+// Appliquer les traductions
 function applyText(lang) {
   const t = text[lang];
-  for (let key in t) {
-    const el = document.getElementById(key);
-    if (el) el.textContent = t[key];
-  }
+  document.querySelectorAll('[data-translate]').forEach(el => {
+    const key = el.getAttribute('data-translate');
+    if (t[key]) el.textContent = t[key];
+  });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const initLang = urlParams.get("lang") || localStorage.getItem("lang") || "fr";
-  document.getElementById("langSelect").value = initLang;
-  applyText(initLang);
+// Typewriter animation
+let typewriterTimeout, currentIndex = 0;
+function startTypewriter() {
+  const el = document.getElementById('typewriter-text');
+  if (!el) return;
+  const lang = document.getElementById("langSelect").value || "fr";
+  const textContent = {
+    fr: "Salut, je suis Rafael Antunes Oliveira",
+    en: "Hi, I'm Rafael Antunes Oliveira",
+    pt: "Oi, sou Rafael Antunes Oliveira"
+  }[lang];
 
-  document.getElementById("langSelect").addEventListener("change", e => {
-    const lang = e.target.value;
-    localStorage.setItem("lang", lang);
-    applyText(lang);
-  });
+  el.textContent = '';
+  currentIndex = 0;
 
-  document.querySelectorAll('#project-filters button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#project-filters button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  function type() {
+    if (currentIndex < textContent.length) {
+      el.textContent += textContent.charAt(currentIndex);
+      currentIndex++;
+      typewriterTimeout = setTimeout(type, 120);
+    }
+  }
+  type();
+}
 
-      const filter = btn.getAttribute('data-filter');
-      document.querySelectorAll('.project-card').forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const projectId = card.getAttribute('data-project-id');
-      openModal(projectId);
-    });
-  });
-});
-
-// Modal Functions
+// Modal
 function openModal(projectId) {
   const project = projectDetails[projectId];
   if (!project) return;
-
-  // Get current language
-  const currentLang = document.getElementById("langSelect").value || "fr";
-  const t = text[currentLang];
+  const lang = document.getElementById("langSelect").value || "fr";
+  const t = text[lang];
 
   document.getElementById('modalTitle').textContent = project.title;
   document.getElementById('modalDescription').textContent = project.description;
-  
-  // Set image if exists
+
   const imgEl = document.getElementById('modalImage');
   if (project.image) {
     imgEl.src = project.image;
     imgEl.style.display = 'block';
-  } else {
-    imgEl.style.display = 'none';
-  }
+  } else imgEl.style.display = 'none';
 
-  // Set language tags
   const tagsContainer = document.getElementById('modalTags');
   tagsContainer.innerHTML = '';
-  project.languages.forEach(lang => {
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = lang;
-    tagsContainer.appendChild(tag);
+  project.languages.forEach(langTag => {
+    const span = document.createElement('span');
+    span.className = 'tag';
+    span.textContent = langTag;
+    tagsContainer.appendChild(span);
   });
 
-  // Set action button
   const actionBtn = document.getElementById('modalActionBtn');
   if (project.download) {
     actionBtn.textContent = t.modalDownload;
@@ -206,11 +195,9 @@ function openModal(projectId) {
     actionBtn.dataset.link = project.link;
   }
 
-  // Update close button text
   const closeBtn = document.querySelector('.modal-btn.secondary');
   if (closeBtn) closeBtn.textContent = t.modalClose;
 
-  // Show modal
   document.getElementById('projectModal').classList.add('active');
 }
 
@@ -220,34 +207,44 @@ function closeModal() {
 
 function handleModalAction() {
   const btn = document.getElementById('modalActionBtn');
-  const action = btn.dataset.action;
-  const link = btn.dataset.link;
-
-  if (action === 'download') {
+  if (btn.dataset.action === 'download') {
     const a = document.createElement('a');
-    a.href = link;
+    a.href = btn.dataset.link;
     a.download = '';
-    a.style.display = 'none';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  } else if (action === 'link') {
-    window.location.href = link;
+  } else if (btn.dataset.action === 'link') {
+    window.location.href = btn.dataset.link;
   }
 }
 
-// Observe theme changes and update modal
-const observer = new MutationObserver(() => {
-  // Modal will automatically inherit the theme through CSS variables
-  // No additional action needed, CSS handles it
-});
-
-observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-// Close modal when clicking outside
-window.addEventListener('click', (e) => {
-  const modal = document.getElementById('projectModal');
-  if (e.target === modal) {
-    closeModal();
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+  const langSelect = document.getElementById("langSelect");
+  const savedLang = localStorage.getItem("lang") || "fr";
+  if (langSelect) {
+    langSelect.value = savedLang;
+    langSelect.addEventListener("change", e => {
+      const lang = e.target.value;
+      localStorage.setItem("lang", lang);
+      applyText(lang);
+      startTypewriter();
+    });
   }
+  applyText(savedLang);
+  startTypewriter();
+
+  // Project cards
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      openModal(card.dataset.projectId);
+    });
+  });
+
+  // Modal click outside
+  window.addEventListener('click', e => {
+    const modal = document.getElementById('projectModal');
+    if (e.target === modal) closeModal();
+  });
 });

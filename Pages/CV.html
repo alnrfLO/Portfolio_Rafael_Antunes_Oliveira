@@ -98,18 +98,18 @@
     </div>
   </div>
 
-  <nav class="menu" id="mobileMenu">
-    <a href="../index.html">Accueil</a>
-    <a href="Projets.html">Projets</a>
-    <a href="Contact.html">Contact</a>
+<nav class="menu" id="mobileMenu">
+    <a href="../index.html" data-translate="navAccueil">Accueil</a>
+    <a href="Projets.html" data-translate="navProjets">Projets</a>
+    <a href="Contact.html" data-translate="navContact">Contact</a>
     <div class="submenu">
-      <button class="submenu-toggle">À propos</button>
-      <div class="submenu-list">
-        <a href="Info.html">Info</a>
-        <a href="CV.html">CV</a>
-      </div>
+        <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
+        <div class="submenu-list">
+            <a href="Info.html" data-translate="navInfo">Info</a>
+            <a href="CV.html">CV</a>
+        </div>
     </div>
-  </nav>
+</nav>
 
   <header>
     <div>
@@ -129,31 +129,69 @@
     </div>
   </main>
 
-  <footer class="main-footer">
-    <div class="max-w-7xl mx-auto">&copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés</div>
-  </footer>
-
+<footer class="main-footer">
+    <div class="max-w-7xl mx-auto">
+        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés | <a href="Mentions.html">Mentions Légales</a>
+    </div>
+</footer>
   <script src="../js/menu-hamburger.js" defer></script>
   <script src="../js/etoile.js" defer></script>
   <script src="../js/theme.js" defer></script>
-  <script>
-    // Set year and restore theme/lang similar to other pages
-    document.addEventListener('DOMContentLoaded', () => {
-      const yearElement = document.getElementById('currentYear');
-      if (yearElement) yearElement.textContent = new Date().getFullYear();
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Traductions du menu hamburger
+  const menuText = {
+    fr: {
+      navAccueil: "Accueil",
+      navProjets: "Projets",
+      navContact: "Contact",
+      navAPropos: "À propos",
+      navInfo: "Info",
+      navCV: "CV"
+    },
+    en: {
+      navAccueil: "Home",
+      navProjets: "Projects",
+      navContact: "Contact",
+      navAPropos: "About",
+      navInfo: "Info",
+      navCV: "CV"
+    },
+    pt: {
+      navAccueil: "Início",
+      navProjets: "Projetos",
+      navContact: "Contato",
+      navAPropos: "Sobre",
+      navInfo: "Info",
+      navCV: "CV"
+    }
+  };
 
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light-theme') document.body.classList.add('light-theme');
-
-      const savedLang = localStorage.getItem('lang') || 'fr';
-      const langSelect = document.getElementById('langSelect');
-      if (langSelect) {
-        langSelect.value = savedLang;
-        langSelect.addEventListener('change', e => {
-          localStorage.setItem('lang', e.target.value);
-        });
-      }
+  // Fonction pour appliquer la traduction
+  function applyMenuLang(lang) {
+    const t = menuText[lang] || menuText.fr;
+    Object.keys(t).forEach(key => {
+      const el = document.querySelector(`[data-translate="${key}"]`);
+      if (el) el.textContent = t[key];
     });
-  </script>
+  }
+
+  // Récupérer la langue sauvegardée ou par défaut
+  const savedLang = localStorage.getItem('lang') || 'fr';
+  applyMenuLang(savedLang);
+
+  // Mettre à jour le menu si l'utilisateur change la langue
+  const langSelect = document.getElementById('langSelect');
+  if (langSelect) {
+    langSelect.value = savedLang;
+    langSelect.addEventListener('change', e => {
+      const newLang = e.target.value;
+      localStorage.setItem('lang', newLang);
+      applyMenuLang(newLang);
+    });
+  }
+});
+</script>
+
 </body>
 </html>

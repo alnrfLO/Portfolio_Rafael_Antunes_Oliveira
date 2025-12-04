@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+<title>Mentions Légales - Rafael Antunes Oliveira</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/menu-hamburger.css" />
+<style>
+.top-controls {
+    position: fixed; 
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    display: flex;
+    gap: 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding-top: 5rem;
+    padding-bottom: 140px;
+}
+
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .top-controls {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+/* Style de la zone des Mentions Légales */
+.mentions-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--section-bg, rgba(20, 20, 20, 0.8));
+    border: 1px solid var(--primary-color-faded, rgba(0, 255, 255, 0.2));
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--primary-color-shadow, rgba(0, 255, 255, 0.1));
+}
+
+body.light-theme .mentions-container {
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mentions-container h2 {
+    color: var(--primary-color, #0ff);
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 20px;
+    border-bottom: 2px solid var(--primary-color, #0ff);
+    padding-bottom: 5px;
+}
+
+.mentions-container p, .mentions-container ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+</style>
+
+<script src="../js/etoile.js" defer></script>
+<script src="../js/menu-hamburger.js" defer></script> 
+<script src="../js/theme.js" defer></script>
+<script src="../js/mentions.js" defer></script>
+<script src="../js/script6.js"></script>
+</head>
+
+<body>
+<canvas id="stars"></canvas>
+
+<div class="top-controls">
+    <select id="langSelect">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="pt">Portugais</option>
+    </select>
+    <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+</div>
+
+<div class="navbar">
+    <div class="menu-toggle" onclick="toggleMenu(this)"> 
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<nav class="menu" id="mobileMenu">
+    <a href="../index.html" data-translate="navAccueil">Accueil</a>
+    <a href="Projets.html" data-translate="navProjets">Projets</a>
+    <a href="Contact.html" data-translate="navContact">Contact</a>
+    <div class="submenu">
+        <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
+        <div class="submenu-list">
+            <a href="Info.html" data-translate="navInfo">Info</a>
+            <a href="CV.html">CV</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <h1 id="mainTitle" style="text-align: center; margin-top: 1rem; font-family: 'Orbitron', sans-serif;" data-translate="mainTitle">
+        Mentions Légales
+    </h1>
+
+    <div class="mentions-container">
+        <h2 data-translate="section1Title">1. Identification de l'Éditeur</h2>
+        <p data-translate="section1Name"><strong>Nom :</strong> Rafael Antunes Oliveira</p>
+        <p data-translate="section1Age"><strong>Âge :</strong> 19 ans</p>
+        <p data-translate="section1Status"><strong>Statut :</strong> Étudiant en BUT MMI – Filière Développement</p>
+        <p data-translate="section1Email"><strong>E-mail :</strong> raf.atns1103@gmail.com</p>
+        <p data-translate="section1Purpose">Le présent site est un portfolio personnel présentant mes projets et compétences.</p>
+
+        <h2 data-translate="section2Title">2. Hébergement</h2>
+        <p data-translate="section2Host"><strong>Hébergeur :</strong> Vercel Inc.</p>
+        <p data-translate="section2Address"><strong>Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis</p>
+        <p data-translate="section2Web"><strong>Site web :</strong> <a href="https://vercel.com">https://vercel.com</a></p>
+
+        <h2 data-translate="section3Title">3. Propriété Intellectuelle</h2>
+        <p data-translate="section3Content">L’ensemble des contenus de ce site (textes, images, vidéos, projets, code, graphismes, logos…) est la propriété exclusive de Rafael Antunes Oliveira, sauf mention contraire.</p>
+        <p data-translate="section3Reproduction">Toute reproduction, modification, redistribution ou exploitation sans autorisation est interdite.</p>
+
+        <h2 data-translate="section4Title">4. Données personnelles – Formulaire de contact</h2>
+        <p data-translate="section4DataUse">Les informations collectées via le formulaire de contact (nom, e-mail, message) sont utilisées uniquement pour répondre aux demandes envoyées par l'utilisateur.</p>
+        <p data-translate="section4Processor"><strong>Responsable du traitement :</strong> Rafael Antunes Oliveira</p>
+        <p data-translate="section4Purpose"><strong>Finalité :</strong> Réponse aux demandes de contact</p>
+        <p data-translate="section4Retention"><strong>Durée de conservation :</strong> 12 mois maximum</p>
+        <p data-translate="section4Recipient"><strong>Destinataire :</strong> L’éditeur du site uniquement (aucun partage à des tiers)</p>
+
+        <h3 data-translate="section4RightsTitle">Droits des utilisateurs</h3>
+        <p data-translate="section4RightsIntro">Conformément au RGPD, vous disposez des droits suivants :</p>
+        <ul>
+            <li data-translate="rightAccess">Droit d’accès</li>
+            <li data-translate="rightRectification">Droit de rectification</li>
+            <li data-translate="rightErasure">Droit à l’effacement</li>
+        </ul>
+        <p data-translate="section4RightsContact">Pour exercer vos droits : <strong>raf.atns1103@gmail.com</strong></p>
+
+        <h2 data-translate="section5Title">5. Cookies</h2>
+        <p data-translate="section5None">Ce site n’utilise aucun cookie de suivi ou de mesure d’audience.</p>
+        <p data-translate="section5Future">Si un outil analytique est ajouté ultérieurement, cette section sera mise à jour.</p>
+
+        <h2 data-translate="section6Title">6. Responsabilité</h2>
+        <p data-translate="section6DisclaimerIntro">L’éditeur du site ne peut être tenu responsable :</p>
+        <ul>
+            <li data-translate="disclaimer1">d’éventuelles erreurs ou omissions,</li>
+            <li data-translate="disclaimer2">de problèmes d’accès au site,</li>
+            <li data-translate="disclaimer3">de l’usage fait des contenus présents.</li>
+        </ul>
+    </div>
+</main>
+
+<footer class="main-footer">
+    <div class="max-w-7xl mx-auto">
+        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — <span data-translate="allRightsReserved">Tous droits réservés</span> |
+        <a href="Mentions.html" data-translate="footerMentions">Mentions Légales</a>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Gestion de l'année
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Gestion du thème
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light-theme') {
+        document.body.classList.add('light-theme');
+    }
+
+    // Gestion de la langue
+    const langSelect = document.getElementById('langSelect');
+    const savedLang = localStorage.getItem('lang') || 'fr';
+    langSelect.value = savedLang;
+});
+</script>
+</body>
+</html>
