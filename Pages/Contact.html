@@ -105,22 +105,5 @@
             &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
         </div>
     </footer> 
-    
-    <!-- 2. SCRIPT JAVASCRIPT MANQUANT (AJOUTÉ POUR L'ANNÉE ET L'INITIALISATION DU THÈME) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Cette ligne affiche l'année en cours dans le footer
-            const yearElement = document.getElementById('currentYear');
-            if (yearElement) {
-                yearElement.textContent = new Date().getFullYear();
-            }
-
-            // Ceci applique le thème par défaut ou le thème sauvegardé (comme dans theme.js)
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light-theme') {
-                document.body.classList.add('light-theme');
-            } 
-        });
-    </script>
 </body>
 </html>
