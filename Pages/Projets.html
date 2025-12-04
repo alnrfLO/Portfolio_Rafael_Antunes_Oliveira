@@ -28,14 +28,11 @@
       margin-top: 0;
     }
 
-    header h1#title {
-      font-size: clamp(1.5rem, 5vw, 3rem);
-    }
-
     h2#projectsTitle {
       font-size: clamp(1.3rem, 4.5vw, 2.5rem);
       word-wrap: break-word;
       overflow-wrap: break-word;
+      padding: 0 1rem;
     }
 
     #langSelect {
@@ -49,19 +46,28 @@
     }
 
     @media (max-width: 768px) {
-      header h1#title {
-        font-size: clamp(1.2rem, 4vw, 2rem);
-      }
       h2#projectsTitle {
         font-size: clamp(1rem, 3.5vw, 1.8rem);
+        padding: 0 0.75rem;
       }
     }
 
     @media (max-width: 480px) {
+      h2#projectsTitle {
+        font-size: clamp(0.9rem, 3vw, 1.5rem);
+        padding: 0 0.5rem;
+        margin: 1rem 0;
+      }
       #langSelect,
       .theme-toggle {
         font-size: 0.75rem;
         padding: 0.3rem 0.5rem;
+      }
+    }
+
+    @media (max-width: 375px) {
+      h2#projectsTitle {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -88,7 +94,6 @@
     <a href="Info.html">À propos</a>
   </nav>
   <header>
-    <h1 id="title" style="text-align:center;">Projets</h1>
     <div>
       <select id="langSelect">
         <option value="fr">Français</option>
