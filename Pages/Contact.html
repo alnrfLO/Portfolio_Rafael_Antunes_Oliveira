@@ -64,31 +64,37 @@
   </style>
 </head>
 <body class="fade-out">
-    <canvas id="stars"></canvas>
+  <div class="top-controls">
+    <select id="langSelect">
+      <option value="fr" selected>Français</option>
+      <option value="en">English</option>
+      <option value="pt">Portugais</option>
+    </select>
+    <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  </div>
 
-    <div class="top-controls">
-        <select id="langSelect">
-            <option value="fr" selected>Français</option>
-            <option value="en">English</option>
-            <option value="pt">Português</option>
-        </select>
-        <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  <div class="navbar">
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-
-    <div class="navbar">
-        <div class="menu-toggle" onclick="toggleMenu(this)">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
+  </div>
 
     <nav class="menu" id="mobileMenu">
         <a href="../index.html">Accueil</a>
         <a href="Projets.html">Projets</a>
         <a href="Contact.html">Contact</a>
-        <a href="Info.html">À propos</a>
+        <div class="submenu">
+          <button class="submenu-toggle">À propos</button>
+          <div class="submenu-list">
+            <a href="Info.html">Info</a>
+            <a href="CV.html">CV</a>
+          </div>
+        </div>
     </nav>
+
+    <canvas id="stars"></canvas>
 
     <div class="hero">
         <h1 id="contactTitle">Contacte-moi</h1>
@@ -105,5 +111,13 @@
             &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
         </div>
     </footer> 
+
+    <script>
+      // Set current year
+      document.addEventListener('DOMContentLoaded', () => {
+        const yearEl = document.getElementById('currentYear');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      });
+    </script>
 </body>
 </html>

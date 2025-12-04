@@ -112,6 +112,15 @@
   <script src="../js/theme.js" defer></script> 
 </head>
 <body>
+  <div class="top-controls">
+    <select id="langSelect">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="pt">Portugais</option>
+    </select>
+    <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  </div>
+
   <div class="navbar">
     <div class="menu-toggle" onclick="toggleMenu(this)">
       <span></span>
@@ -124,27 +133,34 @@
     <a href="../index.html">Accueil</a>
     <a href="Projets.html">Projets</a>
     <a href="Contact.html">Contact</a>
-    <a href="Info.html">À propos</a>
+    <div class="submenu">
+      <button class="submenu-toggle">À propos</button>
+      <div class="submenu-list">
+        <a href="Info.html">Info</a>
+        <a href="CV.html">CV</a>
+      </div>
+    </div>
   </nav>
 
 
   <canvas id="stars"></canvas>
 
   <header>
+    <div class="header-left">
+      
+    </div>
     <div class="header-right">
-      <select id="langSelect">
-        <option value="fr">Français</option>
-        <option value="en">English</option>
-        <option value="pt">Portugais</option>
-      </select>
-      <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+      <!-- controls moved to top-controls -->
     </div>
   </header>
 
   <main>
-    <img src="../img/393466355_1037098627324072_6500774992006951921_n.jpg" alt="Photo Rafael Antunes Oliveira" class="profile-pic" />
-    <h2>Rafael Antunes Oliveira</h2>
-   <section class="section" id="section-intro">
+    <div style="text-align: center; margin: 40px auto; padding: 0 20px;">
+      <img src="../img/393466355_1037098627324072_6500774992006951921_n.jpg" alt="Rafael Antunes Oliveira" class="profile-pic" style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+      <h2>Rafael Antunes Oliveira</h2>
+    </div>
+
+    <section class="section" id="section-intro">
       <h3>Introduction</h3>
       <p></p>
     </section>
@@ -286,6 +302,20 @@
                 messageInput.focus();
             }
         });
+
+        // Restore saved language preference
+        const savedLang = localStorage.getItem('lang') || 'fr';
+        const langSelect = document.getElementById('langSelect');
+        if (langSelect) {
+          langSelect.value = savedLang;
+          langSelect.addEventListener('change', (e) => {
+            localStorage.setItem('lang', e.target.value);
+          });
+        }
+
+        // Set current year
+        const yearEl = document.getElementById('currentYear');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
     </script>
 </body>
 </html>

@@ -35,7 +35,7 @@ const translations = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  let lang = window.APP_LANG || 'fr';
+  let lang = localStorage.getItem('lang') || window.APP_LANG || 'fr';
 
   const form = document.querySelector('.contact-form');
   const nameInput = form.querySelector('input[type="text"]');
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   langSelect.addEventListener('change', (e) => {
     lang = e.target.value;
+    localStorage.setItem('lang', lang);
     window.APP_LANG = lang;
     applyTranslations(lang);
   });

@@ -236,6 +236,105 @@
       color: #0077cc;
     }
 
+    /* Language Statistics Bar */
+    .language-stats {
+      display: flex;
+      width: 90%;
+      max-width: 800px;
+      height: 35px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 2rem auto 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+      border: 2px solid #0ff;
+      background: rgba(0, 255, 255, 0.05);
+    }
+
+    body.light-theme .language-stats {
+      border-color: #0077cc;
+      box-shadow: 0 4px 12px rgba(0, 119, 204, 0.2);
+      background: rgba(0, 119, 204, 0.05);
+    }
+
+    .stat-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-segment:hover {
+      filter: brightness(1.15);
+      transform: scaleY(1.05);
+    }
+
+    .stat-python {
+      background: linear-gradient(135deg, #3776ab, #366994);
+      flex: 4;
+    }
+
+    .stat-html {
+      background: linear-gradient(135deg, #e34c26, #ff6b4d);
+      flex: 1;
+    }
+
+    .stat-js {
+      background: linear-gradient(135deg, #f7df1e, #ffd700);
+      flex: 1;
+      color: #333;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Highlight effect when filter is active */
+    .stat-segment.active {
+      box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.4);
+      transform: scaleY(1.15);
+      z-index: 5;
+    }
+
+    /* Desaturate inactive segments */
+    .stat-segment.inactive {
+      filter: grayscale(100%) brightness(0.7);
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .language-stats {
+        width: 95%;
+        height: 32px;
+        margin: 1.5rem auto 2rem;
+      }
+      .stat-segment {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .language-stats {
+        height: 30px;
+        margin: 1.5rem auto 1.8rem;
+      }
+      .stat-segment {
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .language-stats {
+        height: 28px;
+      }
+      .stat-segment {
+        font-size: 0.65rem;
+      }
+    }
+
   </style>
   <script src="../js/menu-hamburger.js" defer></script>
   <script src="../js/theme.js" defer></script>
@@ -243,6 +342,14 @@
   <script src="../js/etoile.js" defer></script>
 </head>
 <body>
+  <div class="top-controls">
+    <select id="langSelect">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="pt">Portugais</option>
+    </select>
+    <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  </div>
   <canvas id="stars"></canvas>
 
   <div class="navbar">
@@ -257,20 +364,28 @@
     <a href="../index.html">Accueil</a>
     <a href="Projets.html">Projets</a>
     <a href="Contact.html">Contact</a>
-    <a href="Info.html">À propos</a>
+    <div class="submenu">
+      <button class="submenu-toggle">À propos</button>
+      <div class="submenu-list">
+        <a href="Info.html">Info</a>
+        <a href="CV.html">CV</a>
+      </div>
+    </div>
   </nav>
   <header>
     <div>
-      <select id="langSelect">
-        <option value="fr">Français</option>
-        <option value="en">English</option>
-        <option value="pt">Portugais</option>
-      </select>
-      <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+      <!-- controls moved to top-controls -->
     </div>
   </header>
 
   <section class="portfolio">
+
+    <!-- Language Statistics Bar -->
+    <div class="language-stats">
+      <div class="stat-segment stat-python" title="67% Python">67% Python</div>
+      <div class="stat-segment stat-html" title="17% HTML">17% HTML</div>
+      <div class="stat-segment stat-js" title="16% JavaScript">16% JS</div>
+    </div>
 
     <div id="project-filters" class="filters">
       <button data-filter="all" class="active">Tous</button>
@@ -332,5 +447,59 @@
             &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
         </div>
     </footer>
+
+    <script>
+      // Language stats bar interaction
+      document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('#project-filters button');
+        const statSegments = document.querySelectorAll('.stat-segment');
+
+        filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            // Remove active and inactive classes from all segments
+            statSegments.forEach(segment => {
+              segment.classList.remove('active', 'inactive');
+            });
+            
+            // If 'all' filter, highlight all segments
+            if (filter === 'all') {
+              statSegments.forEach(segment => segment.classList.add('active'));
+            } else {
+              // Gray out non-selected segments, highlight selected one
+              statSegments.forEach(segment => {
+                if (filter === 'python' && segment.classList.contains('stat-python')) {
+                  segment.classList.add('active');
+                } else if (filter === 'html' && segment.classList.contains('stat-html')) {
+                  segment.classList.add('active');
+                } else if (filter === 'js' && segment.classList.contains('stat-js')) {
+                  segment.classList.add('active');
+                } else {
+                  segment.classList.add('inactive');
+                }
+              });
+            }
+          });
+        });
+
+        // Set initial active state on 'all' filter
+        statSegments.forEach(segment => segment.classList.add('active'));
+
+        // Restore saved language preference
+        const savedLang = localStorage.getItem('lang') || 'fr';
+        const langSelect = document.getElementById('langSelect');
+        if (langSelect) {
+          langSelect.value = savedLang;
+          langSelect.addEventListener('change', (e) => {
+            localStorage.setItem('lang', e.target.value);
+          });
+        }
+
+        // Set current year
+        const yearEl = document.getElementById('currentYear');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+      });
+    </script>
 </body>
 </html>

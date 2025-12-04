@@ -137,6 +137,46 @@
   </style>
 </head>
 <body>
+  <script>
+    // Initialize typewriter immediately
+    const translationTexts = {
+      fr: "Salut, je suis Rafael Antunes Oliveira",
+      en: "Hi, I'm Rafael Antunes Oliveira",
+      pt: "Oi, sou Rafael Antunes Oliveira"
+    };
+
+    let currentIndex = 0;
+    let typewriterTimeout = null;
+
+    function startTypewriter() {
+      const lang = localStorage.getItem('lang') || 'fr';
+      const text = translationTexts[lang];
+      const element = document.getElementById('typewriter-text');
+      
+      if (!element) return;
+      
+      element.textContent = '';
+      currentIndex = 0;
+      
+      function type() {
+        if (currentIndex < text.length) {
+          element.textContent += text.charAt(currentIndex);
+          currentIndex++;
+          typewriterTimeout = setTimeout(type, 150);
+        }
+      }
+      
+      type();
+    }
+
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startTypewriter);
+    } else {
+      startTypewriter();
+    }
+  </script>
+
   <canvas id="stars"></canvas>
   
   <div class="top-controls">
@@ -160,24 +200,30 @@
     <a href="index.html">Accueil</a>
     <a href="Pages/Projets.html">Projets</a>
     <a href="Pages/Contact.html">Contact</a>
-    <a href="Pages/Info.html">À propos</a>
+    <div class="submenu">
+      <button class="submenu-toggle">À propos</button>
+      <div class="submenu-list">
+        <a href="Pages/Info.html">Info</a>
+        <a href="Pages/CV.html">CV</a>
+      </div>
+    </div>
   </nav>
 
   <main class="main-content hero-minimal">
 
-    <h1 id="title">
+    <h1 id="title" data-translate="homeTitle">
       <span class="typewriter-text" id="typewriter-text"></span>
     </h1>
     
-    <h2 id="projectsTitle">Etudiant en 2 eme annee de MMI | Futur Développeur Web Full Stack</h2>
+    <h2 id="projectsTitle" data-translate="homeSubtitle">Etudiant en 2 eme annee de MMI | Futur Développeur Web Full Stack</h2>
     
     <div class="cta-container">
       
-      <a href="Pages/Projets.html" class="cta-button cta-projets">
+      <a href="Pages/Projets.html" class="cta-button cta-projets" data-translate="seeProjects">
         Voir Mes Projets 🚀
       </a>
       
-      <a href="Pages/Info.html" class="cta-button cta-a-propos">
+      <a href="Pages/Info.html" class="cta-button cta-a-propos" data-translate="learnMore">
         En Apprendre Plus Sur Moi 👤
       </a>
       
@@ -192,19 +238,60 @@
     </footer>
 
 <script>
-    const text = "Salut, je suis Rafael Antunes Oliveira";
-    const speed = 50;
-    const typewriterElement = document.getElementById("typewriter-text");
-    
-    function typeWriter(i = 0) {
-      if (i < text.length) {
-        typewriterElement.innerHTML += text.charAt(i);
-        setTimeout(() => typeWriter(i + 1), speed); // <-- Appel récursif
+    // Language translations
+    const homeTexts = {
+      fr: {
+        subtitle: "Etudiant en 2e année de MMI | Futur Développeur Web Full Stack",
+        seeProjects: "Voir Mes Projets 🚀",
+        learnMore: "En Apprendre Plus Sur Moi 👤"
+      },
+      en: {
+        subtitle: "2nd year MMI Student | Future Full Stack Web Developer",
+        seeProjects: "View My Projects 🚀",
+        learnMore: "Learn More About Me 👤"
+      },
+      pt: {
+        subtitle: "Aluno do 2º ano de MMI | Futuro Desenvolvedor Web Full Stack",
+        seeProjects: "Ver Meus Projetos 🚀",
+        learnMore: "Saiba Mais Sobre Mim 👤"
       }
+    };
+
+    function updatePageText(lang) {
+      const texts = homeTexts[lang] || homeTexts.fr;
+      
+      // Update subtitle
+      const subtitle = document.getElementById('projectsTitle');
+      if (subtitle) subtitle.textContent = texts.subtitle;
+      
+      // Update buttons
+      const seeBtn = document.querySelector('[data-translate="seeProjects"]');
+      const learnBtn = document.querySelector('[data-translate="learnMore"]');
+      if (seeBtn) seeBtn.textContent = texts.seeProjects;
+      if (learnBtn) learnBtn.textContent = texts.learnMore;
+      
+      // Restart typewriter
+      startTypewriter();
     }
-    
-    // Lancement de l'animation après le chargement de la page
-    window.addEventListener('load', () => setTimeout(typeWriter, 500)); 
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const langSelect = document.getElementById('langSelect');
+      const savedLang = localStorage.getItem('lang') || 'fr';
+      
+      if (langSelect) {
+        langSelect.value = savedLang;
+        langSelect.addEventListener('change', (e) => {
+          localStorage.setItem('lang', e.target.value);
+          updatePageText(e.target.value);
+        });
+      }
+      
+      updatePageText(savedLang);
+      
+      // Set current year
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
 </script>
 </body>
 </html>
