@@ -449,58 +449,64 @@
     </div>
 </footer>
 
-    <script>
-      // Language stats bar interaction
-      document.addEventListener('DOMContentLoaded', () => {
-        const filterButtons = document.querySelectorAll('#project-filters button');
-        const statSegments = document.querySelectorAll('.stat-segment');
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('#project-filters button');
+  const statSegments = document.querySelectorAll('.stat-segment');
 
-        filterButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-            
-            // Remove active and inactive classes from all segments
-            statSegments.forEach(segment => {
-              segment.classList.remove('active', 'inactive');
-            });
-            
-            // If 'all' filter, highlight all segments
-            if (filter === 'all') {
-              statSegments.forEach(segment => segment.classList.add('active'));
-            } else {
-              // Gray out non-selected segments, highlight selected one
-              statSegments.forEach(segment => {
-                if (filter === 'python' && segment.classList.contains('stat-python')) {
-                  segment.classList.add('active');
-                } else if (filter === 'html' && segment.classList.contains('stat-html')) {
-                  segment.classList.add('active');
-                } else if (filter === 'js' && segment.classList.contains('stat-js')) {
-                  segment.classList.add('active');
-                } else {
-                  segment.classList.add('inactive');
-                }
-              });
-            }
-          });
-        });
+  function updateFilter(filter) {
+    // 1️⃣ Mettre à jour les boutons de filtre
+    filterButtons.forEach(btn => {
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
 
-        // Set initial active state on 'all' filter
-        statSegments.forEach(segment => segment.classList.add('active'));
+    // 2️⃣ Mettre à jour les segments de stats
+    statSegments.forEach(segment => {
+      segment.classList.remove('active', 'inactive');
+      if (filter === 'all') {
+        segment.classList.add('active');
+      } else if (
+        (filter === 'python' && segment.classList.contains('stat-python')) ||
+        (filter === 'html' && segment.classList.contains('stat-html')) ||
+        (filter === 'js' && segment.classList.contains('stat-js'))
+      ) {
+        segment.classList.add('active');
+      } else {
+        segment.classList.add('inactive');
+      }
+    });
+  }
 
-        // Restore saved language preference
-        const savedLang = localStorage.getItem('lang') || 'fr';
-        const langSelect = document.getElementById('langSelect');
-        if (langSelect) {
-          langSelect.value = savedLang;
-          langSelect.addEventListener('change', (e) => {
-            localStorage.setItem('lang', e.target.value);
-          });
-        }
+  // 3️⃣ Écouteurs pour les boutons de filtre
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      updateFilter(filter);
+    });
+  });
 
-        // Set current year
-        const yearEl = document.getElementById('currentYear');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-      });
-    </script>
+  // 4️⃣ État initial
+  updateFilter('all');
+
+  // 5️⃣ Restaurer la langue sauvegardée
+  const savedLang = localStorage.getItem('lang') || 'fr';
+  const langSelect = document.getElementById('langSelect');
+  if (langSelect) {
+    langSelect.value = savedLang;
+    langSelect.addEventListener('change', (e) => {
+      localStorage.setItem('lang', e.target.value);
+    });
+  }
+
+  // 6️⃣ Mettre l'année actuelle dans le footer
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+});
+</script>
+
 </body>
 </html>

@@ -1,7 +1,6 @@
-// Traductions
-const text = {
+// Traductions fusionnées avec titres, textes et descriptions des projets
+const translations = {
   fr: {
-    // Menu Hamburger
     navAccueil: "Accueil",
     navProjets: "Projets",
     navContact: "Contact",
@@ -9,7 +8,6 @@ const text = {
     navInfo: "Info",
     navCV: "CV",
 
-    // Projets
     proj1title: "🐍 Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
     proj2title: "🐍 Script Python Tetris",
@@ -22,6 +20,13 @@ const text = {
     proj5text: "Site web responsive et accessible réalisé en HTML/CSS/PHP.",
     proj6title: "🎮 Jeu en JS",
     proj6text: "Mini-jeu réalisé avec JavaScript.",
+
+    proj1desc: "Un jeu de serpent classique développé en Python avec Pygame. Le joueur contrôle un serpent qui grandit à chaque nourriture consommée. Le jeu se termine si le serpent se heurte à un mur ou à lui-même.",
+    proj2desc: "Une implémentation du jeu Tetris en Python. Les pièces tombent du haut et le joueur doit les positionner pour remplir des lignes. Chaque ligne complète est supprimée et rapporte des points.",
+    proj3desc: "Le jeu Pong classique en Python. Deux joueurs contrôlent des raquettes pour faire rebondir une balle. C'est un jeu multijoueur simple et addictif.",
+    proj4desc: "Le jeu du Morpion (Tic-Tac-Toe) en Python. Jouez contre l'ordinateur avec une intelligence artificielle simple. C'est un projet pédagogique pour apprendre les algorithmes de base.",
+    proj5desc: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec un design moderne et épuré.",
+    proj6desc: "Un mini-jeu interactif créé avec JavaScript vanilla. Testez vos réflexes et essayez de battre le meilleur score. Code moderne et optimisé.",
 
     modalDownload: "Télécharger",
     modalVisit: "Visiter",
@@ -48,6 +53,13 @@ const text = {
     proj6title: "🎮 JS Game",
     proj6text: "Mini-game made with JavaScript.",
 
+    proj1desc: "A classic Snake game developed in Python with Pygame. The player controls a snake that grows with each food eaten. The game ends if the snake hits a wall or itself.",
+    proj2desc: "An implementation of Tetris in Python. Pieces fall from the top, and the player must position them to complete lines. Each completed line is removed and gives points.",
+    proj3desc: "The classic Pong game in Python. Two players control paddles to bounce a ball. It's a simple and addictive multiplayer game.",
+    proj4desc: "Tic-Tac-Toe in Python. Play against the computer with a simple AI. This is an educational project to learn basic algorithms.",
+    proj5desc: "A professional and responsive website made for the SAE203 project. Accessible on all devices (desktop, tablet, mobile) with a modern, clean design.",
+    proj6desc: "An interactive mini-game created with vanilla JavaScript. Test your reflexes and try to beat the high score. Modern and optimized code.",
+
     modalDownload: "Download",
     modalVisit: "Visit",
     modalClose: "Close"
@@ -73,101 +85,55 @@ const text = {
     proj6title: "🎮 Jogo JS",
     proj6text: "Mini-jogo feito com JavaScript.",
 
+    proj1desc: "Um jogo clássico de Snake desenvolvido em Python com Pygame. O jogador controla uma cobra que cresce a cada comida consumida. O jogo termina se a cobra bater em uma parede ou em si mesma.",
+    proj2desc: "Uma implementação do jogo Tetris em Python. As peças caem do topo e o jogador deve posicioná-las para completar linhas. Cada linha completa é removida e gera pontos.",
+    proj3desc: "O jogo clássico Pong em Python. Dois jogadores controlam as raquetes para rebater a bola. É um jogo multiplayer simples e viciante.",
+    proj4desc: "O jogo da velha (Tic-Tac-Toe) em Python. Jogue contra o computador com uma IA simples. É um projeto educacional para aprender algoritmos básicos.",
+    proj5desc: "Um site profissional e responsivo feito para o projeto SAE203. Acessível em todos os dispositivos (desktop, tablet, mobile) com design moderno e limpo.",
+    proj6desc: "Um mini-jogo interativo criado com JavaScript vanilla. Teste seus reflexos e tente bater o recorde. Código moderno e otimizado.",
+
     modalDownload: "Baixar",
     modalVisit: "Visitar",
     modalClose: "Fechar"
   }
 };
 
-// Projet
+// ⚡ Project details pour le modal
 const projectDetails = {
-  1: {
-    title: "🐍 Script Python snake",
-    description: "Un jeu de serpent classique développé en Python avec Pygame. Le joueur contrôle un serpent qui grandit à chaque nourriture consommée. Le jeu se termine si le serpent se heurte à un mur ou à lui-même.",
-    image: "../img/snake.png",
-    languages: ["Python", "Pygame"],
-    download: "downloads/snake.zip"
-  },
-  2: {
-    title: "🐍 Script Python Tetris",
-    description: "Une implémentation du jeu Tetris en Python. Les pièces tombent du haut et le joueur doit les positionner pour remplir des lignes. Chaque ligne complète est supprimée et rapporte des points.",
-    image: "../img/tetris.png",
-    languages: ["Python", "Pygame"],
-    download: "downloads/Tetris.zip"
-  },
-  3: {
-    title: "🐍 Script Python Pong",
-    description: "Le jeu Pong classique en Python. Deux joueurs contrôlent des raquettes pour faire rebondir une balle. C'est un jeu multijoueur simple et addictif.",
-    image: "../img/pong.png",
-    languages: ["Python", "Pygame"],
-    download: "downloads/Pong.zip"
-  },
-  4: {
-    title: "🐍 Script Python TicTacToe",
-    description: "Le jeu du Morpion (Tic-Tac-Toe) en Python. Jouez contre l'ordinateur avec une intelligence artificielle simple. C'est un projet pédagogique pour apprendre les algorithmes de base.",
-    image: "../img/tictactoe.png",
-    languages: ["Python"],
-    download: "downloads/TicTacToe.zip"
-  },
-  5: {
-    title: "🌐 Site HTML Responsive",
-    description: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec un design moderne et épuré.",
-    image: "../img/website.png",
-    languages: ["HTML", "CSS", "PHP"],
-    link: "http://81.194.40.26/~antunes--oliveira/SAE203/"
-  },
-  6: {
-    title: "🎮 Jeu en JS",
-    description: "Un mini-jeu interactif créé avec JavaScript vanilla. Testez vos réflexes et essayez de battre le meilleur score. Code moderne et optimisé.",
-    image: "../img/jeu-js.png",
-    languages: ["JavaScript", "HTML", "CSS"],
-    link: "../projets/jeu-js.html"
-  }
+  1: { image: "../img/snake.png", languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
+  2: { image: "../img/tetris.png", languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },
+  3: { image: "../img/pong.png", languages: ["Python", "Pygame"], download: "../downloads/Pong.zip" },
+  4: { image: "../img/tictactoe.png", languages: ["Python"], download: "../downloads/TicTacToe.zip" },
+  5: { image: "../img/website.png", languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
+  6: { image: "../img/jeu-js.png", languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" }
 };
 
-// Appliquer les traductions
+// ⚡ Appliquer les traductions
 function applyText(lang) {
-  const t = text[lang];
+  const t = translations[lang];
   document.querySelectorAll('[data-translate]').forEach(el => {
     const key = el.getAttribute('data-translate');
     if (t[key]) el.textContent = t[key];
   });
-}
 
-// Typewriter animation
-let typewriterTimeout, currentIndex = 0;
-function startTypewriter() {
-  const el = document.getElementById('typewriter-text');
-  if (!el) return;
-  const lang = document.getElementById("langSelect").value || "fr";
-  const textContent = {
-    fr: "Salut, je suis Rafael Antunes Oliveira",
-    en: "Hi, I'm Rafael Antunes Oliveira",
-    pt: "Oi, sou Rafael Antunes Oliveira"
-  }[lang];
-
-  el.textContent = '';
-  currentIndex = 0;
-
-  function type() {
-    if (currentIndex < textContent.length) {
-      el.textContent += textContent.charAt(currentIndex);
-      currentIndex++;
-      typewriterTimeout = setTimeout(type, 120);
-    }
+  for (let i = 1; i <= 6; i++) {
+    const titleEl = document.getElementById(`proj${i}title`);
+    const textEl = document.getElementById(`proj${i}text`);
+    if (titleEl && t[`proj${i}title`]) titleEl.textContent = t[`proj${i}title`];
+    if (textEl && t[`proj${i}text`]) textEl.textContent = t[`proj${i}text`];
   }
-  type();
 }
 
-// Modal
+// ⚡ Modal
 function openModal(projectId) {
   const project = projectDetails[projectId];
   if (!project) return;
-  const lang = document.getElementById("langSelect").value || "fr";
-  const t = text[lang];
 
-  document.getElementById('modalTitle').textContent = project.title;
-  document.getElementById('modalDescription').textContent = project.description;
+  const lang = document.getElementById("langSelect").value || "fr";
+  const t = translations[lang];
+
+  document.getElementById('modalTitle').textContent = t[`proj${projectId}title`];
+  document.getElementById('modalDescription').textContent = t[`proj${projectId}desc`];
 
   const imgEl = document.getElementById('modalImage');
   if (project.image) {
@@ -219,7 +185,32 @@ function handleModalAction() {
   }
 }
 
-// Initialisation
+// ⚡ Typewriter (optionnel)
+let typewriterTimeout, currentIndex = 0;
+function startTypewriter() {
+  const el = document.getElementById('typewriter-text');
+  if (!el) return;
+  const lang = document.getElementById("langSelect").value || "fr";
+  const textContent = {
+    fr: "Salut, je suis Rafael Antunes Oliveira",
+    en: "Hi, I'm Rafael Antunes Oliveira",
+    pt: "Oi, sou Rafael Antunes Oliveira"
+  }[lang];
+
+  el.textContent = '';
+  currentIndex = 0;
+
+  function type() {
+    if (currentIndex < textContent.length) {
+      el.textContent += textContent.charAt(currentIndex);
+      currentIndex++;
+      typewriterTimeout = setTimeout(type, 120);
+    }
+  }
+  type();
+}
+
+// ⚡ Initialisation
 document.addEventListener('DOMContentLoaded', () => {
   const langSelect = document.getElementById("langSelect");
   const savedLang = localStorage.getItem("lang") || "fr";
@@ -232,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startTypewriter();
     });
   }
+
   applyText(savedLang);
   startTypewriter();
 
@@ -247,4 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('projectModal');
     if (e.target === modal) closeModal();
   });
+
+  // Set current year
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
