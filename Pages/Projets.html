@@ -70,6 +70,172 @@
         font-size: 0.85rem;
       }
     }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border: 2px solid var(--primary-color, #0ff);
+      border-radius: 15px;
+      padding: 2.5rem;
+      max-width: 750px;
+      width: 95%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      position: relative;
+      color: white;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      margin: 0;
+      color: var(--primary-color, #0ff);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--primary-color, #0ff);
+      transition: transform 0.2s;
+    }
+
+    .close-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--primary-color, #0ff);
+      display: block;
+    }
+
+    .modal-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      background: rgba(0, 255, 255, 0.2);
+      border: 1px solid var(--primary-color, #0ff);
+      color: var(--primary-color, #0ff);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      background: var(--primary-color, #0ff);
+      color: #000;
+    }
+
+    .modal-action {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 0.7rem 1.5rem;
+      border: 2px solid var(--primary-color, #0ff);
+      background: var(--primary-color, #0ff);
+      color: #000;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .modal-btn:hover {
+      background: transparent;
+      color: var(--primary-color, #0ff);
+    }
+
+    .modal-btn.secondary {
+      background: transparent;
+      color: var(--primary-color, #0ff);
+    }
+
+    .modal-btn.secondary:hover {
+      background: var(--primary-color, #0ff);
+      color: #000;
+    }
+
+    body.light-theme .modal-content {
+      background: linear-gradient(135deg, #e0f0ff 0%, #b3f0ff 100%);
+      border-color: #0077cc;
+      color: #222;
+    }
+
+    body.light-theme .modal-title {
+      color: #0077cc;
+    }
+
+    body.light-theme .close-btn {
+      color: #0077cc;
+    }
+
+    body.light-theme .tag {
+      background: rgba(0, 119, 204, 0.2);
+      border-color: #0077cc;
+      color: #0077cc;
+    }
+
+    body.light-theme .tag:hover {
+      background: #0077cc;
+      color: white;
+    }
+
+    body.light-theme .modal-btn {
+      border-color: #0077cc;
+      background: #0077cc;
+      color: white;
+    }
+
+    body.light-theme .modal-btn:hover {
+      background: transparent;
+      color: #0077cc;
+    }
+
   </style>
   <script src="../js/menu-hamburger.js" defer></script>
   <script src="../js/theme.js" defer></script>
@@ -114,37 +280,53 @@
     </div>
 
     <div class="projects-list">
-      <div class="project-card" data-category="python" data-download="../downloads/snake.zip">
+      <div class="project-card" data-category="python" data-project-id="1" data-download="../downloads/snake.zip">
         <h3 id="proj1title">🐍 Script Python snake</h3>
         <p id="proj1text">Clicker pour Télécharger un fichier.zip contenant le Snake.</p>
       </div>
 
-      <div class="project-card" data-category="python" data-download="../downloads/Tetris.zip">
+      <div class="project-card" data-category="python" data-project-id="2" data-download="../downloads/Tetris.zip">
         <h3 id="proj2title">🐍 Script Python Tetris</h3>
         <p id="proj2text">Clicker pour Télécharger un fichier.zip contenant le Tetris</p>
       </div>
 
-      <div class="project-card" data-category="python" data-download="../downloads/Pong.zip">
+      <div class="project-card" data-category="python" data-project-id="3" data-download="../downloads/Pong.zip">
         <h3 id="proj3title">🐍 Script Python Pong</h3>
         <p id="proj3text">Clicker pour Télécharger un fichier.zip contenant le Pong</p>
       </div>
 
-      <div class="project-card" data-category="python" data-download="../downloads/TicTacToe.zip">
+      <div class="project-card" data-category="python" data-project-id="4" data-download="../downloads/TicTacToe.zip">
         <h3 id="proj4title">🐍 Script Python TicTacToe</h3>
         <p id="proj4text">Clicker pour Télécharger un fichier.zip contenant le TicTacToe</p>
       </div>
 
-      <div class="project-card" data-category="html" data-link="http://81.194.40.26/~antunes--oliveira/SAE203/">
+      <div class="project-card" data-category="html" data-project-id="5" data-link="http://81.194.40.26/~antunes--oliveira/SAE203/">
         <h3 id="proj5title">🌐 Site HTML Responsive</h3>
         <p id="proj5text">Site web responsive et accessible réalisé en HTML/CSS/PHP.</p>
       </div>
 
-      <div class="project-card" data-category="js" data-link="../projets/jeu-js.html">
+      <div class="project-card" data-category="js" data-project-id="6" data-link="../projets/jeu-js.html">
         <h3 id="proj6title">🎮 Jeu en JS</h3>
         <p id="proj6text">Mini-jeu réalisé avec JavaScript.</p>
       </div>
     </div>
   </section>
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Titre du Projet</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <img id="modalImage" src="" alt="Project image" class="modal-image" style="display: none;">
+      <p class="modal-description" id="modalDescription"></p>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-action">
+        <button class="modal-btn" id="modalActionBtn" onclick="handleModalAction()">Télécharger</button>
+        <button class="modal-btn secondary" onclick="closeModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
     <footer class="main-footer">
         <div class="max-w-7xl mx-auto">
             &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
