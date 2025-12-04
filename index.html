@@ -94,6 +94,27 @@
         }
     }
 
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 140px;
+    }
+
+    .hero-minimal {
+      flex: 1;
+    }
+
+    .main-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 10;
+      margin-top: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -129,7 +150,7 @@
       <span class="typewriter-text" id="typewriter-text"></span>
     </h1>
     
-    <h2 id="projectsTitle">Développeur Web Full Stack | Créateur d'Expériences Digitales</h2>
+    <h2 id="projectsTitle">Etudiant en 2 eme annee de MMI | Futur Développeur Web Full Stack</h2>
     
     <div class="cta-container">
       
@@ -145,9 +166,11 @@
 
   </main>
   
-  <footer>
-    Rafael Antunes Oliveira — Tous droits réservés
-  </footer>
+    <footer class="main-footer">
+        <div class="max-w-7xl mx-auto">
+            &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
+        </div>
+    </footer>
 
 <script>
     const text = "Salut, je suis Rafael Antunes Oliveira";

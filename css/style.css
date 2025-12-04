@@ -5,11 +5,13 @@
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   font-family: 'Segoe UI', sans-serif;
   background: radial-gradient(circle at center, #000010, #000);
   color: white;
-  overflow: hidden;
+  /* Allow vertical scrolling so footer can be reached on small viewports */
+  overflow-x: hidden;
+  overflow-y: auto;
   transition: background 0.6s ease, color 0.6s ease;
 }
 
@@ -168,3 +170,72 @@ body.light-theme .project-card {
   color: #222;
   box-shadow: 0 0 15px #80dfff;
 }
+
+
+
+
+        /* VARIABLES DE THÈME MINIMALES POUR LE FOOTER ET LE THÈME LIGHT */
+        :root {
+            --primary-color: #0ff; /* Cyan Neon */
+            --background-color-base: #000;
+            --text-color-primary: white;
+            --footer-bg: rgba(0, 0, 0, 0.5);
+            --footer-border: rgba(0, 255, 255, 0.3);
+            --footer-shadow: rgba(0, 255, 255, 0.1);
+        }
+
+        .light-theme {
+            --primary-color: #0077cc; /* Primary Blue */
+            --background-color-base: #e0f0ff;
+            --text-color-primary: #222;
+            --footer-bg: rgba(255, 255, 255, 0.9);
+            --footer-border: rgba(0, 119, 204, 0.3);
+            --footer-shadow: rgba(0, 119, 204, 0.1);
+        }
+
+        /* STYLING DU FOOTER */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 140px;
+        }
+
+        .hero {
+            flex: 1;
+        }
+
+        .main-footer {
+            padding: 1.5rem 1rem; 
+            border-top: 1px solid var(--footer-border);
+            background: var(--footer-bg);
+            text-align: center;
+            box-shadow: 0 -10px 30px var(--footer-shadow);
+            transition: all 0.6s ease;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            z-index: 1; 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            color: var(--text-color-primary); /* Assure la couleur du texte */
+        }
+        .main-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+            opacity: 0.8;
+        }
+        .main-footer a:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--primary-color);
+            opacity: 1;
+        }
+        .light-theme .main-footer a:hover {
+            text-shadow: 0 0 2px black; 
+        }
+        .light-theme .main-footer {
+            box-shadow: 0 -10px 30px rgba(0, 119, 204, 0.2); 
+        }

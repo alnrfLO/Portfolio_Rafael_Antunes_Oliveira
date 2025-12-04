@@ -8,6 +8,63 @@
   <link rel="stylesheet" href="../css/style2.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/menu-hamburger.css" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 140px;
+    }
+    .portfolio {
+      flex: 1;
+    }
+    .main-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 10;
+      margin-top: 0;
+    }
+
+    header h1#title {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    h2#projectsTitle {
+      font-size: clamp(1.3rem, 4.5vw, 2.5rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    #langSelect {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      padding: clamp(0.4rem, 1vw, 0.5rem);
+    }
+
+    .theme-toggle {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
+    }
+
+    @media (max-width: 768px) {
+      header h1#title {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+      }
+      h2#projectsTitle {
+        font-size: clamp(1rem, 3.5vw, 1.8rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      #langSelect,
+      .theme-toggle {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+      }
+    }
+  </style>
   <script src="../js/menu-hamburger.js" defer></script>
   <script src="../js/theme.js" defer></script>
   <script src="../js/script2.js" defer></script>
@@ -84,5 +141,10 @@
       </div>
     </div>
   </section>
+    <footer class="main-footer">
+        <div class="max-w-7xl mx-auto">
+            &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
+        </div>
+    </footer>
 </body>
 </html>

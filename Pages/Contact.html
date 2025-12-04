@@ -1,55 +1,96 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Contact</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/style3.css" />
-  <link rel="stylesheet" href="../css/menu-hamburger.css" />
+    <meta charset="UTF-8" />
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style3.css" />
+    <link rel="stylesheet" href="../css/menu-hamburger.css" />
+    <script src="../js/menu-hamburger.js" defer></script>
+    <script src="../js/script3.js" defer></script>
+    <script src="../js/etoile.js" defer></script>
+    <script src="../js/theme.js" defer></script>
 
-  <script src="../js/menu-hamburger.js" defer></script>
-  <script src="../js/script3.js" defer></script>
-  <script src="../js/etoile.js" defer></script>
-  <script src="../js/theme.js" defer></script>
+      <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 140px;
+    }
+    main {
+      flex: 1;
+    }
+    .main-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 10;
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body class="fade-out">
-  <canvas id="stars"></canvas>
+    <canvas id="stars"></canvas>
 
-  <div class="top-controls">
-    <select id="langSelect">
-      <option value="fr" selected>Français</option>
-      <option value="en">English</option>
-      <option value="pt">Português</option>
-    </select>
-    <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
-  </div>
-
-  <div class="navbar">
-    <div class="menu-toggle" onclick="toggleMenu(this)">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="top-controls">
+        <select id="langSelect">
+            <option value="fr" selected>Français</option>
+            <option value="en">English</option>
+            <option value="pt">Português</option>
+        </select>
+        <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
     </div>
-  </div>
 
-  <nav class="menu" id="mobileMenu">
-    <a href="../index.html">Accueil</a>
-    <a href="Projets.html">Projets</a>
-    <a href="Contact.html">Contact</a>
-    <a href="Info.html">À propos</a>
-  </nav>
+    <div class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu(this)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
 
-  <div class="hero">
-    <h1 id="contactTitle">Contacte-moi</h1>
-    <form class="contact-form">
-      <input type="text" placeholder="Votre nom" required />
-      <input type="email" placeholder="Votre email" required />
-      <textarea rows="5" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
-  
+    <nav class="menu" id="mobileMenu">
+        <a href="../index.html">Accueil</a>
+        <a href="Projets.html">Projets</a>
+        <a href="Contact.html">Contact</a>
+        <a href="Info.html">À propos</a>
+    </nav>
+
+    <div class="hero">
+        <h1 id="contactTitle">Contacte-moi</h1>
+        <form class="contact-form">
+            <input type="text" placeholder="Votre nom" required />
+            <input type="email" placeholder="Votre email" required />
+            <textarea rows="5" placeholder="Votre message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="max-w-7xl mx-auto">
+            &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés
+        </div>
+    </footer> 
+    
+    <!-- 2. SCRIPT JAVASCRIPT MANQUANT (AJOUTÉ POUR L'ANNÉE ET L'INITIALISATION DU THÈME) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cette ligne affiche l'année en cours dans le footer
+            const yearElement = document.getElementById('currentYear');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Ceci applique le thème par défaut ou le thème sauvegardé (comme dans theme.js)
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light-theme') {
+                document.body.classList.add('light-theme');
+            } 
+        });
+    </script>
 </body>
 </html>
