@@ -60,7 +60,6 @@
 
     function applyText(lang) {
       const t = text[lang];
-      document.getElementById('title').textContent = t.title;
       document.querySelector('#section-intro h3').textContent = t.sectionIntroTitle;
       document.querySelector('#section-intro p').textContent = t.sectionIntroText;
       document.querySelector('#section-sport h3').textContent = t.sectionSportTitle;
