@@ -1,7 +1,5 @@
 const text = {
   fr: {
-    title: "Projets",
-    projectsTitle: "Mes Projets Galactiques",
 
     proj1title: "🐍 Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
@@ -22,8 +20,6 @@ const text = {
     proj6text: "Mini-jeu réalisé avec JavaScript."
   },
   en: {
-    title: "Projects",
-    projectsTitle: "My Galactic Projects",
 
     proj1title: "🐍 Python Snake Script",
     proj1text: "Click to download a .zip file containing the Snake game.",
@@ -44,8 +40,6 @@ const text = {
     proj6text: "Mini-game made with JavaScript."
   },
   pt: {
-    title: "Projetos",
-    projectsTitle: "Meus Projetos Galácticos",
 
     proj1title: "🐍 Script Python Snake",
     proj1text: "Clique para baixar um arquivo .zip contendo o jogo Snake.",

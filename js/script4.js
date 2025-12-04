@@ -1,6 +1,5 @@
     const text = {
       fr: {
-        title: "À propos",
         sectionIntroTitle: "Introduction",
         sectionIntroText: "Né au Portugal, je suis passionné par le développement web, à la fois front-end et back-end. Et non, tous les geeks ne passent pas *que* leur vie derrière un écran... parfois, on touche aussi de l’herbe (vraie ou en CSS) .",
         sectionSportTitle: "Sport & Karaté",
@@ -18,7 +17,6 @@
         sectionMotivationText: "Cette diversité d’intérêts nourrit ma créativité et ma motivation dans mes projets. Comme vous le voyez, ce portfolio relève de la créativité et surtout de beaucoup de travail. Je cherche constamment à apprendre, à relever de nouveaux défis, et à créer des expériences web modernes et agréables pour les personnes qui visitent mes sites."
       },
       en: {
-        title: "About",
         sectionIntroTitle: "Introduction",
         sectionIntroText: "Born in Portugal, I am passionate about web development, both front-end and back-end. And no, not all geeks spend *all* their lives behind a screen... sometimes we touch grass (real or CSS).",
         sectionSportTitle: "Sports & Karate",
@@ -36,7 +34,6 @@
         sectionMotivationText: "This diversity of interests fuels my creativity and motivation in my projects. As you can see, this portfolio is about creativity and above all a lot of work. I am constantly seeking to learn, take on new challenges, and create modern and enjoyable web experiences for the people who visit my sites."
       },
       pt: {
-        title: "Sobre mim",
         sectionIntroTitle: "Introdução",
         sectionIntroText: "Nascido em Portugal, sou apaixonado por desenvolvimento web, tanto front-end quanto back-end. E não, nem todos os geeks passam *somente* a vida na frente da tela... às vezes, também tocamos grama (de verdade ou em CSS).",
   
