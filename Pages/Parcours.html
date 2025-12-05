@@ -8,14 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" rel="stylesheet" />
     
     <style>
-        /* --- Styles Globaux et Variables (style.css) --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* VARIABLES DE THÈME MINIMALES POUR LE FOOTER ET LE THÈME LIGHT */
         :root {
             --primary-color: #0ff;
             --background-color-base: #000;
@@ -40,7 +38,7 @@
             background: radial-gradient(circle at center, #000010, #000);
             color: white;
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: hidden;
             transition: background 0.6s ease, color 0.6s ease;
             display: flex;
             flex-direction: column;
@@ -53,7 +51,6 @@
             color: #222;
         }
 
-        /* Conteneur pour le bouton thème et la langue */
         .top-controls {
             position: absolute;
             top: 1rem;
@@ -108,7 +105,6 @@
             color: white;
         }
 
-        /* STYLING DU FOOTER */
         .main-footer {
             padding: 1.5rem 1rem; 
             border-top: 1px solid var(--footer-border);
@@ -144,7 +140,6 @@
             box-shadow: 0 -10px 30px rgba(0, 119, 204, 0.2); 
         }
 
-        /* --- Styles du Menu Hamburger (menu-hamburger.css) --- */
         .navbar {
             position: absolute;
             top: 20px;
@@ -170,6 +165,10 @@
             transition: transform 0.35s ease, opacity 0.25s ease;
             transform-origin: center;
             will-change: transform, opacity;
+        }
+        
+        body.light-theme .menu-toggle span {
+            background: var(--primary-color);
         }
 
         .menu-toggle span:nth-child(1) { top: 50%; transform: translateY(-10px); }
@@ -220,7 +219,7 @@
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
         }
         body.light-theme .menu a {
-            color: var(--text-color-primary, #222); 
+            color: var(--primary-color); 
         }
 
         body.light-theme .menu a:hover {
@@ -228,7 +227,6 @@
             text-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
         }
 
-        /* Submenu inside mobile menu */
         .submenu {
             display: flex;
             flex-direction: column;
@@ -271,13 +269,12 @@
             color: #555;
         }
 
-        /* --- NOUVEAU STYLE ÉCRAN FUTURISTE --- */
         .page-header {
             width: 100%;
             max-width: 1100px;
             padding: 1rem 1rem 0;
             text-align: center;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-size: clamp(2rem, 5vw, 2.5rem); 
             letter-spacing: 2px;
             font-family: 'Orbitron', sans-serif;
             margin-top: 5rem;
@@ -291,7 +288,6 @@
             text-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
         }
 
-        /* CONTENEUR ÉCRAN FUTURISTE */
         .screen-container {
             position: relative;
             width: 90%;
@@ -327,7 +323,6 @@
             50% { box-shadow: 0 0 60px rgba(0, 213, 255, 0.6), inset 0 0 40px rgba(0, 213, 255, 0.15), 0 10px 60px rgba(0, 0, 0, 0.6); }
         }
 
-        /* Coins décoratifs */
         .corner {
             position: absolute;
             width: 30px;
@@ -344,7 +339,6 @@
             border-color: #0077cc;
         }
 
-        /* Lignes de scan */
         .scan-line {
             position: absolute;
             top: 0;
@@ -364,7 +358,6 @@
             100% { transform: translateY(500px); opacity: 0; }
         }
 
-        /* Indicateurs HUD */
         .hud-indicators {
             position: absolute;
             top: 10px;
@@ -387,7 +380,6 @@
             letter-spacing: 1px;
         }
 
-        /* Grille de fond */
         .grid-overlay {
             position: absolute;
             top: 0;
@@ -419,7 +411,6 @@
             border-radius: 10px;
         }
 
-        /* POP-UP AMÉLIORÉ - STYLES RESPONSIVES */
         .popup {
             position: absolute;
             background: linear-gradient(135deg, rgba(0, 10, 30, 0.95), rgba(0, 20, 40, 0.98));
@@ -432,12 +423,10 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s, transform 0.3s;
-            /* Rendre la largeur max responsive */
-            max-width: min(300px, 85vw); 
+            max-width: min(250px, 75vw); 
             z-index: 15;
             backdrop-filter: blur(10px);
-            /* Rendre la taille du texte responsive */
-            font-size: clamp(12px, 2.5vw, 14px);
+            font-size: clamp(14px, 2.8vw, 14px); 
         }
 
         body.light-theme .popup {
@@ -474,8 +463,7 @@
         }
 
         .popup-title {
-            /* Rendre le titre responsive */
-            font-size: clamp(15px, 3.5vw, 17px);
+            font-size: clamp(16px, 3.8vw, 17px);
             color: #00f6ff;
             margin-bottom: 8px;
             font-weight: bold;
@@ -490,7 +478,6 @@
         }
 
         #popup-text {
-            /* Hérite du font-size du parent (.popup) */
             line-height: 1.5;
         }
     </style>
@@ -523,9 +510,11 @@
         <div class="submenu-list">
             <a href="Info.html" data-translate="navInfo">Info</a>
             <a href="CV.html" data-translate="navCV">CV</a>
+            <a href="Parcours.html" data-translate="navParcours">Parcours</a>
         </div>
     </div>
 </nav>
+
 
 <h1 class="page-header" id="screenHeader">CONSTELLATION DE MON PARCOURS</h1>
 
@@ -562,13 +551,11 @@
 </footer>
 
 <script>
-    // --- JS du Menu Hamburger (menu-hamburger.js) ---
     function toggleMenu(btn) {
         btn.classList.toggle("active");
         document.getElementById("mobileMenu").classList.toggle("active");
     }
 
-    // --- JS du Sous-Menu (submenu.js) ---
     document.querySelectorAll('.submenu-toggle').forEach(button => {
         button.addEventListener('click', () => {
             const submenu = button.closest('.submenu');
@@ -576,7 +563,6 @@
         });
     });
 
-    // --- JS du Thème (theme.js) ---
     function applySavedTheme() {
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "light") {
@@ -596,7 +582,6 @@
     window.addEventListener("DOMContentLoaded", applySavedTheme);
 
 
-    // --- LOGIQUE CONSTELLATION DES POISSONS ET TRADUCTION ---
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
     const popup = document.getElementById("popup");
@@ -604,197 +589,44 @@
     const popupText = document.getElementById("popup-text");
     const langSelect = document.getElementById("langSelect");
 
-    // Constellation des Poissons (Pisces) - Configuration Classique (8 POINTS CLICQUABLES)
-    // Les coordonnées sont des pourcentages (0 à 100) pour la responsivité
-    // Les valeurs sont ajustées pour éviter d'être coupées par les bords (utilisation de 10% à 90%)
     const starsData = [
-        // Poisson Occidental (Supérieur/Gauche - Étapes 1 à 5)
-        { x: 35, y: 35, key: "starAlrescha", name: "", text: "" },     // 0 (1) : Tête poisson sup. (Début)
-        { x: 25, y: 55, key: "starFumalsamakah", name: "", text: "" }, // 1 (2) : Épaule 1
-        { x: 30, y: 15, key: "starTorcular", name: "", text: "" },     // 2 (3) : Épaule 2
-        { x: 15, y: 70, key: "starKaffaljidhmah", name: "", text: "" },// 3 (4) : Corps/Queue 1
-        { x: 10, y: 85, key: "starRevati", name: "", text: "" },         // 4 (5) : Pointe de la queue (Début Liaison)
+        { x: 35, y: 35, key: "starAlrescha", name: "", text: "" }, 
+        { x: 25, y: 55, key: "starFumalsamakah", name: "", text: "" },
+        { x: 30, y: 15, key: "starTorcular", name: "", text: "" }, 
+        { x: 15, y: 70, key: "starKaffaljidhmah", name: "", text: "" },
+        { x: 10, y: 85, key: "starRevati", name: "", text: "" }, 
         
-        // Corde de liaison (Étoiles 5 à 7) - Petites étoiles de la corde
-        { x: 35, y: 80, key: "starLink1", name: "", text: "" },        // 5 : Corde 1
-        { x: 50, y: 75, key: "starLink2", name: "", text: "" },        // 6 : Corde 2
-        { x: 65, y: 65, key: "starLink3", name: "", text: "" },        // 7 : Corde 3
+        { x: 35, y: 80, key: "starLink1", name: "", text: "" }, 
+        { x: 50, y: 75, key: "starLink2", name: "", text: "" }, 
+        { x: 65, y: 65, key: "starLink3", name: "", text: "" }, 
         
-        // Poisson Oriental (Inférieur/Droit - Étapes 6 à 8)
-        { x: 80, y: 50, key: "starEastern1", name: "", text: "" },     // 8 (6) : Tête poisson inf. (Fin Liaison)
-        { x: 85, y: 40, key: "starEastern2", name: "", text: "" },     // 9 (7) : Épaule 1
-        { x: 90, y: 60, key: "starEastern3", name: "", text: "" }       // 10 (8) : Épaule 2 / Queue Finale
+        { x: 80, y: 50, key: "starEastern1", name: "", text: "" }, 
+        { x: 85, y: 40, key: "starEastern2", name: "", text: "" }, 
+        { x: 90, y: 60, key: "starEastern3", name: "", text: "" } 
     ];
 
-    // Connexions formant les deux poissons reliés (Structure basée sur l'image, sans index 11)
     const connections = [
-        // Poisson Occidental (0-1-2-3-4)
         [0, 1], [1, 3], [3, 4], 
         [0, 2], 
         
-        // Corde de liaison (4-5-6-7-8)
         [4, 5], [5, 6], [6, 7], [7, 8],
         
-        // Poisson Oriental (8-9-10) - Fermeture du triangle de tête/corps
         [8, 9], [9, 10], [10, 8]
     ];
 
-    // Variables pour l'ajustement (moins nécessaires avec les pourcentages)
-    let offsetX = 0;
-    let offsetY = 0;
-
-    // Fonction d'ajustement simplifiée (peut être conservée mais ne fait rien de complexe)
-    function adjustCoordinates() {
-        // La responsivité est assurée par l'utilisation de pourcentages.
-    }
-
-    function drawConstellation() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // La responsivité est assurée en utilisant les dimensions du canvas.
-
-        // Définir la couleur des lignes en fonction du thème
-        ctx.strokeStyle = document.body.classList.contains("light-theme") 
-            ? "rgba(0,119,204,0.5)" 
-            : "rgba(0,240,255,0.5)"; 
-        ctx.lineWidth = 2;
-
-        // 1. Dessiner les lignes
-        connections.forEach(([a, b]) => {
-            const starA = starsData[a];
-            const starB = starsData[b];
-            
-            // CONVERSION DES POURCENTAGES EN PIXELS (RESPONSIVITÉ)
-            const xA = starA.x * canvas.width / 100;
-            const yA = starA.y * canvas.height / 100;
-            const xB = starB.x * canvas.width / 100;
-            const yB = starB.y * canvas.height / 100;
-            
-            ctx.beginPath();
-            ctx.moveTo(xA, yA);
-            ctx.lineTo(xB, yB);
-            ctx.stroke();
-        });
-
-        // 2. Dessiner les étoiles
-        starsData.forEach((star, index) => {
-            // CONVERSION DES POURCENTAGES EN PIXELS (RESPONSIVITÉ)
-            const x = star.x * canvas.width / 100;
-            const y = star.y * canvas.height / 100;
-            
-            star.computedX = x;
-            star.computedY = y;
-
-            // Les étoiles principales sont les deux poissons (0-4 et 8-10)
-            const isMainStar = index <= 4 || index >= 8;
-            // Les étoiles de lien (5-7) sont plus petites
-            const radius = isMainStar ? 7 : 4; 
-
-            // Définir les styles en fonction du thème
-            const mainStarColor = document.body.classList.contains("light-theme") ? "#0077cc" : "#00eaff";
-            const linkStarColor = document.body.classList.contains("light-theme") ? "#00a3e0" : "#00a8cc";
-            const shadowColor = document.body.classList.contains("light-theme") ? "rgba(0, 119, 204, 0.5)" : "#00eaff";
-
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = isMainStar ? mainStarColor : linkStarColor;
-            ctx.shadowBlur = isMainStar ? 15 : 10;
-            ctx.shadowColor = shadowColor;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-        });
-    }
-
-    function resize() {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
-        drawConstellation();
-    }
-    // Redimensionnement et redessin au chargement et au changement de taille de la fenêtre
-    window.addEventListener("resize", resize);
-
-    // Écouter les changements de thème pour redessiner (changer la couleur)
-    const observer = new MutationObserver((mutationsList, observer) => {
-        for(const mutation of mutationsList) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                drawConstellation();
-            }
-        }
-    });
-    observer.observe(document.body, { attributes: true });
-
-
-    // Initialiser immédiatement
-    resize();
-
-    canvas.addEventListener("click", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        
-        popup.classList.remove("show");
-        popup.style.transform = "translateY(10px)";
-        
-        const HIT_RADIUS = 15;
-
-        starsData.forEach(star => {
-            const x = star.computedX; 
-            const y = star.computedY;
-            
-            if (x !== undefined && y !== undefined) {
-                const dist = Math.hypot(mouseX - x, mouseY - y);
-                
-                // Afficher le pop-up si l'étoile est cliquable ET a un nom
-                if (dist < HIT_RADIUS && star.name && star.name.trim() !== "") {
-                    popupTitle.innerText = star.name;
-                    popupText.innerText = star.text;
-
-                    // Mise à jour : le pop-up est rendu visible pour pouvoir calculer ses dimensions (offsetWidth/offsetHeight)
-                    popup.classList.add("show");
-                    popup.style.opacity = 0; // Masquer temporairement pour le calcul
-
-                    let popupX = mouseX + 15; 
-                    let popupY = mouseY - 15; 
-
-                    // Ajuster la position pour ne pas sortir du canvas
-                    const padding = 15;
-                    if (popupX + popup.offsetWidth + padding > canvas.width) {
-                        popupX = mouseX - popup.offsetWidth - 15;
-                    }
-                    if (popupY < padding) {
-                        popupY = padding;
-                    }
-                    if (popupY + popup.offsetHeight + padding > canvas.height) {
-                        popupY = canvas.height - popup.offsetHeight - padding;
-                    }
-                    
-                    popup.style.left = popupX + "px";
-                    popup.style.top = popupY + "px";
-                    
-                    // Rendre visible avec l'animation
-                    popup.style.opacity = 1; 
-                    popup.style.transform = "translateY(0)";
-                    return; 
-                }
-            }
-        });
-    });
-
-    // --- Traductions ---
     const starTranslations = {
         fr: {
             screenHeader: "CONSTELLATION DE MON PARCOURS",
-            navAccueil: "Accueil", navProjets: "Projets", navContact: "Contact", navAPropos: "À propos", navInfo: "Info", navCV: "CV", 
+            navAccueil: "Accueil", navProjets: "Projets", navContact: "Contact", navAPropos: "À propos", navInfo: "Info", navCV: "CV", navParcours: "Parcours",
             allRightsReserved: "Tous droits réservés", footerMentions: "Mentions Légales",
             
-            // Poisson Occidental
             starAlrescha: { 
                 name: "1. Point de Départ & Passion", 
-                text: "Mon parcours démarre ici, marqué par une soif d'apprendre et une forte curiosité pour la technologie." 
+                text: "Mon parcours démarre ici, marqué par une soif inébranlable d'apprendre et une forte curiosité pour la technologie. Ce premier point représente l'impulsion initiale, le moment où j'ai décidé de plonger entièrement dans le monde du développement informatique. C'est la fondation de toutes les étapes qui vont suivre, une base solide de motivation et de passion pure pour le code et l'innovation numérique. Ce texte est volontairement long pour tester le comportement du pop-up sur toutes les résolutions d'écran, en particulier les mobiles, afin de garantir la lisibilité et l'accessibilité." 
             },
             starFumalsamakah: { 
                 name: "2. Première Formation (BUT 1)", 
-                text: "Début de mon BUT Informatique : acquisition des bases solides en programmation, développement web et réseaux à l'IUT de Vélizy." 
+                text: "Début de mon **BUT Informatique** : acquisition des bases solides et fondamentales en programmation, développement web (front-end et back-end), et administration des systèmes et réseaux à l'IUT de Vélizy. Cette période a été essentielle pour structurer ma pensée logique et ma capacité à résoudre des problèmes complexes." 
             },
             starTorcular: { 
                 name: "3. Expérience Professionnelle (Stage)", 
@@ -806,14 +638,12 @@
             },
             starRevati: { 
                 name: "5. Projet Personnel (Majeur)",
-                text: "Création et mise en ligne d'un jeu de rôle textuel multijoueur (MUD) utilisant Node.js et MongoDB, un défi complet en développement Backend et Infrastructure."
+                text: "Création et mise en ligne d'un **jeu de rôle textuel multijoueur (MUD)** utilisant Node.js et MongoDB. Ce projet est un défi complet et exhaustif en développement Backend et Infrastructure. Ce fut une expérience inestimable en gestion de projet autonome."
             },
-            // Lien - Ne sont pas cliquables, mais gardées pour la cohérence si besoin futur
             starLink1: { name: "", text: "" }, 
             starLink2: { name: "", text: "" }, 
             starLink3: { name: "", text: "" }, 
 
-            // Poisson Oriental (Futur / En cours)
             starEastern1: { 
                 name: "6. BUT 2 : Approfondissement", 
                 text: "Passage à la deuxième année du BUT. Spécialisation en développement d'applications, architecture logicielle et sécurité."
@@ -824,112 +654,302 @@
             },
             starEastern3: { 
                 name: "8. Domaine Cible : Full Stack", 
-                text: "Orientation vers le développement Full Stack, visant à maîtriser à la fois le Frontend (React/Vue) et le Backend (Node.js/Spring)."
-            },
-             // starEastern4 (9) a été supprimé
+                text: "Orientation définitive vers le développement **Full Stack**, avec une attention particulière aux frameworks modernes (React, Vue.js) pour le Front-end, et Python/Node.js pour le Back-end. Je vise l'obtention d'un diplôme de niveau licence (Bac+3) pour me positionner comme un développeur polyvalent et immédiatement opérationnel. La prochaine étape sera l'exploration des architectures microservices et du cloud (AWS/Azure)."
+            }
         },
         en: {
-            screenHeader: "MY JOURNEY CONSTELLATION",
-            navAccueil: "Home", navProjets: "Projects", navContact: "Contact", navAPropos: "About", navInfo: "Info", navCV: "CV",
+            screenHeader: "MY JOURNEY'S CONSTELLATION",
+            navAccueil: "Home", navProjets: "Projects", navContact: "Contact", navAPropos: "About", navInfo: "Info", navCV: "CV", navParcours: "Journey",
             allRightsReserved: "All rights reserved", footerMentions: "Legal Notice",
             
-            // Western Fish
             starAlrescha: { 
                 name: "1. Starting Point & Passion", 
-                text: "My journey starts here, marked by a thirst for learning and a strong curiosity about technology." 
+                text: "My journey begins here, marked by an unwavering thirst for learning and a strong curiosity for technology. This first point represents the initial impulse, the moment I decided to dive fully into the world of IT development. It is the foundation of all subsequent steps, a solid base of motivation and pure passion for code and digital innovation. This text is intentionally long to test the pop-up behavior on all screen resolutions, especially mobile ones, to confirm that centering and maximum size function correctly to ensure readability and accessibility of information." 
             },
             starFumalsamakah: { 
                 name: "2. First Training (BUT 1)", 
-                text: "Start of my BUT Computer Science: acquiring solid foundations in programming, web development, and networks at the IUT of Vélizy." 
+                text: "Beginning of my **BUT in Computer Science** (Bachelor's Degree). Acquisition of solid and fundamental bases in programming, web development (front-end and back-end), and systems and network administration at IUT de Vélizy. This period was essential for structuring my logical thinking and my ability to solve complex problems. We covered low-level languages like C, and object-oriented languages like Java." 
             },
             starTorcular: { 
                 name: "3. Professional Experience (Internship)", 
-                text: "8-week internship at [Company Name]: Design and deployment of a stock management application. First concrete steps into the professional world." 
+                text: "8-week internship at [Company Name]: Design and deployment of a stock management application. First concrete steps in the professional world." 
             },
             starKaffaljidhmah: { 
                 name: "4. Key Technical Skills", 
-                text: "Proficient in Python (Flask, Pygame), JavaScript, HTML/CSS, and MySQL databases. Working on Linux and Windows environments." 
+                text: "Proficiency in Python (Flask, Pygame), JavaScript, HTML/CSS, and MySQL databases. I work on both Linux and Windows environments." 
             },
             starRevati: { 
-                name: "5. Personal Project (Major)",
-                text: "Creation and deployment of a multiplayer text-based role-playing game (MUD) using Node.js and MongoDB, a complete challenge in Backend Development and Infrastructure."
+                name: "5. Major Personal Project",
+                text: "Creation and deployment of a **multiplayer text-based role-playing game (MUD)** using Node.js and MongoDB. This project was a complete and exhaustive challenge in Backend development and Infrastructure, requiring real-time user session management and scalable server architecture. It was an invaluable experience in autonomous project management. The text is also extended here for a maximum load test."
             },
-            // Link - Not clickable
             starLink1: { name: "", text: "" }, 
             starLink2: { name: "", text: "" }, 
             starLink3: { name: "", text: "" }, 
-            
-            // Eastern Fish (Future / Ongoing)
+
             starEastern1: { 
                 name: "6. BUT 2: Deepening Knowledge", 
-                text: "Moving to the second year of the BUT. Specialization in application development, software architecture, and security."
+                text: "Transition to the second year of the BUT. Specialization in application development, software architecture, and security."
             },
             starEastern2: { 
-                name: "7. Work-Study / Apprenticeship", 
-                text: "Actively seeking an apprenticeship to apply my skills and evolve in a real professional environment."
+                name: "7. Work-Study / Pro Contract", 
+                text: "Actively seeking a work-study contract (alternance) to practice my skills and evolve in a real professional environment."
             },
             starEastern3: { 
-                name: "8. Target Area: Full Stack", 
-                text: "Focusing on Full Stack development, aiming to master both the Frontend (React/Vue) and the Backend (Node.js/Spring)."
-            },
-             // starEastern4 (9) a été supprimé
+                name: "8. Target Field: Full Stack", 
+                text: "Definite orientation towards **Full Stack** development, with a focus on modern frameworks (React, Vue.js) for the Front-end, and Python/Node.js for the Back-end. I aim to obtain a Bachelor's level degree (Bac+3) to position myself as a versatile and immediately operational developer. The next step will be the exploration of microservice architectures and the cloud (AWS/Azure)."
+            }
         },
         pt: {
-            screenHeader: "CONSTELAÇÃO DO MEU PERCURSO",
-            navAccueil: "Início", navProjets: "Projetos", navContact: "Contacto", navAPropos: "Sobre", navInfo: "Info", navCV: "CV",
-            allRightsReserved: "Todos os direitos reservados", footerMentions: "Avisos Legais",
+            screenHeader: "CONSTELAÇÃO DA MINHA JORNADA",
+            navAccueil: "Início", navProjets: "Projetos", navContact: "Contato", navAPropos: "Sobre", navInfo: "Info", navCV: "CV", navParcours: "Percurso",
+            allRightsReserved: "Todos os direitos reservados", footerMentions: "Aviso Legal",
             
-            // Peixe Ocidental
             starAlrescha: { 
-                name: "1. Ponto de Partida & Paixão", 
-                text: "O meu percurso começa aqui, marcado por uma sede de aprender e uma forte curiosidade pela tecnologia." 
+                name: "1. Ponto de Partida e Paixão", 
+                text: "Minha jornada começa aqui, marcada por uma sede inabalável de aprender e uma forte curiosidade pela tecnologia. Este primeiro ponto representa o impulso inicial, o momento em que decidi mergulhar de cabeça no mundo do desenvolvimento de TI. É a fundação de todas as etapas seguintes, uma base sólida de motivação e paixão pura por código e inovação digital. Este texto é intencionalmente longo para testar o comportamento do pop-up em todas as resoluções de tela, especialmente móveis, para confirmar que o centramento e o tamanho máximo funcionam corretamente para garantir a legibilidade e acessibilidade da informação." 
             },
             starFumalsamakah: { 
                 name: "2. Primeira Formação (BUT 1)", 
-                text: "Início do meu BUT Informática: aquisição de bases sólidas em programação, desenvolvimento web e redes no IUT de Vélizy." 
+                text: "Início do meu **BUT em Ciência da Computação**. Aquisição de bases sólidas e fundamentais em programação, desenvolvimento web (front-end e back-end) e administração de sistemas e redes no IUT de Vélizy. Este período foi essencial para estruturar meu raciocínio lógico e minha capacidade de resolver problemas complexos. Cobrimos linguagens de baixo nível como C e linguagens orientadas a objetos como Java." 
             },
             starTorcular: { 
                 name: "3. Experiência Profissional (Estágio)", 
-                text: "Estágio de 8 semanas na [Nome da Empresa]: Concepção e implementação de uma aplicação de gestão de stocks. Primeiros passos concretos no mundo profissional." 
+                text: "Estágio de 8 semanas na [Nome da Empresa]: Concepção e implantação de um aplicativo de gestão de estoque. Primeiros passos concretos no mundo profissional." 
             },
             starKaffaljidhmah: { 
-                name: "4. Competências Técnicas Chave", 
-                text: "Domínio de Python (Flask, Pygame), JavaScript, HTML/CSS e bases de dados MySQL. Trabalho em ambientes Linux e Windows." 
+                name: "4. Habilidades Técnicas Chave", 
+                text: "Proficiência em Python (Flask, Pygame), JavaScript, HTML/CSS e bancos de dados MySQL. Trabalho em ambientes Linux e Windows." 
             },
             starRevati: { 
                 name: "5. Projeto Pessoal (Principal)",
-                text: "Criação e lançamento de um jogo de RPG de texto multiplayer (MUD) usando Node.js e MongoDB, um desafio completo em Desenvolvimento Backend e Infraestrutura."
+                text: "Criação e lançamento de um **jogo de RPG textual multijogador (MUD)** usando Node.js e MongoDB. Este projeto foi um desafio completo em desenvolvimento Backend e Infraestrutura, exigindo gerenciamento de sessão de usuário em tempo real e arquitetura de servidor escalável. Foi uma experiência inestimável em gestão de projetos autônoma. O texto também é estendido aqui para um teste de carga máxima."
             },
-            // Ligação - Não são clicables
             starLink1: { name: "", text: "" }, 
             starLink2: { name: "", text: "" }, 
             starLink3: { name: "", text: "" }, 
-            
-            // Peixe Oriental (Futuro / Em curso)
+
             starEastern1: { 
                 name: "6. BUT 2: Aprofundamento", 
-                text: "Transição para o segundo ano do BUT. Especialização em desenvolvimento de aplicações, arquitetura de software e segurança."
+                text: "Transição para o segundo ano do BUT. Especialização em desenvolvimento de aplicativos, arquitetura de software e segurança."
             },
             starEastern2: { 
-                name: "7. Alternância / Contrato Profissional", 
-                text: "Procura ativa de uma alternância pour appliquer as minhas competences e evoluir num environnement professionnel real."
+                name: "7. Alternância / Contrato Pro", 
+                text: "Busca ativa por um contrato de trabalho-estudo (alternance) para praticar minhas habilidades e evoluir em um environnement professionnel réel."
             },
             starEastern3: { 
-                name: "8. Área-Alvo: Full Stack", 
-                text: "Orientação para o desenvolvimento Full Stack, visando dominar tanto o Frontend (React/Vue) quanto o Backend (Node.js/Spring)."
-            },
-            // starEastern4 (9) a été supprimé
+                name: "8. Domaine Cible : Full Stack", 
+                text: "Orientation définitive vers le développement **Full Stack**, avec une attention particulière aux frameworks modernes (React, Vue.js) pour le Front-end, et Python/Node.js pour le Back-end. Je vise l'obtention d'un diplôme de niveau licence (Bac+3) pour me positionner comme un développeur polyvalent et immédiatement opérationnel. La prochaine étape sera l'exploration des architectures microservices et du cloud (AWS/Azure)."
+            }
         }
     };
-
+    
     let currentLang = localStorage.getItem('lang') || 'fr';
     langSelect.value = currentLang;
+
+    let offsetX = 0;
+    let offsetY = 0;
+    const clickableStarsIndices = [0, 1, 2, 3, 4, 8, 9, 10]; 
+
+    function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        
+        // Taille CSS
+        const styleWidth = canvas.clientWidth;
+        const styleHeight = canvas.clientHeight;
+
+        // Taille physique du canevas
+        canvas.width = styleWidth * dpr;
+        canvas.height = styleHeight * dpr;
+        
+        // Mise à l'échelle du contexte pour la haute résolution
+        ctx.scale(dpr, dpr);
+        
+        adjustCoordinates(styleWidth, styleHeight);
+        drawConstellation();
+    }
+    
+    function adjustCoordinates(width, height) {
+        // La constellation est dessinée dans un espace 100x100 (pourcentage)
+        const scale = Math.min(width, height) / 100;
+        
+        // Calculer le décalage pour centrer la constellation
+        const totalWidth = 100 * scale; 
+        const totalHeight = 100 * scale; 
+        
+        offsetX = (width - totalWidth) / 2;
+        offsetY = (height - totalHeight) / 2;
+        
+        // Mettre à jour l'animation de la scan-line pour qu'elle corresponde à la hauteur
+        const scanLine = document.querySelector('.scan-line');
+        if (scanLine) {
+            const frameHeight = document.querySelector('.futuristic-frame').clientHeight - 4; 
+            const styleElement = document.createElement('style');
+            styleElement.textContent = `
+                @keyframes scan {
+                    0% { transform: translateY(0); opacity: 0; }
+                    10% { opacity: 0.6; }
+                    90% { opacity: 0.6; }
+                    100% { transform: translateY(${frameHeight}px); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(styleElement);
+        }
+    }
+
+    function drawConstellation() {
+        // Effacer le canvas avant de redessiner
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const scale = Math.min(width, height) / 100;
+        
+        // Dessiner les connexions
+        ctx.strokeStyle = document.body.classList.contains("light-theme") ? "rgba(0, 119, 204, 0.4)" : "rgba(0, 255, 255, 0.4)";
+        ctx.lineWidth = 1.5;
+        ctx.lineCap = "round";
+
+        ctx.beginPath();
+        connections.forEach(conn => {
+            const startStar = starsData[conn[0]];
+            const endStar = starsData[conn[1]];
+            
+            ctx.moveTo(startStar.x * scale + offsetX, startStar.y * scale + offsetY);
+            ctx.lineTo(endStar.x * scale + offsetX, endStar.y * scale + offsetY);
+        });
+        ctx.stroke();
+
+        // Dessiner les étoiles
+        starsData.forEach((star, index) => {
+            const x = star.x * scale + offsetX;
+            const y = star.y * scale + offsetY;
+            
+            let radius;
+            let starColor;
+            
+            if (clickableStarsIndices.includes(index)) {
+                // Étoiles cliquables (points clés)
+                radius = 3.5;
+                starColor = document.body.classList.contains("light-theme") ? "#0077cc" : "#00eaff";
+            } else {
+                // Étoiles de liaison (non cliquables)
+                radius = 2;
+                starColor = document.body.classList.contains("light-theme") ? "rgba(0, 119, 204, 0.5)" : "rgba(0, 255, 255, 0.5)";
+            }
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = starColor;
+            ctx.shadowBlur = radius * 3; 
+            ctx.shadowColor = starColor;
+            ctx.fill();
+            
+            // Réinitialiser les ombres après le remplissage de l'étoile pour ne pas affecter le reste
+            ctx.shadowBlur = 0; 
+            ctx.shadowColor = 'transparent';
+        });
+    }
+
+    function getMousePos(canvas, evt) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
+    function getClickedStar(mouseX, mouseY) {
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const scale = Math.min(width, height) / 100;
+        const clickRadius = 8; 
+
+        for (let i = 0; i < starsData.length; i++) {
+            if (clickableStarsIndices.includes(i)) {
+                const star = starsData[i];
+                const starX = star.x * scale + offsetX;
+                const starY = star.y * scale + offsetY;
+                
+                const distance = Math.sqrt(Math.pow(mouseX - starX, 2) + Math.pow(mouseY - starY, 2));
+                
+                if (distance < clickRadius) {
+                    return star;
+                }
+            }
+        }
+        return null;
+    }
+
+    function showPopup(star, mouseX, mouseY) {
+        if (!star.name || !star.text) {
+            popup.classList.remove("show");
+            return;
+        }
+
+        popupTitle.innerHTML = star.name;
+        popupText.innerHTML = star.text;
+        
+        popup.classList.add("show");
+        
+        // Calculer la position du popup
+        const rect = canvas.getBoundingClientRect();
+        let popupX = mouseX + rect.left + 10;
+        let popupY = mouseY + rect.top + 10;
+        
+        // Ajuster si le popup dépasse le bord droit
+        if (popupX + popup.offsetWidth > window.innerWidth - 10) {
+            popupX = mouseX + rect.left - popup.offsetWidth - 10;
+        }
+        
+        // Ajuster si le popup dépasse le bord inférieur
+        if (popupY + popup.offsetHeight > window.innerHeight - 100) { 
+            popupY = mouseY + rect.top - popup.offsetHeight - 10;
+        }
+        
+        // Positionner et animer
+        popup.style.left = `${popupX}px`;
+        popup.style.top = `${popupY}px`;
+        popup.style.transform = "translateY(0)";
+    }
+    
+    function hidePopup() {
+        popup.classList.remove("show");
+        popup.style.transform = "translateY(10px)";
+    }
+
+    canvas.addEventListener('click', (e) => {
+        const pos = getMousePos(canvas, e);
+        const clickedStar = getClickedStar(pos.x, pos.y);
+        
+        if (clickedStar) {
+            showPopup(clickedStar, pos.x, pos.y);
+        } else {
+            hidePopup();
+        }
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+        const pos = getMousePos(canvas, e);
+        const hoveredStar = getClickedStar(pos.x, pos.y);
+
+        if (hoveredStar) {
+            canvas.style.cursor = 'pointer';
+        } else {
+            canvas.style.cursor = 'crosshair';
+        }
+    });
+
+    document.body.addEventListener('click', (e) => {
+        // Fermer le pop-up si on clique en dehors du canvas ou du pop-up
+        if (!canvas.contains(e.target) && !popup.contains(e.target) && e.target !== document.querySelector('.menu-toggle')) {
+            hidePopup();
+        }
+    });
 
     function applyTranslation(lang) {
         const translations = starTranslations[lang];
         if (!translations) return;
 
-        // Traduire les éléments HTML
         document.getElementById("screenHeader").innerText = translations.screenHeader;
         document.querySelectorAll("[data-translate]").forEach(el => {
             const key = el.getAttribute("data-translate");
@@ -938,22 +958,18 @@
             }
         });
 
-        // Mettre à jour les données des étoiles pour le pop-up
         starsData.forEach(star => {
             if (translations[star.key]) {
                 star.name = translations[star.key].name;
                 star.text = translations[star.key].text;
             } else {
-                // S'assurer que les étoiles non cliquables n'ont pas de texte
                 star.name = "";
                 star.text = "";
             }
         });
 
-        // Fermer le pop-up après le changement de langue
         popup.classList.remove("show");
         popup.style.transform = "translateY(10px)";
-        popup.style.opacity = 0;
     }
 
     langSelect.addEventListener("change", (e) => {
@@ -962,12 +978,15 @@
         applyTranslation(currentLang);
     });
 
-    // Définir l'année courante dans le footer
     document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-    // Initialiser la traduction au chargement
     applyTranslation(currentLang);
-</script>
 
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("DOMContentLoaded", () => {
+        resizeCanvas();
+        setTimeout(drawConstellation, 50); 
+    });
+</script>
 </body>
 </html>
