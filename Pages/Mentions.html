@@ -44,7 +44,6 @@ main {
     }
 }
 
-/* Style de la zone des Mentions Légales */
 .mentions-container {
     max-width: 900px;
     margin: 20px auto;
@@ -176,17 +175,14 @@ body.light-theme .mentions-container {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Gestion de l'année
     const yearEl = document.getElementById('currentYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Gestion du thème
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light-theme') {
         document.body.classList.add('light-theme');
     }
 
-    // Gestion de la langue
     const langSelect = document.getElementById('langSelect');
     const savedLang = localStorage.getItem('lang') || 'fr';
     langSelect.value = savedLang;

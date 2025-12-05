@@ -85,7 +85,7 @@
       <option value="en">English</option>
       <option value="pt">Portugais</option>
     </select>
-    <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+    <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()" data-translate="theme">🎨 Thème</button>
   </div>
 
   <canvas id="stars"></canvas>
@@ -113,14 +113,12 @@
 
   <header>
     <div>
-      <!-- controls moved to top-controls -->
     </div>
   </header>
 
   <main class="cv-container">
     <h1>CV — Rafael Antunes Oliveira</h1>
 
-    <!-- Display CV image from the project's img/ folder -->
     <img src="../img/cv.png" alt="CV Rafael Antunes Oliveira" class="cv-image" />
 
     <div class="cv-actions">
@@ -131,7 +129,8 @@
 
 <footer class="main-footer">
     <div class="max-w-7xl mx-auto">
-        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — Tous droits réservés | <a href="Mentions.html">Mentions Légales</a>
+        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — <span data-translate="allRightsReserved">Tous droits réservés</span> |
+        <a href="Mentions.html" data-translate="footerMentions">Mentions Légales</a>
     </div>
 </footer>
   <script src="../js/menu-hamburger.js" defer></script>
@@ -139,7 +138,6 @@
   <script src="../js/theme.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Traductions du menu hamburger
   const menuText = {
     fr: {
       navAccueil: "Accueil",
@@ -147,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
       navContact: "Contact",
       navAPropos: "À propos",
       navInfo: "Info",
-      navCV: "CV"
+      navCV: "CV",
+      theme: '🎨 Thème'
     },
     en: {
       navAccueil: "Home",
@@ -155,7 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
       navContact: "Contact",
       navAPropos: "About",
       navInfo: "Info",
-      navCV: "CV"
+      navCV: "CV",
+      theme: '🎨 Theme'
     },
     pt: {
       navAccueil: "Início",
@@ -163,11 +163,11 @@ document.addEventListener('DOMContentLoaded', () => {
       navContact: "Contato",
       navAPropos: "Sobre",
       navInfo: "Info",
-      navCV: "CV"
+      navCV: "CV",
+      theme: '🎨 Tema'
     }
   };
 
-  // Fonction pour appliquer la traduction
   function applyMenuLang(lang) {
     const t = menuText[lang] || menuText.fr;
     Object.keys(t).forEach(key => {
@@ -176,11 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Récupérer la langue sauvegardée ou par défaut
   const savedLang = localStorage.getItem('lang') || 'fr';
   applyMenuLang(savedLang);
 
-  // Mettre à jour le menu si l'utilisateur change la langue
   const langSelect = document.getElementById('langSelect');
   if (langSelect) {
     langSelect.value = savedLang;
@@ -190,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
       applyMenuLang(newLang);
     });
   }
+  
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 </script>
 

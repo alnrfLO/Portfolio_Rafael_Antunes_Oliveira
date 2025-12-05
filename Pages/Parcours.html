@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Constellation de mon Parcours</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* --- Styles Globaux et Variables (style.css) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* VARIABLES DE THÈME MINIMALES POUR LE FOOTER ET LE THÈME LIGHT */
+        :root {
+            --primary-color: #0ff;
+            --background-color-base: #000;
+            --text-color-primary: white;
+            --footer-bg: rgba(0, 0, 0, 0.5);
+            --footer-border: rgba(0, 255, 255, 0.3);
+            --footer-shadow: rgba(0, 255, 255, 0.1);
+        }
+
+        .light-theme {
+            --primary-color: #0077cc;
+            --background-color-base: #e0f0ff;
+            --text-color-primary: #222;
+            --footer-bg: rgba(255, 255, 255, 0.9);
+            --footer-border: rgba(0, 119, 204, 0.3);
+            --footer-shadow: rgba(0, 119, 204, 0.1);
+        }
+
+        html, body {
+            min-height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background: radial-gradient(circle at center, #000010, #000);
+            color: white;
+            overflow-x: hidden;
+            overflow-y: auto;
+            transition: background 0.6s ease, color 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 140px;
+        }
+        
+        body.light-theme {
+            background: radial-gradient(circle at center, #ffff, #0089b3);
+            color: #222;
+        }
+
+        /* Conteneur pour le bouton thème et la langue */
+        .top-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            z-index: 20;
+        }
+
+        #langSelect {
+            font-size: 1rem;
+            border-radius: 10px;
+            border: 2px solid #0ff;
+            background-color: #111;
+            color: #0ff;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            margin: 0;
+        }
+
+        body.light-theme #langSelect {
+            background-color: #e0f0ff;
+            color: #0077cc;
+            border-color: #0077cc;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: 2px solid #0ff;
+            color: #0ff;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: #0ff;
+            color: #000;
+        }
+
+        body.light-theme .theme-toggle {
+            border-color: #0077cc;
+            color: #0077cc;
+        }
+
+        body.light-theme .theme-toggle:hover {
+            background: #0077cc;
+            color: white;
+        }
+
+        /* STYLING DU FOOTER */
+        .main-footer {
+            padding: 1.5rem 1rem; 
+            border-top: 1px solid var(--footer-border);
+            background: var(--footer-bg);
+            text-align: center;
+            box-shadow: 0 -10px 30px var(--footer-shadow);
+            transition: all 0.6s ease;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            z-index: 1; 
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            color: var(--text-color-primary); 
+        }
+        .main-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+            opacity: 0.8;
+        }
+        .main-footer a:hover {
+            color: var(--primary-color);
+            text-shadow: 0 0 5px var(--primary-color);
+            opacity: 1;
+        }
+        .light-theme .main-footer a:hover {
+            text-shadow: 0 0 2px black; 
+        }
+        .light-theme .main-footer {
+            box-shadow: 0 -10px 30px rgba(0, 119, 204, 0.2); 
+        }
+
+        /* --- Styles du Menu Hamburger (menu-hamburger.css) --- */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+        }
+
+        .menu-toggle {
+            width: 35px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .menu-toggle span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #0ff;
+            border-radius: 4px;
+            transition: transform 0.35s ease, opacity 0.25s ease;
+            transform-origin: center;
+            will-change: transform, opacity;
+        }
+
+        .menu-toggle span:nth-child(1) { top: 50%; transform: translateY(-10px); }
+        .menu-toggle span:nth-child(2) { top: 50%; transform: translateY(0); }
+        .menu-toggle span:nth-child(3) { top: 50%; transform: translateY(10px); }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(0) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateY(0) scaleX(0.95);
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(0) rotate(-45deg);
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 250px;
+            height: 100%;
+            background: rgba(0, 0, 30, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 2rem;
+            transition: left 0.5s ease;
+            z-index: 19;
+        }
+        .menu.active {
+            left: 0;
+        }
+        .menu a {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: #ffbe0b;
+            text-shadow: 0 0 10px #ffbe0b;
+        }
+        body.light-theme .menu {
+            background: rgba(255, 255, 255, 0.95); 
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+        }
+        body.light-theme .menu a {
+            color: var(--text-color-primary, #222); 
+        }
+
+        body.light-theme .menu a:hover {
+            color: #0077cc;
+            text-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+        }
+
+        /* Submenu inside mobile menu */
+        .submenu {
+            display: flex;
+            flex-direction: column;
+        }
+        .submenu-toggle {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.5rem;
+            text-align: left;
+            padding: 0;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .submenu-toggle::after {
+            content: " ▾";
+            opacity: 0.9;
+            margin-left: 0.25rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .submenu.open .submenu-toggle::after {
+            transform: rotate(180deg);
+        }
+        .submenu-list {
+            display: none;
+            flex-direction: column;
+            margin-left: 0.8rem;
+        }
+        .submenu.open .submenu-list {
+            display: flex;
+        }
+        .submenu-list a {
+            font-size: 1.2rem;
+            margin: 0.4rem 0;
+            color: #9ff;
+        }
+        body.light-theme .submenu-list a {
+            color: #555;
+        }
+
+        /* --- NOUVEAU STYLE ÉCRAN FUTURISTE --- */
+        .page-header {
+            width: 100%;
+            max-width: 1100px;
+            padding: 1rem 1rem 0;
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 0 0 15px #00eaff;
+            z-index: 1;
+        }
+        body.light-theme .page-header {
+            color: #0077cc;
+            text-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+        }
+
+        /* CONTENEUR ÉCRAN FUTURISTE */
+        .screen-container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            perspective: 1000px;
+        }
+
+        .futuristic-frame {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 20, 40, 0.9), rgba(0, 10, 30, 0.95));
+            border: 3px solid #00d5ff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 0 40px rgba(0, 213, 255, 0.4),
+                inset 0 0 30px rgba(0, 213, 255, 0.1),
+                0 10px 50px rgba(0, 0, 0, 0.5);
+            animation: framePulse 4s ease-in-out infinite;
+        }
+
+        body.light-theme .futuristic-frame {
+            background: linear-gradient(135deg, rgba(240, 250, 255, 0.95), rgba(220, 240, 255, 0.98));
+            border-color: #0077cc;
+            box-shadow: 
+                0 0 40px rgba(0, 119, 204, 0.3),
+                inset 0 0 30px rgba(0, 119, 204, 0.1),
+                0 10px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes framePulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(0, 213, 255, 0.4), inset 0 0 30px rgba(0, 213, 255, 0.1), 0 10px 50px rgba(0, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(0, 213, 255, 0.6), inset 0 0 40px rgba(0, 213, 255, 0.15), 0 10px 60px rgba(0, 0, 0, 0.6); }
+        }
+
+        /* Coins décoratifs */
+        .corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #00eaff;
+            z-index: 5;
+        }
+        .corner.top-left { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .corner.top-right { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+        .corner.bottom-left { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+        .corner.bottom-right { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+        body.light-theme .corner {
+            border-color: #0077cc;
+        }
+
+        /* Lignes de scan */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00eaff, transparent);
+            animation: scan 3s linear infinite;
+            opacity: 0.6;
+            z-index: 4;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(500px); opacity: 0; }
+        }
+
+        /* Indicateurs HUD */
+        .hud-indicators {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.7rem;
+            color: #00eaff;
+            opacity: 0.7;
+            z-index: 5;
+            text-shadow: 0 0 5px #00eaff;
+        }
+
+        body.light-theme .hud-indicators {
+            color: #0077cc;
+            text-shadow: 0 0 3px rgba(0, 119, 204, 0.5);
+        }
+
+        .hud-indicators div {
+            margin: 3px 0;
+            letter-spacing: 1px;
+        }
+
+        /* Grille de fond */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 213, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 213, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        body.light-theme .grid-overlay {
+            background-image: 
+                linear-gradient(rgba(0, 119, 204, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 119, 204, 0.1) 1px, transparent 1px);
+        }
+
+        #canvas {
+            width: 100%;
+            height: 65vh;
+            cursor: crosshair;
+            display: block;
+            position: relative;
+            z-index: 2;
+            border-radius: 10px;
+        }
+
+        /* POP-UP AMÉLIORÉ - STYLES RESPONSIVES */
+        .popup {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(0, 10, 30, 0.95), rgba(0, 20, 40, 0.98));
+            border: 2px solid #00d5ff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 
+                0 0 30px rgba(0, 213, 255, 0.6),
+                inset 0 0 20px rgba(0, 213, 255, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            /* Rendre la largeur max responsive */
+            max-width: min(300px, 85vw); 
+            z-index: 15;
+            backdrop-filter: blur(10px);
+            /* Rendre la taille du texte responsive */
+            font-size: clamp(12px, 2.5vw, 14px);
+        }
+
+        body.light-theme .popup {
+            background: linear-gradient(135deg, rgba(240, 250, 255, 0.98), rgba(220, 240, 255, 0.98));
+            border: 2px solid #0077cc;
+            box-shadow: 
+                0 0 25px rgba(0, 119, 204, 0.4),
+                inset 0 0 15px rgba(0, 119, 204, 0.1);
+            color: #222;
+        }
+
+        .popup.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .popup::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00d5ff, #0066ff, #00d5ff);
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: borderGlow 2s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .popup-title {
+            /* Rendre le titre responsive */
+            font-size: clamp(15px, 3.5vw, 17px);
+            color: #00f6ff;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px #00f6ff;
+        }
+        
+        body.light-theme .popup-title {
+            color: #0077cc;
+            text-shadow: 0 0 5px rgba(0, 119, 204, 0.4);
+        }
+
+        #popup-text {
+            /* Hérite du font-size du parent (.popup) */
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-controls">
+    <select id="langSelect">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="pt">Portugais</option>
+    </select>
+    <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+</div>
+
+<div class="navbar">
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+</div>
+
+<nav class="menu" id="mobileMenu">
+    <a href="../index.html" data-translate="navAccueil">Accueil</a>
+    <a href="Projets.html" data-translate="navProjets">Projets</a>
+    <a href="Contact.html" data-translate="navContact">Contact</a>
+    <div class="submenu">
+        <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
+        <div class="submenu-list">
+            <a href="Info.html" data-translate="navInfo">Info</a>
+            <a href="CV.html" data-translate="navCV">CV</a>
+        </div>
+    </div>
+</nav>
+
+<h1 class="page-header" id="screenHeader">CONSTELLATION DE MON PARCOURS</h1>
+
+<div class="screen-container">
+    <div class="futuristic-frame">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+        
+        <div class="scan-line"></div>
+        
+        <div class="hud-indicators">
+            <div>[ SYSTEM: ACTIVE ]</div>
+            <div>[ CONSTELLATION: PISCES ]</div>
+            <div>[ STATUS: ONLINE ]</div>
+        </div>
+        
+        <div class="grid-overlay"></div>
+        
+        <canvas id="canvas"></canvas>
+    </div>
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-title" id="popup-title"></div>
+    <div id="popup-text"></div>
+</div>
+
+<footer class="main-footer">
+    <div class="max-w-7xl mx-auto">
+        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira – <span data-translate="allRightsReserved">Tous droits réservés</span> | <a href="Mentions.html" data-translate="footerMentions">Mentions Légales</a>
+    </div>
+</footer>
+
+<script>
+    // --- JS du Menu Hamburger (menu-hamburger.js) ---
+    function toggleMenu(btn) {
+        btn.classList.toggle("active");
+        document.getElementById("mobileMenu").classList.toggle("active");
+    }
+
+    // --- JS du Sous-Menu (submenu.js) ---
+    document.querySelectorAll('.submenu-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const submenu = button.closest('.submenu');
+            submenu.classList.toggle('open');
+        });
+    });
+
+    // --- JS du Thème (theme.js) ---
+    function applySavedTheme() {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            document.body.classList.add("light-theme");
+        } else {
+            document.body.classList.remove("light-theme");
+        }
+    }
+    function toggleTheme() {
+        document.body.classList.toggle("light-theme");
+        if (document.body.classList.contains("light-theme")) {
+            localStorage.setItem("theme", "light");
+        } else {
+            localStorage.setItem("theme", "dark");
+        }
+    }
+    window.addEventListener("DOMContentLoaded", applySavedTheme);
+
+
+    // --- LOGIQUE CONSTELLATION DES POISSONS ET TRADUCTION ---
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popup-title");
+    const popupText = document.getElementById("popup-text");
+    const langSelect = document.getElementById("langSelect");
+
+    // Constellation des Poissons (Pisces) - Configuration Classique (8 POINTS CLICQUABLES)
+    // Les coordonnées sont des pourcentages (0 à 100) pour la responsivité
+    // Les valeurs sont ajustées pour éviter d'être coupées par les bords (utilisation de 10% à 90%)
+    const starsData = [
+        // Poisson Occidental (Supérieur/Gauche - Étapes 1 à 5)
+        { x: 35, y: 35, key: "starAlrescha", name: "", text: "" },     // 0 (1) : Tête poisson sup. (Début)
+        { x: 25, y: 55, key: "starFumalsamakah", name: "", text: "" }, // 1 (2) : Épaule 1
+        { x: 30, y: 15, key: "starTorcular", name: "", text: "" },     // 2 (3) : Épaule 2
+        { x: 15, y: 70, key: "starKaffaljidhmah", name: "", text: "" },// 3 (4) : Corps/Queue 1
+        { x: 10, y: 85, key: "starRevati", name: "", text: "" },         // 4 (5) : Pointe de la queue (Début Liaison)
+        
+        // Corde de liaison (Étoiles 5 à 7) - Petites étoiles de la corde
+        { x: 35, y: 80, key: "starLink1", name: "", text: "" },        // 5 : Corde 1
+        { x: 50, y: 75, key: "starLink2", name: "", text: "" },        // 6 : Corde 2
+        { x: 65, y: 65, key: "starLink3", name: "", text: "" },        // 7 : Corde 3
+        
+        // Poisson Oriental (Inférieur/Droit - Étapes 6 à 8)
+        { x: 80, y: 50, key: "starEastern1", name: "", text: "" },     // 8 (6) : Tête poisson inf. (Fin Liaison)
+        { x: 85, y: 40, key: "starEastern2", name: "", text: "" },     // 9 (7) : Épaule 1
+        { x: 90, y: 60, key: "starEastern3", name: "", text: "" }       // 10 (8) : Épaule 2 / Queue Finale
+    ];
+
+    // Connexions formant les deux poissons reliés (Structure basée sur l'image, sans index 11)
+    const connections = [
+        // Poisson Occidental (0-1-2-3-4)
+        [0, 1], [1, 3], [3, 4], 
+        [0, 2], 
+        
+        // Corde de liaison (4-5-6-7-8)
+        [4, 5], [5, 6], [6, 7], [7, 8],
+        
+        // Poisson Oriental (8-9-10) - Fermeture du triangle de tête/corps
+        [8, 9], [9, 10], [10, 8]
+    ];
+
+    // Variables pour l'ajustement (moins nécessaires avec les pourcentages)
+    let offsetX = 0;
+    let offsetY = 0;
+
+    // Fonction d'ajustement simplifiée (peut être conservée mais ne fait rien de complexe)
+    function adjustCoordinates() {
+        // La responsivité est assurée par l'utilisation de pourcentages.
+    }
+
+    function drawConstellation() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // La responsivité est assurée en utilisant les dimensions du canvas.
+
+        // Définir la couleur des lignes en fonction du thème
+        ctx.strokeStyle = document.body.classList.contains("light-theme") 
+            ? "rgba(0,119,204,0.5)" 
+            : "rgba(0,240,255,0.5)"; 
+        ctx.lineWidth = 2;
+
+        // 1. Dessiner les lignes
+        connections.forEach(([a, b]) => {
+            const starA = starsData[a];
+            const starB = starsData[b];
+            
+            // CONVERSION DES POURCENTAGES EN PIXELS (RESPONSIVITÉ)
+            const xA = starA.x * canvas.width / 100;
+            const yA = starA.y * canvas.height / 100;
+            const xB = starB.x * canvas.width / 100;
+            const yB = starB.y * canvas.height / 100;
+            
+            ctx.beginPath();
+            ctx.moveTo(xA, yA);
+            ctx.lineTo(xB, yB);
+            ctx.stroke();
+        });
+
+        // 2. Dessiner les étoiles
+        starsData.forEach((star, index) => {
+            // CONVERSION DES POURCENTAGES EN PIXELS (RESPONSIVITÉ)
+            const x = star.x * canvas.width / 100;
+            const y = star.y * canvas.height / 100;
+            
+            star.computedX = x;
+            star.computedY = y;
+
+            // Les étoiles principales sont les deux poissons (0-4 et 8-10)
+            const isMainStar = index <= 4 || index >= 8;
+            // Les étoiles de lien (5-7) sont plus petites
+            const radius = isMainStar ? 7 : 4; 
+
+            // Définir les styles en fonction du thème
+            const mainStarColor = document.body.classList.contains("light-theme") ? "#0077cc" : "#00eaff";
+            const linkStarColor = document.body.classList.contains("light-theme") ? "#00a3e0" : "#00a8cc";
+            const shadowColor = document.body.classList.contains("light-theme") ? "rgba(0, 119, 204, 0.5)" : "#00eaff";
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = isMainStar ? mainStarColor : linkStarColor;
+            ctx.shadowBlur = isMainStar ? 15 : 10;
+            ctx.shadowColor = shadowColor;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        });
+    }
+
+    function resize() {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        drawConstellation();
+    }
+    // Redimensionnement et redessin au chargement et au changement de taille de la fenêtre
+    window.addEventListener("resize", resize);
+
+    // Écouter les changements de thème pour redessiner (changer la couleur)
+    const observer = new MutationObserver((mutationsList, observer) => {
+        for(const mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                drawConstellation();
+            }
+        }
+    });
+    observer.observe(document.body, { attributes: true });
+
+
+    // Initialiser immédiatement
+    resize();
+
+    canvas.addEventListener("click", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        
+        popup.classList.remove("show");
+        popup.style.transform = "translateY(10px)";
+        
+        const HIT_RADIUS = 15;
+
+        starsData.forEach(star => {
+            const x = star.computedX; 
+            const y = star.computedY;
+            
+            if (x !== undefined && y !== undefined) {
+                const dist = Math.hypot(mouseX - x, mouseY - y);
+                
+                // Afficher le pop-up si l'étoile est cliquable ET a un nom
+                if (dist < HIT_RADIUS && star.name && star.name.trim() !== "") {
+                    popupTitle.innerText = star.name;
+                    popupText.innerText = star.text;
+
+                    // Mise à jour : le pop-up est rendu visible pour pouvoir calculer ses dimensions (offsetWidth/offsetHeight)
+                    popup.classList.add("show");
+                    popup.style.opacity = 0; // Masquer temporairement pour le calcul
+
+                    let popupX = mouseX + 15; 
+                    let popupY = mouseY - 15; 
+
+                    // Ajuster la position pour ne pas sortir du canvas
+                    const padding = 15;
+                    if (popupX + popup.offsetWidth + padding > canvas.width) {
+                        popupX = mouseX - popup.offsetWidth - 15;
+                    }
+                    if (popupY < padding) {
+                        popupY = padding;
+                    }
+                    if (popupY + popup.offsetHeight + padding > canvas.height) {
+                        popupY = canvas.height - popup.offsetHeight - padding;
+                    }
+                    
+                    popup.style.left = popupX + "px";
+                    popup.style.top = popupY + "px";
+                    
+                    // Rendre visible avec l'animation
+                    popup.style.opacity = 1; 
+                    popup.style.transform = "translateY(0)";
+                    return; 
+                }
+            }
+        });
+    });
+
+    // --- Traductions ---
+    const starTranslations = {
+        fr: {
+            screenHeader: "CONSTELLATION DE MON PARCOURS",
+            navAccueil: "Accueil", navProjets: "Projets", navContact: "Contact", navAPropos: "À propos", navInfo: "Info", navCV: "CV", 
+            allRightsReserved: "Tous droits réservés", footerMentions: "Mentions Légales",
+            
+            // Poisson Occidental
+            starAlrescha: { 
+                name: "1. Point de Départ & Passion", 
+                text: "Mon parcours démarre ici, marqué par une soif d'apprendre et une forte curiosité pour la technologie." 
+            },
+            starFumalsamakah: { 
+                name: "2. Première Formation (BUT 1)", 
+                text: "Début de mon BUT Informatique : acquisition des bases solides en programmation, développement web et réseaux à l'IUT de Vélizy." 
+            },
+            starTorcular: { 
+                name: "3. Expérience Professionnelle (Stage)", 
+                text: "Stage de 8 semaines chez [Nom de l'Entreprise] : Conception et déploiement d'une application de gestion de stock. Premiers pas concrets dans le monde pro." 
+            },
+            starKaffaljidhmah: { 
+                name: "4. Compétences Techniques Clés", 
+                text: "Maîtrise de Python (Flask, Pygame), JavaScript, HTML/CSS et bases de données MySQL. Je travaille sur des environnements Linux et Windows." 
+            },
+            starRevati: { 
+                name: "5. Projet Personnel (Majeur)",
+                text: "Création et mise en ligne d'un jeu de rôle textuel multijoueur (MUD) utilisant Node.js et MongoDB, un défi complet en développement Backend et Infrastructure."
+            },
+            // Lien - Ne sont pas cliquables, mais gardées pour la cohérence si besoin futur
+            starLink1: { name: "", text: "" }, 
+            starLink2: { name: "", text: "" }, 
+            starLink3: { name: "", text: "" }, 
+
+            // Poisson Oriental (Futur / En cours)
+            starEastern1: { 
+                name: "6. BUT 2 : Approfondissement", 
+                text: "Passage à la deuxième année du BUT. Spécialisation en développement d'applications, architecture logicielle et sécurité."
+            },
+            starEastern2: { 
+                name: "7. Alternance / Contrat Pro", 
+                text: "Recherche active d'une alternance pour mettre en pratique mes compétences et évoluer dans un environnement professionnel réel."
+            },
+            starEastern3: { 
+                name: "8. Domaine Cible : Full Stack", 
+                text: "Orientation vers le développement Full Stack, visant à maîtriser à la fois le Frontend (React/Vue) et le Backend (Node.js/Spring)."
+            },
+             // starEastern4 (9) a été supprimé
+        },
+        en: {
+            screenHeader: "MY JOURNEY CONSTELLATION",
+            navAccueil: "Home", navProjets: "Projects", navContact: "Contact", navAPropos: "About", navInfo: "Info", navCV: "CV",
+            allRightsReserved: "All rights reserved", footerMentions: "Legal Notice",
+            
+            // Western Fish
+            starAlrescha: { 
+                name: "1. Starting Point & Passion", 
+                text: "My journey starts here, marked by a thirst for learning and a strong curiosity about technology." 
+            },
+            starFumalsamakah: { 
+                name: "2. First Training (BUT 1)", 
+                text: "Start of my BUT Computer Science: acquiring solid foundations in programming, web development, and networks at the IUT of Vélizy." 
+            },
+            starTorcular: { 
+                name: "3. Professional Experience (Internship)", 
+                text: "8-week internship at [Company Name]: Design and deployment of a stock management application. First concrete steps into the professional world." 
+            },
+            starKaffaljidhmah: { 
+                name: "4. Key Technical Skills", 
+                text: "Proficient in Python (Flask, Pygame), JavaScript, HTML/CSS, and MySQL databases. Working on Linux and Windows environments." 
+            },
+            starRevati: { 
+                name: "5. Personal Project (Major)",
+                text: "Creation and deployment of a multiplayer text-based role-playing game (MUD) using Node.js and MongoDB, a complete challenge in Backend Development and Infrastructure."
+            },
+            // Link - Not clickable
+            starLink1: { name: "", text: "" }, 
+            starLink2: { name: "", text: "" }, 
+            starLink3: { name: "", text: "" }, 
+            
+            // Eastern Fish (Future / Ongoing)
+            starEastern1: { 
+                name: "6. BUT 2: Deepening Knowledge", 
+                text: "Moving to the second year of the BUT. Specialization in application development, software architecture, and security."
+            },
+            starEastern2: { 
+                name: "7. Work-Study / Apprenticeship", 
+                text: "Actively seeking an apprenticeship to apply my skills and evolve in a real professional environment."
+            },
+            starEastern3: { 
+                name: "8. Target Area: Full Stack", 
+                text: "Focusing on Full Stack development, aiming to master both the Frontend (React/Vue) and the Backend (Node.js/Spring)."
+            },
+             // starEastern4 (9) a été supprimé
+        },
+        pt: {
+            screenHeader: "CONSTELAÇÃO DO MEU PERCURSO",
+            navAccueil: "Início", navProjets: "Projetos", navContact: "Contacto", navAPropos: "Sobre", navInfo: "Info", navCV: "CV",
+            allRightsReserved: "Todos os direitos reservados", footerMentions: "Avisos Legais",
+            
+            // Peixe Ocidental
+            starAlrescha: { 
+                name: "1. Ponto de Partida & Paixão", 
+                text: "O meu percurso começa aqui, marcado por uma sede de aprender e uma forte curiosidade pela tecnologia." 
+            },
+            starFumalsamakah: { 
+                name: "2. Primeira Formação (BUT 1)", 
+                text: "Início do meu BUT Informática: aquisição de bases sólidas em programação, desenvolvimento web e redes no IUT de Vélizy." 
+            },
+            starTorcular: { 
+                name: "3. Experiência Profissional (Estágio)", 
+                text: "Estágio de 8 semanas na [Nome da Empresa]: Concepção e implementação de uma aplicação de gestão de stocks. Primeiros passos concretos no mundo profissional." 
+            },
+            starKaffaljidhmah: { 
+                name: "4. Competências Técnicas Chave", 
+                text: "Domínio de Python (Flask, Pygame), JavaScript, HTML/CSS e bases de dados MySQL. Trabalho em ambientes Linux e Windows." 
+            },
+            starRevati: { 
+                name: "5. Projeto Pessoal (Principal)",
+                text: "Criação e lançamento de um jogo de RPG de texto multiplayer (MUD) usando Node.js e MongoDB, um desafio completo em Desenvolvimento Backend e Infraestrutura."
+            },
+            // Ligação - Não são clicables
+            starLink1: { name: "", text: "" }, 
+            starLink2: { name: "", text: "" }, 
+            starLink3: { name: "", text: "" }, 
+            
+            // Peixe Oriental (Futuro / Em curso)
+            starEastern1: { 
+                name: "6. BUT 2: Aprofundamento", 
+                text: "Transição para o segundo ano do BUT. Especialização em desenvolvimento de aplicações, arquitetura de software e segurança."
+            },
+            starEastern2: { 
+                name: "7. Alternância / Contrato Profissional", 
+                text: "Procura ativa de uma alternância pour appliquer as minhas competences e evoluir num environnement professionnel real."
+            },
+            starEastern3: { 
+                name: "8. Área-Alvo: Full Stack", 
+                text: "Orientação para o desenvolvimento Full Stack, visando dominar tanto o Frontend (React/Vue) quanto o Backend (Node.js/Spring)."
+            },
+            // starEastern4 (9) a été supprimé
+        }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'fr';
+    langSelect.value = currentLang;
+
+    function applyTranslation(lang) {
+        const translations = starTranslations[lang];
+        if (!translations) return;
+
+        // Traduire les éléments HTML
+        document.getElementById("screenHeader").innerText = translations.screenHeader;
+        document.querySelectorAll("[data-translate]").forEach(el => {
+            const key = el.getAttribute("data-translate");
+            if (translations[key]) {
+                el.innerText = translations[key];
+            }
+        });
+
+        // Mettre à jour les données des étoiles pour le pop-up
+        starsData.forEach(star => {
+            if (translations[star.key]) {
+                star.name = translations[star.key].name;
+                star.text = translations[star.key].text;
+            } else {
+                // S'assurer que les étoiles non cliquables n'ont pas de texte
+                star.name = "";
+                star.text = "";
+            }
+        });
+
+        // Fermer le pop-up après le changement de langue
+        popup.classList.remove("show");
+        popup.style.transform = "translateY(10px)";
+        popup.style.opacity = 0;
+    }
+
+    langSelect.addEventListener("change", (e) => {
+        currentLang = e.target.value;
+        localStorage.setItem('lang', currentLang);
+        applyTranslation(currentLang);
+    });
+
+    // Définir l'année courante dans le footer
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+    // Initialiser la traduction au chargement
+    applyTranslation(currentLang);
+</script>
+
+</body>
+</html>

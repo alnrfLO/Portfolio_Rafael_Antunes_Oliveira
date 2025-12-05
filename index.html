@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="css/menu-hamburger.css" />
 
 <style>
-/* Typewriter */
 .typewriter-text::after {
   content: '|';
   animation: blink 1s infinite;
@@ -22,7 +21,6 @@
   25%, 75% { opacity: 0; }
 }
 
-/* Hero minimaliste */
 .hero-minimal {
   min-height: 80vh;
   display: flex;
@@ -44,7 +42,6 @@
   margin-bottom: 40px;
 }
 
-/* CTA buttons */
 .cta-container {
   display: flex;
   flex-wrap: wrap;
@@ -68,7 +65,6 @@
   .cta-button { width: 100%; }
 }
 
-/* Layout */
 body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom: 140px; }
 .hero-minimal { flex: 1; }
 .main-footer { position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 10; margin-top: 0; }
@@ -91,7 +87,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom:
     <option value="en">English</option>
     <option value="pt">Portugais</option>
   </select>
-  <button class="theme-toggle" onclick="toggleTheme()">🎨 Thème</button>
+  <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()" data-translate="theme">🎨 Thème</button>
 </div>
 
 <div class="navbar">
@@ -135,7 +131,6 @@ body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom:
 </footer>
 
 <script>
-/* --- Typewriter --- */
 const translationTexts = {
   fr: "Salut, je suis Rafael Antunes Oliveira",
   en: "Hi, I'm Rafael Antunes Oliveira",
@@ -161,7 +156,6 @@ function startTypewriter() {
   type();
 }
 
-/* --- Traduction --- */
 const homeTexts = {
   fr: {
     homeTitle: translationTexts.fr,
@@ -172,7 +166,8 @@ const homeTexts = {
     navProjets: "Projets",
     navContact: "Contact",
     navAPropos: "À propos",
-    navInfo: "Info"
+    navInfo: "Info",
+    theme: '🎨 Thème'
   },
   en: {
     homeTitle: translationTexts.en,
@@ -183,35 +178,34 @@ const homeTexts = {
     navProjets: "Projects",
     navContact: "Contact",
     navAPropos: "About",
-    navInfo: "Info"
+    navInfo: "Info",
+    theme: '🎨 Theme'
   },
   pt: {
     homeTitle: translationTexts.pt,
     subtitle: "Aluno do 2º ano de MMI | Futuro Desenvolvedor Web Full Stack",
     seeProjects: "Ver Meus Projetos 🚀",
-    learnMore: "Saiba Mais Sobre Mim 👤",
+    learnMore: "Aprender mais sobre Mim 👤",
     navAccueil: "Início",
     navProjets: "Projetos",
     navContact: "Contato",
     navAPropos: "Sobre",
-    navInfo: "Info"
+    navInfo: "Info",
+    theme: '🎨 Tema'
   }
 };
 
 function updatePageText(lang) {
   const texts = homeTexts[lang] || homeTexts.fr;
 
-  // Tous les éléments avec data-translate
   document.querySelectorAll('[data-translate]').forEach(el => {
     const key = el.getAttribute('data-translate');
     if (texts[key]) el.textContent = texts[key];
   });
 
-  // Sous-titre
   const subtitle = document.getElementById('projectsTitle');
   if (subtitle) subtitle.textContent = texts.subtitle;
 
-  // Redémarrer le typewriter
   startTypewriter();
 }
 
@@ -219,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const langSelect = document.getElementById('langSelect');
   const savedLang = localStorage.getItem('lang') || 'fr';
 
-  // Langue initiale
   if (langSelect) {
     langSelect.value = savedLang;
     langSelect.addEventListener('change', e => {
@@ -229,14 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Appliquer la langue initiale
   updatePageText(savedLang);
 
-  // Année
   const yearEl = document.getElementById('currentYear');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Thème
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'light-theme') document.body.classList.add('light-theme');
 });
