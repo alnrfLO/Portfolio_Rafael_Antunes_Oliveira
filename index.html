@@ -148,6 +148,56 @@ body.light-theme .skills-carousel-item {
         transform: translate3d(-100%, 0, 0); 
     }
 }
+
+/* --- Nouveaux Styles pour la Section "Statut Rapide" --- */
+
+.quick-status {
+    margin-top: 60px; /* Espace après les boutons CTA */
+    padding: 20px 30px;
+    border: 1px solid var(--primary-color, cyan); /* Bordure fine */
+    border-radius: 8px;
+    max-width: 600px; /* Taille maximale pour ne pas être trop large */
+    width: 90%;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.15); /* Fond légèrement transparent pour se fondre */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+}
+body.light-theme .quick-status {
+    background-color: rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 0 10px rgba(0, 150, 200, 0.15);
+}
+
+.status-content p {
+    margin: 5px 0;
+    line-height: 1.6;
+    color: var(--text-color, #f0f0f0);
+}
+
+.quick-status p:first-child {
+    font-weight: bold;
+    color: var(--primary-color, cyan);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+}
+
+.status-tech {
+    margin-top: 15px !important;
+    font-size: 1.5em; /* Icônes légèrement plus grandes */
+}
+.status-tech i {
+    margin-right: 10px;
+    color: var(--primary-color, cyan);
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .quick-status {
+        padding: 15px 20px;
+        margin-top: 40px;
+    }
+}
 </style>
 
 <script src="js/etoile.js" defer></script>
@@ -208,6 +258,13 @@ body.light-theme .skills-carousel-item {
     <a href="Pages/Info.html" class="cta-button cta-a-propos" data-translate="learnMore">En Apprendre Plus Sur Moi 👤</a>
   </div>
 
+  <section class="quick-status">
+    <div class="status-content">
+      <p data-translate="statusTitle">🔎 **RECHERCHE DE STAGE**</p>
+      <p data-translate="statusText">Je suis activement à la recherche d'un stage de **3 mois** en développement **Front-end** ou **Back-end** pour consolider mes acquis.</p>
+      <p class="status-tech" data-translate="statusTechTitle">Technologies récentes : <i class="fab fa-react" title="React"></i> <i class="fab fa-html5" title="HTML5"></i> <i class="fab fa-css3-alt" title="CSS3"></i> <i class="fab fa-js-square" title="JavaScript"></i></p>
+    </div>
+  </section>
   <div class="skills-carousel-container">
     <div class="skills-carousel" id="skillsCarousel">
       <i class="fab fa-html5 skills-carousel-item" title="HTML5"></i>
@@ -280,14 +337,18 @@ const homeTexts = {
   fr: {
     homeTitle: "Salut, je suis Rafael Antunes Oliveira", 
     subtitle: "Etudiant en 2e année de MMI | Futur Développeur Web Full Stack",
-    seeProjects: "Voir Mes Projets",
-    learnMore: "En Apprendre Plus Sur Moi",
+    seeProjects: "Voir Mes Projets 🚀",
+    learnMore: "En Apprendre Plus Sur Moi 👤",
     navAccueil: "Accueil",
     navProjets: "Projets",
     navContact: "Contact",
     navAPropos: "À propos",
     navInfo: "Info",
-    theme: '🎨 Thème'
+    theme: '🎨 Thème',
+    // --- Textes du Statut mis à jour ---
+    statusTitle: "🔎 RECHERCHE DE STAGE", 
+    statusText: "Je suis activement à la recherche d'un stage de 3 mois en développement Front-end ou Back-end pour consolider mes acquis.",
+    statusTechTitle: "Technologies récentes : " // AJOUT pour la traduction éventuelle du préfixe
   },
   en: {
     homeTitle: "Hi, I'm Rafael Antunes Oliveira",
@@ -299,7 +360,11 @@ const homeTexts = {
     navContact: "Contact",
     navAPropos: "About",
     navInfo: "Info",
-    theme: '🎨 Theme'
+    theme: '🎨 Theme',
+    // --- Textes du Statut mis à jour ---
+    statusTitle: "🔎 INTERNSHIP SEARCH",
+    statusText: "I am actively looking for a 3-month internship in Front-end or Back-end development to consolidate my knowledge.",
+    statusTechTitle: "Recent technologies: "
   },
   pt: {
     homeTitle: "Oi, sou Rafael Antunes Oliveira",
@@ -311,7 +376,11 @@ const homeTexts = {
     navContact: "Contato",
     navAPropos: "Sobre",
     navInfo: "Info",
-    theme: '🎨 Tema'
+    theme: '🎨 Tema',
+    // --- Textes du Statut mis à jour ---
+    statusTitle: "🔎 PROCURA POR ESTÁGIO",
+    statusText: "Estou ativamente à procura de um estágio de 3 meses em desenvolvimento Front-end ou Back-end para consolidar meus conhecimentos.",
+    statusTechTitle: "Tecnologias recentes: "
   }
 };
 
@@ -322,7 +391,13 @@ function updatePageText(lang) {
     const key = el.getAttribute('data-translate');
     if (key === 'homeTitle') {
     } else if (texts[key]) {
-        el.textContent = texts[key];
+        if(key === 'statusTechTitle') {
+             // Traitement spécial pour le titre de technologie qui a des icônes
+             const icons = el.innerHTML.match(/<i[^>]*><\/i>/g) || [];
+             el.innerHTML = texts[key] + icons.join(' ');
+        } else {
+            el.textContent = texts[key];
+        }
     }
   });
 
