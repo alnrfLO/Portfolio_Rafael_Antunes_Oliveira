@@ -16,7 +16,6 @@ L'objectif principal de ce site est de présenter ses compétences (notamment en
 * [Structure du Projet](#-structure-du-projet)
 * [Installation Locale](#-installation-locale)
 * [Contact](#-contact)
-* [Licence](#-licence)
 
 ---
 
