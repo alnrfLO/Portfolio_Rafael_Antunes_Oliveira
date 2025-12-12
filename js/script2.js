@@ -20,6 +20,8 @@ const translations = {
     proj5text: "Site web responsive et accessible réalisé en HTML/CSS/PHP.",
     proj6title: "Jeu en JS",
     proj6text: "Mini-jeu réalisé avec JavaScript.",
+    proj7title: "Projet PHP", 
+    proj7text: "Projets de développement utilisant PHP.", 
 
     proj1desc: "Un jeu de serpent classique développé en Python avec Pygame. Le joueur contrôle un serpent qui grandit à chaque nourriture consommée. Le jeu se termine si le serpent se heurte à un mur ou à lui-même.",
     proj2desc: "Une implémentation du jeu Tetris en Python. Les pièces tombent du haut et le joueur doit les positionner pour remplir des lignes. Chaque ligne complète est supprimée et rapporte des points.",
@@ -27,6 +29,7 @@ const translations = {
     proj4desc: "Le jeu du Morpion (Tic-Tac-Toe) en Python. Jouez contre l'ordinateur avec une intelligence artificielle simple. C'est un projet pédagogique pour apprendre les algorithmes de base.",
     proj5desc: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec un design moderne et épuré.",
     proj6desc: "Un mini-jeu interactif créé avec JavaScript vanilla. Testez vos réflexes et essayez de battre le meilleur score. Code moderne et optimisé.",
+    proj7desc: "Description détaillée du projet PHP.", 
 
     modalDownload: "Télécharger",
     modalVisit: "Visiter",
@@ -52,6 +55,9 @@ const translations = {
     proj5text: "Responsive and accessible site made with HTML/CSS/PHP.",
     proj6title: "JS Game",
     proj6text: "Mini-game made with JavaScript.",
+    proj7title: "PHP Project", 
+    proj7text: "Development projects using PHP.", 
+
 
     proj1desc: "A classic Snake game developed in Python with Pygame. The player controls a snake that grows with each food eaten. The game ends if the snake hits a wall or itself.",
     proj2desc: "An implementation of Tetris in Python. Pieces fall from the top, and the player must position them to complete lines. Each completed line is removed and gives points.",
@@ -59,6 +65,7 @@ const translations = {
     proj4desc: "Tic-Tac-Toe in Python. Play against the computer with a simple AI. This is an educational project to learn basic algorithms.",
     proj5desc: "A professional and responsive website made for the SAE203 project. Accessible on all devices (desktop, tablet, mobile) with a modern, clean design.",
     proj6desc: "An interactive mini-game created with vanilla JavaScript. Test your reflexes and try to beat the high score. Modern and optimized code.",
+    proj7desc: "Detailed description of the PHP project.", 
 
     modalDownload: "Download",
     modalVisit: "Visit",
@@ -84,6 +91,8 @@ const translations = {
     proj5text: "Site responsivo e acessível feito com HTML/CSS/PHP.",
     proj6title: "Jogo JS",
     proj6text: "Mini-jogo feito com JavaScript.",
+    proj7title: "Projeto PHP", 
+    proj7text: "Projetos de desenvolvimento usando PHP.", 
 
     proj1desc: "Um jogo clássico de Snake desenvolvido em Python com Pygame. O jogador controla uma cobra que cresce a cada comida consumida. O jogo termina se a cobra bater em uma parede ou em si mesma.",
     proj2desc: "Uma implementação do jogo Tetris em Python. As peças caem do topo e o jogador deve posicioná-las para completar linhas. Cada linha completa é removida e gera pontos.",
@@ -91,6 +100,7 @@ const translations = {
     proj4desc: "O jogo da velha (Tic-Tac-Toe) em Python. Jogue contra o computador com uma IA simples. É um projeto educacional para aprender algoritmos básicos.",
     proj5desc: "Um site profissional e responsivo feito para o projeto SAE203. Acessível em todos os dispositivos (desktop, tablet, mobile) com design moderno e limpo.",
     proj6desc: "Um mini-jogo interativo criado com JavaScript vanilla. Teste seus reflexos e tente bater o recorde. Código moderno e otimizado.",
+    proj7desc: "Descrição detalhada do projeto PHP.", 
 
     modalDownload: "Baixar",
     modalVisit: "Visitar",
@@ -106,7 +116,7 @@ const projectDetails = {
   4: { image: "../img/tictactoe.png", languages: ["Python"], download: "../downloads/TicTacToe.zip" },
   5: { image: "../img/SAE203.png", languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
   6: { image: "../img/jeu-js.png", languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" },
-  7: { image: "", languages: ["PHP","CSS"], link: "../projets/" }
+  7: { image: "../img/php_project.png", languages: ["PHP","CSS"], link: "../projets/" } 
 };
 
 
@@ -117,7 +127,8 @@ function applyText(lang) {
     if (t[key]) el.textContent = t[key];
   });
 
-  for (let i = 1; i <= 6; i++) {
+  // Mise à jour de la boucle pour inclure le projet 7 (i <= 7)
+  for (let i = 1; i <= 7; i++) {
     const titleEl = document.getElementById(`proj${i}title`);
     const textEl = document.getElementById(`proj${i}text`);
     if (titleEl && t[`proj${i}title`]) titleEl.textContent = t[`proj${i}title`];
@@ -187,8 +198,6 @@ function handleModalAction() {
 }
 
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const langSelect = document.getElementById("langSelect");
   const savedLang = localStorage.getItem("lang") || "fr";
@@ -198,12 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const lang = e.target.value;
       localStorage.setItem("lang", lang);
       applyText(lang);
-      startTypewriter();
     });
   }
 
   applyText(savedLang);
-  startTypewriter();
 
   // Project cards
   document.querySelectorAll('.project-card').forEach(card => {

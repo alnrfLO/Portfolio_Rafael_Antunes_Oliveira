@@ -71,6 +71,66 @@
       }
     }
 
+    /* --- STYLES DES CARTES DE PROJET (CORRIGÉS ET AGRANDIS) --- */
+    .project-card {
+      position: relative; 
+      /* Hauteur augmentée à 250px */
+      min-height: 250px; 
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s; 
+      /* Fond pour le Thème Sombre (par défaut) */
+      background: linear-gradient(135deg, #16213e 0%, #0b132b 100%);
+      border-radius: 10px;
+      overflow: hidden; 
+      padding: 1.5rem; /* Augmenter le padding */
+      display: flex; 
+      flex-direction: column;
+      justify-content: flex-end; 
+      box-sizing: border-box;
+      color: white; 
+      border: 1px solid var(--primary-color, #0ff); /* Bordure basée sur la couleur primaire */
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .project-card h3 {
+      color: var(--primary-color, #0ff); 
+      font-size: clamp(1.2rem, 2vw, 1.8rem); /* Taille de titre responsive */
+      margin: 0 0 0.5rem 0;
+      text-shadow: none;
+    }
+
+    .project-card p {
+      color: #ccc; 
+      margin: 0;
+      font-size: clamp(0.8rem, 1.5vw, 1rem); /* Taille de texte responsive */
+      text-shadow: none;
+    }
+
+    /* --- THÈME CLAIR : CORRECTION DE LISIBILITÉ --- */
+    body.light-theme .project-card {
+        background: linear-gradient(135deg, #ffffff 0%, #e8f7ff 100%); /* Fond clair */
+        border: 1px solid var(--primary-color, #0077cc); /* Bordure claire */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    body.light-theme .project-card:hover {
+        transform: translateY(-5px); 
+        box-shadow: 0 10px 20px rgba(0, 119, 204, 0.2); /* Effet de survol clair */
+    }
+
+    body.light-theme .project-card h3 {
+        color: var(--primary-color, #0077cc); /* Texte foncé pour le titre */
+    }
+
+    body.light-theme .project-card p {
+        color: #444; /* Texte foncé pour le paragraphe */
+    }
+    /* --- FIN DES STYLES DE CARTES --- */
+
     .modal {
       display: none;
       position: fixed;
@@ -272,12 +332,12 @@
       transform: scaleY(1.05);
     }
 
-    .stat-Photoshop {
+    .stat-Illustrator {
       background: linear-gradient(135deg, #3776ab, #366994);
       flex: 4;
     }
 
-    .stat-Illustrator {
+    .stat-Photoshop {
       background: linear-gradient(135deg, #e34c26, #ff6b4d);
       flex: 1;
     }
