@@ -78,7 +78,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom:
 
 .skills-carousel-container {
     width: 100%;
-    max-width: 1200px; /* Augmentation de la largeur maximale du conteneur */
+    max-width: 1200px; 
     margin-top: 80px; 
     overflow: hidden; 
     white-space: nowrap; 
@@ -90,6 +90,7 @@ body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom:
         transparent 100%
     );
 }
+/* IMPORTANT: Correction du masquage pour le thème clair */
 body.light-theme .skills-carousel-container {
     mask-image: linear-gradient(
         to right,
@@ -103,7 +104,7 @@ body.light-theme .skills-carousel-container {
 .skills-carousel {
     display: inline-block;
     padding-left: 100%; 
-    animation: scroll-skills 35s linear infinite; /* Temps d'animation légèrement augmenté pour compenser la taille */
+    animation: scroll-skills 35s linear infinite; 
 }
 .skills-carousel-container:hover .skills-carousel {
     animation-play-state: paused;
@@ -111,25 +112,30 @@ body.light-theme .skills-carousel-container {
 
 .skills-carousel-item {
     display: inline-block;
-    /* TAILLE AUGMENTÉE */
     font-size: clamp(2.5rem, 6vw, 5rem); 
-    /* ESPACEMENT AJUSTÉ */
     margin: 0 20px; 
-    padding: 15px; /* Padding augmenté pour la bordure */
-
+    padding: 15px; 
     color: var(--primary-color, cyan); 
-    opacity: 0.4; 
+    opacity: 0.4; /* Opacité par défaut pour le thème sombre */
     transition: opacity 0.3s, transform 0.3s, filter 0.3s, border-color 0.3s;
     cursor: default;
     
     border: 1px solid rgba(0, 255, 255, 0.2); 
-    border-radius: 8px; /* Rayon de bordure légèrement augmenté pour être proportionnel à la taille */
+    border-radius: 8px; 
 }
+
+/* NOUVELLE RÈGLE: Augmente l'opacité de base pour le thème clair */
+body.light-theme .skills-carousel-item {
+    opacity: 0.7; 
+    /* La bordure reste claire, mais l'icône est plus visible. */
+    border-color: rgba(0, 150, 200, 0.3); /* Bordure légèrement plus foncée pour le contraste */
+}
+
 
 .skills-carousel-item:hover {
     opacity: 1; 
-    transform: scale(1.05); /* Facteur de zoom légèrement réduit pour les grandes tailles */
-    filter: drop-shadow(0 0 10px var(--primary-color, cyan)); /* Ombre augmentée */
+    transform: scale(1.05); 
+    filter: drop-shadow(0 0 10px var(--primary-color, cyan)); 
     border-color: var(--primary-color, cyan); 
 }
 
