@@ -19,7 +19,11 @@ const text = {
     sectionEsportText: "Les jeux vidéo ont aussi beaucoup compté pendant ma jeunesse, où j’étais concentré uniquement sur le sport. En rentrant chez moi, mes sources de motivation étaient les jeux. J’ai donc intégré des équipes Esport qui m’ont donné des expériences uniques. Je pense qu'avoir participé à des compétitions de Karaté et à des équipes d'Esport m'a permis d’améliorer mes soft skills, notamment la communication, le travail d'équipe et la gestion du stress.",
     sectionCuisineTitle: "Cuisine",
     sectionCuisineText: "Ce que j'aime surtout dans la cuisine, c'est l'aspect créatif, de pouvoir combiner différents ingrédients et épices pour arriver à un plat unique. C'est un peu comme le développement web, où l'on combine différents éléments pour arriver à un site web fonctionnel et agréable à utiliser.",
-    sectionMotivationText: "Mon portfolio est le fruit de la créativité, mais surtout du travail acharné. Je suis toujours à la recherche d'apprendre, d'affronter de nouveaux défis et de créer des expériences web modernes et agréables pour ceux qui visitent mes sites."
+    sectionMotivationText: "Mon portfolio est le fruit de la créativité, mais surtout du travail acharné. Je suis toujours à la recherche d'apprendre, d'affronter de nouveaux défis et de créer des expériences web modernes et agréables pour ceux qui visitent mes sites.",
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "Tous droits réservés",
+    footerMentions: "Mentions Légales"
   },
   en: {
     // Menu Hamburger
@@ -41,7 +45,11 @@ const text = {
     sectionEsportText: "Video games also mattered a lot during my youth, where I was concentrated only on sports. Coming home, my sources of motivation were games. I therefore joined Esport teams which gave me unique experiences. I think having participated in Karate competitions and Esport teams allowed me to improve my soft skills, notably communication, teamwork and stress management.",
     sectionCuisineTitle: "Cooking",
     sectionCuisineText: "What I especially love about cooking is the creative aspect, of being able to combine different ingredients and spices to arrive at a unique dish. It's a bit like web development, where you combine different elements to arrive at a functional and pleasant website to use.",
-    sectionMotivationText: "My portfolio is the fruit of creativity, but above all of hard work. I am always looking to learn, face new challenges and create modern and pleasant web experiences for those who visit my sites."
+    sectionMotivationText: "My portfolio is the fruit of creativity, but above all of hard work. I am always looking to learn, face new challenges and create modern and pleasant web experiences for those who visit my sites.",
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "All rights reserved",
+    footerMentions: "Legal Notice"
   },
   pt: {
     // Menu Hamburger
@@ -63,7 +71,11 @@ const text = {
     sectionEsportText: "Os videojogos também foram muito importantes durante a minha juventude, onde estava concentrado apenas no desporto. Ao chegar a casa, as minhas fontes de motivação eram os jogos. Por isso, integrei equipas de Esport que me deram experiências únicas. Penso que ter participado em competições de Karaté e em equipas de Esport me permitiu melhorar as minhas soft skills, nomeadamente a comunicação, o trabalho em equipa e a gestão do stress.",
     sectionCuisineTitle: "Culinária",
     sectionCuisineText: "O que mais gosto na culinária é o aspeto criativo, de poder combinar diferentes ingredientes e especiarias para chegar a um prato único. É um pouco como o desenvolvimento web, onde combinamos diferentes elementos para chegar a um site funcional e agradável de usar.",
-    sectionMotivationText: "O meu portfólio é fruto de criatividade, mas principalmente de muito trabalho. Estou sempre em busca de aprender, enfrentar novos desafios e criar experiências web modernas e agradáveis para quem visita os meus sites."
+    sectionMotivationText: "O meu portfólio é fruto de criatividade, mas principalmente de muito trabalho. Estou sempre em busca de aprender, enfrentar novos desafios e criar experiências web modernas e agradáveis para quem visita os meus sites.",
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "Todos os direitos reservados",
+    footerMentions: "Aviso Legal" // Corrigé
   }
 };
 
@@ -83,8 +95,8 @@ function applyText(lang) {
   document.querySelector('#section-cuisine p').textContent = t.sectionCuisineText;
   document.querySelector('#section-motivation p').textContent = t.sectionMotivationText;
 
-  // Menu Hamburger
-  const menuKeys = ['navAccueil','navProjets','navContact','navAPropos','navInfo','navCV'];
+  // Menu Hamburger & FOOTER
+  const menuKeys = ['navAccueil','navProjets','navContact','navApropos','navInfo','navCV', 'allRightsReserved', 'footerMentions'];
   menuKeys.forEach(key => {
     const el = document.querySelector(`[data-translate="${key}"]`);
     if (el) el.textContent = t[key];

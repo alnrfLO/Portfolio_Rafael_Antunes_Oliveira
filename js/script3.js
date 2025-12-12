@@ -19,7 +19,11 @@ const translations = {
     placeholder_message: 'Votre message',
     submit: 'Envoyer',
     submitting: 'Envoi...',
-    theme: '🎨 Thème'
+    theme: '🎨 Thème',
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "Tous droits réservés",
+    footerMentions: "Mentions Légales"
   },
   en: {
     navAccueil: "Home",
@@ -39,7 +43,11 @@ const translations = {
     placeholder_message: 'Your message',
     submit: 'Send',
     submitting: 'Sending...',
-    theme: '🎨 Theme'
+    theme: '🎨 Theme',
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "All rights reserved",
+    footerMentions: "Legal Notice"
   },
   pt: {
     navAccueil: "Início",
@@ -59,7 +67,11 @@ const translations = {
     placeholder_message: 'Sua mensagem',
     submit: 'Enviar',
     submitting: 'A enviar...',
-    theme: '🎨 Tema'
+    theme: '🎨 Tema',
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "Todos os direitos reservados",
+    footerMentions: "Aviso Legal" // Corrigé
   }
 };
 
@@ -78,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function applyTranslations(currentLang) {
     const t = translations[currentLang] || translations.fr;
 
-    // Menu hamburger
+    // Menu hamburger & FOOTER
     document.querySelectorAll('[data-translate]').forEach(el => {
       const key = el.getAttribute('data-translate');
       if (t[key]) el.textContent = t[key];

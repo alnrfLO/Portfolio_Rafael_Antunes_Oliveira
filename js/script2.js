@@ -33,7 +33,11 @@ const translations = {
 
     modalDownload: "Télécharger",
     modalVisit: "Visiter",
-    modalClose: "Fermer"
+    modalClose: "Fermer",
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "Tous droits réservés",
+    footerMentions: "Mentions Légales"
   },
   en: {
     navAccueil: "Home",
@@ -69,7 +73,11 @@ const translations = {
 
     modalDownload: "Download",
     modalVisit: "Visit",
-    modalClose: "Close"
+    modalClose: "Close",
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "All rights reserved",
+    footerMentions: "Legal Notice"
   },
   pt: {
     navAccueil: "Início",
@@ -104,7 +112,11 @@ const translations = {
 
     modalDownload: "Baixar",
     modalVisit: "Visitar",
-    modalClose: "Fechar"
+    modalClose: "Fechar",
+    
+    // TRADUCTIONS FOOTER AJOUTÉES
+    allRightsReserved: "Todos os direitos reservados",
+    footerMentions: "Aviso Legal" // Corrigé
   }
 };
 
