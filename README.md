@@ -1,6 +1,5 @@
 # 🚀 Portfolio de Rafael Antunes Oliveira
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://portfolio-rafael-antunes-oliveira.vercel.app/)
 
 Ce dépôt contient le code source complet du portfolio personnel de **Rafael Antunes Oliveira**, Étudiant en 2ème année de MMI et futur Développeur Web Full Stack.
