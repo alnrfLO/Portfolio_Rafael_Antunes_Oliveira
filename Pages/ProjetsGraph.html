@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style2.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/menu-hamburger.css" />
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 140px;
+    }
+    .portfolio {
+      flex: 1;
+    }
+    .main-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 10;
+      margin-top: 0;
+    }
+
+    h2#projectsTitle {
+      font-size: clamp(1.3rem, 4.5vw, 2.5rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      padding: 0 1rem;
+    }
+
+    #langSelect {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      padding: clamp(0.4rem, 1vw, 0.5rem);
+    }
+
+    .theme-toggle {
+      font-size: clamp(0.8rem, 2vw, 1rem);
+      padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.8rem, 2vw, 1rem);
+    }
+
+    @media (max-width: 768px) {
+      h2#projectsTitle {
+        font-size: clamp(1rem, 3.5vw, 1.8rem);
+        padding: 0 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2#projectsTitle {
+        font-size: clamp(0.9rem, 3vw, 1.5rem);
+        padding: 0 0.5rem;
+        margin: 1rem 0;
+      }
+      #langSelect,
+      .theme-toggle {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+      }
+    }
+
+    @media (max-width: 375px) {
+      h2#projectsTitle {
+        font-size: 0.85rem;
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border: 2px solid var(--primary-color, #0ff);
+      border-radius: 15px;
+      padding: 2.5rem;
+      max-width: 750px;
+      width: 95%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      position: relative;
+      color: white;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      margin: 0;
+      color: var(--primary-color, #0ff);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--primary-color, #0ff);
+      transition: transform 0.2s;
+    }
+
+    .close-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--primary-color, #0ff);
+      display: block;
+    }
+
+    .modal-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      background: rgba(0, 255, 255, 0.2);
+      border: 1px solid var(--primary-color, #0ff);
+      color: var(--primary-color, #0ff);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .tag:hover {
+      background: var(--primary-color, #0ff);
+      color: #000;
+    }
+
+    .modal-action {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 0.7rem 1.5rem;
+      border: 2px solid var(--primary-color, #0ff);
+      background: var(--primary-color, #0ff);
+      color: #000;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .modal-btn:hover {
+      background: transparent;
+      color: var(--primary-color, #0ff);
+    }
+
+    .modal-btn.secondary {
+      background: transparent;
+      color: var(--primary-color, #0ff);
+    }
+
+    .modal-btn.secondary:hover {
+      background: var(--primary-color, #0ff);
+      color: #000;
+    }
+
+    body.light-theme .modal-content {
+      background: linear-gradient(135deg, #e0f0ff 0%, #b3f0ff 100%);
+      border-color: #0077cc;
+      color: #222;
+    }
+
+    body.light-theme .modal-title {
+      color: #0077cc;
+    }
+
+    body.light-theme .close-btn {
+      color: #0077cc;
+    }
+
+    body.light-theme .tag {
+      background: rgba(0, 119, 204, 0.2);
+      border-color: #0077cc;
+      color: #0077cc;
+    }
+
+    body.light-theme .tag:hover {
+      background: #0077cc;
+      color: white;
+    }
+
+    body.light-theme .modal-btn {
+      border-color: #0077cc;
+      background: #0077cc;
+      color: white;
+    }
+
+    body.light-theme .modal-btn:hover {
+      background: transparent;
+      color: #0077cc;
+    }
+
+    .language-stats {
+      display: flex;
+      width: 90%;
+      max-width: 800px;
+      height: 35px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 2rem auto 2.5rem;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+      border: 2px solid #0ff;
+      background: rgba(0, 255, 255, 0.05);
+    }
+
+    body.light-theme .language-stats {
+      border-color: #0077cc;
+      box-shadow: 0 4px 12px rgba(0, 119, 204, 0.2);
+      background: rgba(0, 119, 204, 0.05);
+    }
+
+    .stat-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-segment:hover {
+      filter: brightness(1.15);
+      transform: scaleY(1.05);
+    }
+
+    .stat-Photoshop {
+      background: linear-gradient(135deg, #3776ab, #366994);
+      flex: 4;
+    }
+
+    .stat-Illustrator {
+      background: linear-gradient(135deg, #e34c26, #ff6b4d);
+      flex: 1;
+    }
+
+
+    .stat-segment.active {
+      box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.4);
+      transform: scaleY(1.15);
+      z-index: 5;
+    }
+
+    .stat-segment.inactive {
+      filter: grayscale(100%) brightness(0.7);
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .language-stats {
+        width: 95%;
+        height: 32px;
+        margin: 1.5rem auto 2rem;
+      }
+      .stat-segment {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .language-stats {
+        height: 30px;
+        margin: 1.5rem auto 1.8rem;
+      }
+      .stat-segment {
+        font-size: 0.7rem;
+        font-weight: 600;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .language-stats {
+        height: 28px;
+      }
+      .stat-segment {
+        font-size: 0.65rem;
+      }
+    }
+
+  </style>
+  <script src="../js/menu-hamburger.js" defer></script>
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/etoile.js" defer></script>
+  <script src="../js/script7.js" defer></script>
+</head>
+<body>
+  <div class="top-controls">
+    <select id="langSelect">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="pt">Portugais</option>
+    </select>
+    <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()" data-translate="theme">🎨 Thème</button>
+  </div>
+  <canvas id="stars"></canvas>
+
+  <div class="navbar">
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+<nav class="menu" id="mobileMenu">
+  <a href="../index.html" data-translate="navAccueil">Accueil</a>
+  
+  <div class="submenu">
+    <button class="submenu-toggle" data-translate="navProjets">Projets</button> 
+    <div class="submenu-list">
+      <a href="ProjetsDev.html" data-translate="navProjetsDev">Projets Développement</a>
+      <a href="ProjetsGraph.html" data-translate="navProjetsGraph">Projets Graphisme</a>
+    </div>
+  </div>
+  <a href="Contact.html" data-translate="navContact">Contact</a>
+  
+  <div class="submenu">
+    <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
+    <div class="submenu-list">
+      <a href="Info.html" data-translate="navInfo">Info</a>
+      <a href="CV.html" data-translate="navCV">CV</a>
+    </div>
+  </div>
+</nav>
+
+  <header>
+    <div>
+    </div>
+  </header>
+
+  <section class="portfolio">
+    <div class="language-stats">
+      <div class="stat-segment stat-Illustrator" title="50% Illustrator">50% Illustrator</div>
+      <div class="stat-segment stat-Photoshop" title="50% Photoshop">50% Photoshop</div>
+    </div>
+    <div id="project-filters" class="filters">
+      <button data-filter="all" class="active">Tous</button>
+      <button data-filter="Illustrator">Illustrator</button>
+      <button data-filter="Photoshop">Photoshop</button>
+    </div>
+
+    <div class="projects-list">
+      <div class="project-card" data-category="Illustrator" data-project-id="1" data-download="../downloads/snake.zip">
+        <h3 id="proj1title">Illustrator</h3>
+        <p id="proj1text">Clicker pour Télécharger un fichier.zip contenant le Snake.</p>
+      </div>
+
+      <div class="project-card" data-category="Photoshop" data-project-id="2" data-download="../downloads/Tetris.zip">
+        <h3 id="proj2title">Photoshop</h3>
+        <p id="proj2text">Clicker pour Télécharger un fichier.zip contenant le Tetris</p>
+      </div>
+    </div>
+  </section>
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Titre du Projet</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <img id="modalImage" src="" alt="Project image" class="modal-image" style="display: none;">
+      <p class="modal-description" id="modalDescription"></p>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-action">
+        <button class="modal-btn" id="modalActionBtn" onclick="handleModalAction()">Télécharger</button>
+        <button class="modal-btn secondary" onclick="closeModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+<footer class="main-footer">
+    <div class="max-w-7xl mx-auto">
+        &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — <span data-translate="allRightsReserved">Tous droits réservés</span> |
+        <a href="Mentions.html" data-translate="footerMentions">Mentions Légales</a>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('#project-filters button');
+  const statSegments = document.querySelectorAll('.stat-segment');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  function updateFilter(filter) {
+    filterButtons.forEach(btn => {
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    statSegments.forEach(segment => {
+      segment.classList.remove('active', 'inactive');
+      if (filter === 'all') {
+        segment.classList.add('active');
+      } else if (
+        (filter === 'Illustrator' && segment.classList.contains('stat-Illustrator')) ||
+        (filter === 'Photoshop' && segment.classList.contains('stat-Photoshop')) 
+      ) {
+        segment.classList.add('active');
+      } else {
+        segment.classList.add('inactive');
+      }
+    });
+    
+    projectCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      
+      if (filter === 'all' || category === filter) {
+        card.style.display = 'block'; 
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      updateFilter(filter);
+    });
+  });
+
+  updateFilter('all');
+
+  const savedLang = localStorage.getItem('lang') || 'fr';
+  const langSelect = document.getElementById('langSelect');
+  if (langSelect) {
+    langSelect.value = savedLang;
+    langSelect.addEventListener('change', (e) => {
+      localStorage.setItem('lang', e.target.value);
+    });
+  }
+
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+});
+</script>
+
+</body>
+</html>
