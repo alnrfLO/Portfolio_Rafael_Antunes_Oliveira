@@ -7,8 +7,9 @@ const translations = {
     navAPropos: "À propos",
     navInfo: "Info",
     navCV: "CV",
+    theme: '🎨 Thème',
 
-    // PROJETS DÉVELOPPEMENT (ID 1-7)
+    // PROJETS DÉVELOPPEMENT (ID 1-7) - Gardés pour la cohérence du script
     proj1title: "Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
     proj2title: "Script Python Tetris",
@@ -24,261 +25,361 @@ const translations = {
     proj7title: "Projet PHP",
     proj7text: "Projet en PHP et base de données.",
     
-    // PROJETS GRAPHISME (NOUVEAU - ID 8-9)
+    // PROJETS GRAPHISME (ID 8 et +)
     proj8title: "Projet Illustrator",
-    proj8text: "Création vectorielle et logo (Télécharger le PDF).",
-    proj9title: "Création Photoshop",
-    proj9text: "Retouche photo et montage complexe (Voir l'image).",
+    proj8text: "Création vectorielle et logo.",
+    proj9title: "Projet Photoshop",
+    proj9text: "Retouche d'image et photomontage.", 
 
-    proj1desc: "Un jeu de serpent classique développé en Python avec Pygame. Le joueur contrôle un serpent qui grandit à chaque nourriture consommée. Le jeu se termine si le serpent se heurte à un mur ou à lui-même.",
-    proj2desc: "Une implémentation du jeu Tetris en Python. Les pièces tombent du haut et le joueur doit les positionner pour remplir des lignes. Chaque ligne complète est supprimée et rapporte des points.",
-    proj3desc: "Le jeu Pong classique en Python. Deux joueurs contrôlent des raquettes pour faire rebondir une balle. C'est un jeu multijoueur simple et addictif.",
-    proj4desc: "Le jeu du Morpion (Tic-Tac-Toe) en Python. Jouez contre l'ordinateur avec une intelligence artificielle simple. C'est un projet pédagogique pour apprendre les algorithmes de base.",
-    proj5desc: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec un design moderne et épuré.",
-    proj6desc: "Un mini-jeu interactif créé avec JavaScript vanilla. Testez vos réflexes et essayez de battre le meilleur score. Code moderne et optimisé.",
-    proj7desc: "Description du projet PHP réalisé avec une gestion de base de données (ex: MySQL) pour un développement back-end.",
+    proj1desc: "Un jeu de serpent classique développé en Python avec Pygame.",
+    proj2desc: "Une implémentation du jeu Tetris en Python.",
+    proj3desc: "Le jeu Pong classique en Python.",
+    proj4desc: "Le jeu du Morpion (Tic-Tac-Toe) en Python.",
+    proj5desc: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203.",
+    proj6desc: "Un mini-jeu interactif créé avec JavaScript vanilla.",
+    proj7desc: "Description détaillée du projet PHP.",
+    proj8desc: "Création d'un logo vectoriel et d'illustrations complexes avec Adobe Illustrator. Compétences en typographie et composition visuelle.",
+    proj9desc: "Utilisation avancée d'Adobe Photoshop pour la retouche professionnelle et la création de photomontages. Maîtrise des calques, masques et effets spéciaux.",
     
-    // DESCRIPTIONS GRAPHISME (NOUVEAU)
-    proj8desc: "Conception d'une identité visuelle complète, création de logos vectoriels et supports de communication en utilisant Adobe Illustrator.",
-    proj9desc: "Projet de retouche photo avancée, d'illustration numérique ou de photomontage créatif réalisé avec Adobe Photoshop.",
-
     modalDownload: "Télécharger",
     modalVisit: "Visiter",
     modalClose: "Fermer",
-
-    // TRADUCTIONS FOOTER AJOUTÉES
+    
     allRightsReserved: "Tous droits réservés",
     footerMentions: "Mentions Légales"
   },
   en: {
+    // ... (Vos traductions en anglais)
     navAccueil: "Home",
     navProjets: "Projects",
     navContact: "Contact",
     navAPropos: "About",
     navInfo: "Info",
     navCV: "CV",
-
-    // PROJETS DÉVELOPPEMENT
-    proj1title: "Python Snake Script",
-    proj1text: "Click to download a .zip file containing the Snake game.",
-    proj2title: "Python Tetris Script",
-    proj2text: "Click to download a .zip file containing the Tetris game.",
-    proj3title: "Python Pong Script",
-    proj3text: "Click to download a .zip file containing the Pong game.",
-    proj4title: "Python TicTacToe Script",
-    proj4text: "Click to download a .zip file containing the TicTacToe game.",
-    proj5title: "Responsive HTML Website",
-    proj5text: "Responsive and accessible site made with HTML/CSS/PHP.",
-    proj6title: "JS Game",
-    proj6text: "Mini-game made with JavaScript.",
-    proj7title: "PHP Project",
-    proj7text: "PHP and database project.",
-
-    // PROJETS GRAPHISME (NOUVEAU)
+    theme: '🎨 Theme',
     proj8title: "Illustrator Project",
-    proj8text: "Vector creation and logo (Download PDF).",
-    proj9title: "Photoshop Creation",
-    proj9text: "Photo editing and complex montage (View image).",
-
-    proj1desc: "A classic Snake game developed in Python with Pygame...",
-    proj2desc: "An implementation of Tetris in Python...",
-    proj3desc: "The classic Pong game in Python...",
-    proj4desc: "Tic-Tac-Toe in Python...",
-    proj5desc: "A professional and responsive website made for the SAE203 project...",
-    proj6desc: "An interactive mini-game created with vanilla JavaScript...",
-    proj7desc: "Description of the PHP project developed with database management (e.g., MySQL) for back-end development.",
-
-    // DESCRIPTIONS GRAPHISME (NOUVEAU)
-    proj8desc: "Design of a complete visual identity, creation of vector logos and communication materials using Adobe Illustrator.",
-    proj9desc: "Advanced photo editing or creative photomontage project realized with Adobe Photoshop.",
-    
+    proj8text: "Vector creation and logo design.",
+    proj9title: "Photoshop Project",
+    proj9text: "Image retouching and photo manipulation.",
+    proj8desc: "Creation of a vector logo and complex illustrations using Adobe Illustrator. Skills in typography and visual composition.",
+    proj9desc: "Advanced use of Adobe Photoshop for professional retouching and photomontage creation. Mastery of layers, masks, and special effects.",
     modalDownload: "Download",
     modalVisit: "Visit",
     modalClose: "Close",
-
-    // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "All rights reserved",
     footerMentions: "Legal Notice"
   },
   pt: {
+    // ... (Vos traductions en portugais)
     navAccueil: "Início",
-    navProjetos: "Projetos",
-    navContato: "Contato",
+    navProjets: "Projetos",
+    navContact: "Contato",
     navAPropos: "Sobre",
     navInfo: "Info",
     navCV: "CV",
-
-    // PROJETOS DESENVOLVIMENTO
-    proj1title: "Script Python Snake",
-    proj1text: "Clique para baixar um arquivo .zip contendo o jogo Snake.",
-    proj2title: "Script Python Tetris",
-    proj2text: "Clique para baixar um arquivo .zip contendo o jogo Tetris.",
-    proj3title: "Script Python Pong",
-    proj3text: "Clique para baixar um arquivo .zip contendo o jogo Pong.",
-    proj4title: "Script Python TicTacToe",
-    proj4text: "Clique para baixar um arquivo .zip contendo o jogo TicTacToe.",
-    proj5title: "Site HTML Responsivo",
-    proj5text: "Site responsivo e acessível feito com HTML/CSS/PHP.",
-    proj6title: "Jogo JS",
-    proj6text: "Mini-jogo feito com JavaScript.",
-    proj7title: "Projeto PHP",
-    proj7text: "Projeto PHP e banco de dados.",
-
-    // PROJETOS GRÁFICOS (NOVO)
+    theme: '🎨 Tema',
     proj8title: "Projeto Illustrator",
-    proj8text: "Criação vetorial e logotipo (Baixar PDF).",
-    proj9title: "Criação Photoshop",
-    proj9text: "Retoque de fotos e montagem complexa (Ver imagem).",
-
-    proj1desc: "Um jogo clássico de Snake desenvolvido em Python com Pygame...",
-    proj2desc: "Uma implementação do jogo Tetris em Python...",
-    proj3desc: "O jogo clássico Pong em Python...",
-    proj4desc: "O jogo da velha (Tic-Tac-Toe) em Python...",
-    proj5desc: "Um site profissional e responsivo feito para o projeto SAE203...",
-    proj6desc: "Um mini-jogo interativo criado com JavaScript vanilla...",
-    proj7desc: "Descrição do projeto PHP desenvolvido com gerenciamento de banco de dados (ex: MySQL) para desenvolvimento back-end.",
-
-    // DESCRIÇÕES GRÁFICAS (NOVO)
-    proj8desc: "Design de uma identidade visual completa, criação de logotipos vetoriais e materiais de comunicação utilizando Adobe Illustrator.",
-    proj9desc: "Projeto de retoque fotográfico avançado ou fotomontagem criativa realizado com Adobe Photoshop.",
-
+    proj8text: "Criação vetorial e logotipo.",
+    proj9title: "Projeto Photoshop",
+    proj9text: "Retoque de imagem e fotomontagem.",
+    proj8desc: "Criação de um logotipo vetorial e ilustrações complexas usando Adobe Illustrator.",
+    proj9desc: "Uso avançado do Adobe Photoshop para retoque profissional e criação de fotomontagens.",
     modalDownload: "Baixar",
     modalVisit: "Visitar",
     modalClose: "Fechar",
-    
-    // TRADUCTIONS FOOTER AJOUTÉES (Corrigé: Aviso Legal pour Mentions Légales)
     allRightsReserved: "Todos os direitos reservados",
-    footerMentions: "Aviso Legal" 
+    footerMentions: "Aviso Legal"
   }
 };
-
-// ⚡ Project details pour le modal
+// ⚡ Détails des projets pour le modal et le carrousel
+// ATTENTION : Pour éviter les erreurs 'File Not Found', l'image de couverture est dupliquée 3 fois.
+// REMPLACER ces chemins plus tard par des captures d'écran réelles.
 const projectDetails = {
-  // PROJETS DÉVELOPPEMENT (ID 1-7)
-  1: { image: "../img/snake.png", languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
-  2: { image: "../img/tetris.png", languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },
-  3: { image: "../img/pong.png", languages: ["Python", "Pygame"], download: "../downloads/Pong.zip" },
-  4: { image: "../img/tictactoe.png", languages: ["Python"], download: "../downloads/TicTacToe.zip" },
-  5: { image: "../img/SAE203.png", languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
-  6: { image: "../img/jeu-js.png", languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" },
-  7: { image: "", languages: ["PHP","CSS", "MySQL"], link: "../projets/" },
-
-  // PROJETS GRAPHISME (NOUVEAU - ID 8-9)
-  8: { image: "../img/illustrator_mockup.png", languages: ["Illustrator", "Vectoriel", "Design"], download: "../downloads/illustrator_project.pdf" },
-  9: { image: "../img/photoshop_result.jpg", languages: ["Photoshop", "Retouche", "Montage"], link: "../img/photoshop_result.jpg" }
+  1: { images: ["../img/snake.png", "../img/snake.png", "../img/snake.png"], languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
+  2: { images: ["../img/tetris.png", "../img/tetris.png", "../img/tetris.png"], languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },
+  3: { images: ["../img/pong.png", "../img/pong.png", "../img/pong.png"], languages: ["Python", "Pygame"], download: "../downloads/Pong.zip" },
+  4: { images: ["../img/tictactoe.png", "../img/tictactoe.png", "../img/tictactoe.png"], languages: ["Python"], download: "../downloads/TicTacToe.zip" },
+  5: { images: ["../img/SAE203.png", "../img/SAE203.png", "../img/SAE203.png"], languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
+  6: { images: ["../img/jeu-js.png", "../img/jeu-js.png", "../img/jeu-js.png"], languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" },
+  7: { images: ["../img/php_project.png", "../img/php_project.png", "../img/php_project.png"], languages: ["PHP","CSS"], link: "../projets/" } 
 };
 
 
+// Variables d'état du carrousel
+let currentSlideIndex = 0;
+let currentProjectId = null;
+
+
+// ===================================================================
+// LOGIQUE DE TRADUCTION ET D'AFFICHAGE DU TEXTE
+// ===================================================================
+
 function applyText(lang) {
-  const t = translations[lang];
+  const t = translations[lang] || translations.fr;
+  const currentUrl = window.location.href;
+
+  // Mise à jour des textes des projets sur la carte
+  for (let i = 1; i <= 7; i++) {
+    const card = document.querySelector(`.project-card[data-project-id="${i}"]`);
+    if (card) {
+      card.querySelector('h3').textContent = t[`proj${i}title`];
+      card.querySelector('p').textContent = t[`proj${i}text`];
+      
+      // Mise à jour de la description pour l'accessibilité
+      card.dataset.description = t[`proj${i}desc`]; 
+    }
+  }
+
+  // Mise à jour des textes génériques (navigation, pied de page)
   document.querySelectorAll('[data-translate]').forEach(el => {
     const key = el.getAttribute('data-translate');
-    if (t[key]) el.textContent = t[key];
+    if (t[key]) {
+      el.textContent = t[key];
+    }
   });
 
-  // Boucle mise à jour pour inclure les projets Graphisme (jusqu'à 9)
-  for (let i = 1; i <= 9; i++) { 
-    const titleEl = document.getElementById(`proj${i}title`);
-    const textEl = document.getElementById(`proj${i}text`);
-    if (titleEl && t[`proj${i}title`]) titleEl.textContent = t[`proj${i}title`];
-    if (textEl && t[`proj${i}text`]) textEl.textContent = t[`proj${i}text`];
+  // Mise à jour du bouton de la modale pour la langue
+  const actionBtn = document.getElementById('modalActionBtn');
+  if (actionBtn) {
+      if (actionBtn.dataset.action === 'download') {
+          actionBtn.textContent = t.modalDownload;
+      } else if (actionBtn.dataset.action === 'link') {
+          actionBtn.textContent = t.modalVisit;
+      }
   }
 }
 
+// ===================================================================
+// LOGIQUE DU CARROUSEL
+// ===================================================================
 
-function openModal(projectId) {
-  const project = projectDetails[projectId];
-  if (!project) return;
+function showSlides(n) {
+    const details = projectDetails[currentProjectId];
+    const images = details ? details.images : [];
+    const slidesContainer = document.getElementById('slides-container');
+    const dotsContainer = document.getElementById('dot-container');
 
-  const lang = document.getElementById("langSelect").value || "fr";
-  const t = translations[lang];
+    if (!images || images.length === 0) {
+        slidesContainer.innerHTML = '';
+        dotsContainer.innerHTML = '';
+        return;
+    }
 
-  document.getElementById('modalTitle').textContent = t[`proj${projectId}title`];
-  document.getElementById('modalDescription').textContent = t[`proj${projectId}desc`];
+    if (n > images.length - 1) {
+        currentSlideIndex = 0;
+    }
+    if (n < 0) {
+        currentSlideIndex = images.length - 1;
+    }
 
-  const imgEl = document.getElementById('modalImage');
-  if (project.image) {
-    imgEl.src = project.image;
-    imgEl.style.display = 'block';
-  } else imgEl.style.display = 'none';
+    // Affichage des slides par transformation
+    // Le slidesContainer DOIT avoir la largeur totale de TOUTES les slides (e.g., 300% pour 3 slides)
+    slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
 
-  const tagsContainer = document.getElementById('modalTags');
-  tagsContainer.innerHTML = '';
-  project.languages.forEach(langTag => {
-    const span = document.createElement('span');
-    span.className = 'tag';
-    span.textContent = langTag;
-    tagsContainer.appendChild(span);
-  });
+    // Mise à jour des points
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < images.length; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        if (i === currentSlideIndex) {
+            dot.classList.add('active');
+        }
+        // Utilisation de i pour naviguer directement au slide
+        dot.onclick = () => showSlides(i); 
+        dotsContainer.appendChild(dot);
+    }
+}
 
-  const actionBtn = document.getElementById('modalActionBtn');
-  if (project.download) {
-    actionBtn.textContent = t.modalDownload;
-    actionBtn.dataset.action = 'download';
-    actionBtn.dataset.link = project.download;
-  } else if (project.link) {
-    actionBtn.textContent = t.modalVisit;
-    actionBtn.dataset.action = 'link';
-    actionBtn.dataset.link = project.link;
-  }
-
-  const closeBtn = document.querySelector('.modal-btn.secondary');
-  if (closeBtn) closeBtn.textContent = t.modalClose;
-
-  document.getElementById('projectModal').classList.add('active');
+function plusSlides(n) {
+    // n doit être -1 ou 1
+    currentSlideIndex += n;
+    showSlides(currentSlideIndex);
 }
 
 function closeModal() {
-  document.getElementById('projectModal').classList.remove('active');
+    document.getElementById('projectModal').classList.remove('active');
 }
 
 function handleModalAction() {
-  const btn = document.getElementById('modalActionBtn');
-  if (btn.dataset.action === 'download') {
-    const a = document.createElement('a');
-    a.href = btn.dataset.link;
-    a.download = '';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  } else if (btn.dataset.action === 'link') {
-    // Si c'est un lien, ouvrir dans un nouvel onglet
-    window.open(btn.dataset.link, '_blank'); 
-  }
+    const btn = document.getElementById('modalActionBtn');
+    const link = btn.dataset.link;
+    if (link) {
+        if (btn.dataset.action === 'download') {
+            // Création d'un lien temporaire pour forcer le téléchargement
+            const a = document.createElement('a');
+            a.href = link;
+            a.download = ''; // force le navigateur à télécharger
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } else if (btn.dataset.action === 'link') {
+            window.open(link, '_blank'); // Ouvrir dans un nouvel onglet
+        }
+    }
+}
+
+// ===================================================================
+// LOGIQUE D'OUVERTURE DE LA MODALE
+// ===================================================================
+
+function openModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const details = projectDetails[projectId];
+    const card = document.querySelector(`.project-card[data-project-id="${projectId}"]`);
+
+    if (!details || !card) return;
+
+    // Récupérer la langue actuelle pour la description
+    const lang = localStorage.getItem('lang') || 'fr';
+    const t = translations[lang] || translations.fr;
+    const descKey = `proj${projectId}desc`;
+    
+    currentProjectId = projectId;
+    currentSlideIndex = 0; 
+    
+    // Remplir les détails du projet
+    document.getElementById('modalTitle').textContent = t[`proj${projectId}title`];
+    document.getElementById('modalDescription').textContent = t[descKey];
+
+    // Gérer le bouton d'action
+    const actionBtn = document.getElementById('modalActionBtn');
+    actionBtn.style.display = 'block'; 
+
+    if (details.download) {
+        actionBtn.textContent = t.modalDownload;
+        actionBtn.dataset.action = 'download';
+        actionBtn.dataset.link = details.download;
+    } else if (details.link) {
+        actionBtn.textContent = t.modalVisit;
+        actionBtn.dataset.action = 'link';
+        actionBtn.dataset.link = details.link;
+    } else {
+        actionBtn.style.display = 'none';
+        actionBtn.removeAttribute('data-action');
+        actionBtn.removeAttribute('data-link');
+    }
+
+    // Gérer les tags
+    const tagsContainer = document.getElementById('modalTags');
+    tagsContainer.innerHTML = details.languages.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+    // Gérer le carrousel
+    const images = details.images || [];
+    const slidesContainer = document.getElementById('slides-container');
+    slidesContainer.innerHTML = '';
+
+    if (images.length > 0) {
+        // Crée toutes les slides
+        images.forEach(src => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'slide';
+            slideDiv.innerHTML = `<img src="${src}" alt="Project image" />`;
+            slidesContainer.appendChild(slideDiv);
+        });
+
+        // Met à jour la largeur du conteneur des slides pour la translation CSS
+        slidesContainer.style.width = `${images.length * 100}%`;
+
+        // Montre/cache les flèches et points si plus d'une image
+        const hasMultipleImages = images.length > 1;
+        document.querySelector('.carousel-container .prev').style.display = hasMultipleImages ? 'block' : 'none';
+        document.querySelector('.carousel-container .next').style.display = hasMultipleImages ? 'block' : 'none';
+        document.getElementById('dot-container').style.display = hasMultipleImages ? 'block' : 'none';
+        
+        showSlides(0); 
+    }
+
+
+    modal.classList.add('active');
 }
 
 
+// ===================================================================
+// Initialisation de la page et gestion des filtres
+// ===================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
-  const langSelect = document.getElementById("langSelect");
-  const savedLang = localStorage.getItem("lang") || "fr";
-  if (langSelect) {
-    langSelect.value = savedLang;
-    langSelect.addEventListener("change", e => {
-      const lang = e.target.value;
-      localStorage.setItem("lang", lang);
-      applyText(lang);
-      // NOTE: startTypewriter() n'est pas défini dans ce script (il est probablement dans un autre fichier js/étoile.js ou directement dans index.html)
-      // Si startTypewriter est nécessaire sur ces pages, assurez-vous qu'il est bien chargé.
+    // Récupérer tous les éléments nécessaires
+    const filterButtons = document.querySelectorAll('#project-filters button');
+    const statSegments = document.querySelectorAll('.stat-segment');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    // Fonction de filtrage
+    function updateFilter(filter) {
+        filterButtons.forEach(btn => {
+            if (btn.getAttribute('data-filter') === filter) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        statSegments.forEach(segment => {
+            segment.classList.remove('active', 'inactive');
+            if (filter === 'all') {
+                segment.classList.add('active');
+            } else if (
+                (filter === 'Illustrator' && segment.classList.contains('stat-Illustrator')) ||
+                (filter === 'Photoshop' && segment.classList.contains('stat-Photoshop')) 
+            ) {
+                segment.classList.add('active');
+            } else {
+                segment.classList.add('inactive');
+            }
+        });
+        
+        projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            
+            if (filter === 'all' || category === filter) {
+                card.style.display = 'block'; 
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Écouteurs pour les boutons de filtre
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            updateFilter(filter);
+        });
     });
-  }
 
-  applyText(savedLang);
-  // startTypewriter(); // Commenté car il n'est pas défini ici et ne semble pas nécessaire sur les pages projets
+    // Appliquer le filtre initial
+    updateFilter('all');
 
-  // Project cards
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      openModal(card.dataset.projectId);
+    // Gestion de la langue
+    const langSelect = document.getElementById("langSelect");
+    const savedLang = localStorage.getItem("lang") || "fr";
+    if (langSelect) {
+        langSelect.value = savedLang;
+        langSelect.addEventListener("change", e => {
+            const lang = e.target.value;
+            localStorage.setItem("lang", lang);
+            applyText(lang);
+        });
+    }
+
+    applyText(savedLang);
+
+    // Écouteurs pour les cartes de projet
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // openModal(projectId) prend l'ID du projet
+            openModal(card.dataset.projectId);
+        });
     });
-  });
 
-  // Modal click outside
-  window.addEventListener('click', e => {
-    const modal = document.getElementById('projectModal');
-    if (e.target === modal) closeModal();
-  });
+    // Écouteur pour fermer la modale en cliquant à l'extérieur
+    window.addEventListener('click', e => {
+        if (e.target === document.getElementById('projectModal')) {
+            closeModal();
+        }
+    });
 
-  // Set current year
-  const yearEl = document.getElementById('currentYear');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+    // Mise à jour de l'année
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });

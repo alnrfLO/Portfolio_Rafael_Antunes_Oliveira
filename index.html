@@ -69,7 +69,38 @@
 
 body { display: flex; flex-direction: column; min-height: 100vh; padding-bottom: 140px; }
 .hero-minimal { flex: 1; }
-.main-footer { position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: 10; margin-top: 0; }
+/* Modification du style pour le footer */
+.main-footer { 
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  width: 100%; 
+  z-index: 10; 
+  margin-top: 0; 
+  /* Nouveau style pour centrer le contenu du footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px 10px; /* Ajout d'un peu de padding */
+}
+/* Style pour le conteneur des liens de contact/sociaux */
+.footer-contact-links {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espace entre les icônes et le texte */
+    font-size: 1.1em;
+}
+.footer-contact-links a {
+    color: var(--text-color-secondary);
+    transition: color 0.3s;
+}
+.footer-contact-links a:hover {
+    color: var(--primary-color, cyan);
+}
+
 #langSelect { font-size: clamp(0.8rem, 2vw, 1rem); padding: clamp(0.4rem, 1vw, 0.5rem); }
 .theme-toggle { font-size: clamp(0.8rem, 2vw, 1rem); padding: clamp(0.4rem,1vw,0.5rem) clamp(0.8rem,2vw,1rem); }
 @media (max-width: 480px) { #langSelect, .theme-toggle { font-size: 0.75rem; padding: 0.3rem 0.5rem; } }
@@ -277,11 +308,9 @@ body.light-theme .quick-status {
       <i class="fab fa-git-alt skills-carousel-item" title="Git/GitHub"></i>
       <i class="fab fa-figma skills-carousel-item" title="Figma"></i>
       <i class="fab fa-wordpress-simple skills-carousel-item" title="WordPress"></i>
-      <i class="fab fa-adobe skills-carousel-item" title="Adobe Photoshop"></i>
       <i class="fas fa-pen-nib skills-carousel-item" title="Adobe Illustrator"></i>
       <i class="fas fa-video skills-carousel-item" title="DaVinci Resolve / Premier Pro"></i>
-      <i class="fas fa-database skills-carousel-item" title="SQL/Databases"></i>
-      
+      <i class="fas fa-database skills-carousel-item" title="SQL/Databases"></i>   
       <i class="fab fa-html5 skills-carousel-item" title="HTML5"></i>
       <i class="fab fa-css3-alt skills-carousel-item" title="CSS3"></i>
       <i class="fab fa-js-square skills-carousel-item" title="JavaScript"></i>
@@ -298,12 +327,20 @@ body.light-theme .quick-status {
       <i class="fas fa-database skills-carousel-item" title="SQL/Databases"></i>
     </div>
   </div>
-  </main>
+</main>
 
 <footer class="main-footer">
     <div class="max-w-7xl mx-auto">
         &copy; <span id="currentYear"></span> Rafael Antunes Oliveira — <span data-translate="allRightsReserved">Tous droits réservés</span> |
         <a href="Pages/Mentions.html" data-translate="footerMentions">Mentions Légales</a>
+    </div>
+    <div class="footer-contact-links">
+        <a href="mailto:raf.atns1103@gmail.com" title="Envoyer un e-mail à Rafael">
+            <i class="fas fa-envelope"></i> raf.atns1103@gmail.com
+        </a>
+        <span>|</span>
+        <a href="https://www.linkedin.com/in/rafatns/" target="_blank" title="Mon profil LinkedIn">
+            <i class="fab fa-linkedin"></i> </a>
     </div>
 </footer>
 
@@ -349,7 +386,6 @@ const homeTexts = {
     statusTitle: "🔎 RECHERCHE DE STAGE", 
     statusText: "Je suis activement à la recherche d'un stage de 3 mois en développement Front-end ou Back-end pour consolider mes acquis.",
     statusTechTitle: "Technologies récentes : ",
-    // NOUVEAU
     allRightsReserved: "Tous droits réservés",
     footerMentions: "Mentions Légales"
   },
@@ -367,7 +403,6 @@ const homeTexts = {
     statusTitle: "🔎 INTERNSHIP SEARCH",
     statusText: "I am actively looking for a 3-month internship in Front-end or Back-end development to consolidate my knowledge.",
     statusTechTitle: "Recent technologies: ",
-    // NOUVEAU
     allRightsReserved: "All rights reserved",
     footerMentions: "Legal Notice"
   },
@@ -385,7 +420,6 @@ const homeTexts = {
     statusTitle: "🔎 PROCURA POR ESTÁGIO",
     statusText: "Estou ativamente à procura de um estágio de 3 meses em desenvolvimento Front-end ou Back-end para consolidar meus conhecimentos.",
     statusTechTitle: "Tecnologias recentes: ",
-    // NOUVEAU
     allRightsReserved: "Todos os direitos reservados",
     footerMentions: "Aviso Legal"
   }
@@ -399,7 +433,6 @@ function updatePageText(lang) {
     if (key === 'homeTitle') {
     } else if (texts[key]) {
         if(key === 'statusTechTitle') {
-             // Traitement spécial pour le titre de technologie qui a des icônes
              const icons = el.innerHTML.match(/<i[^>]*><\/i>/g) || [];
              el.innerHTML = texts[key] + icons.join(' ');
         } else {

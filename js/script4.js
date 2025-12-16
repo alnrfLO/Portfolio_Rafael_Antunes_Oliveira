@@ -7,7 +7,7 @@ const text = {
     navAPropos: "À propos",
     navInfo: "Info",
     navCV: "CV",
-
+    theme: '🎨 Thème',
     // Sections
     sectionIntroTitle: "Introduction",
     sectionIntroText: "Né au Portugal, je suis passionné par le développement web, à la fois front-end et back-end. Et non, tous les geeks ne passent pas *que* leur vie derrière un écran... parfois, on touche aussi de l’herbe (vraie ou en CSS) .",
@@ -33,7 +33,7 @@ const text = {
     navAPropos: "About",
     navInfo: "Info",
     navCV: "CV",
-
+    theme: '🎨 Theme',
     // Sections
     sectionIntroTitle: "Introduction",
     sectionIntroText: "Born in Portugal, I am passionate about web development, both front-end and back-end. And no, not all geeks spend *only* their lives behind a screen... sometimes we touch grass too (real or in CSS) .",
@@ -59,7 +59,7 @@ const text = {
     navAPropos: "Sobre",
     navInfo: "Info",
     navCV: "CV",
-
+    theme: '🎨 Tema',
     // Sections
     sectionIntroTitle: "Introdução",
     sectionIntroText: "Nascido em Portugal, sou um entusiasta do desenvolvimento web, tanto front-end quanto back-end. E não, nem todos os geeks passam *apenas* a vida atrás de um ecrã... às vezes também tocamos relva (real ou em CSS) .",
@@ -96,7 +96,7 @@ function applyText(lang) {
   document.querySelector('#section-motivation p').textContent = t.sectionMotivationText;
 
   // Menu Hamburger & FOOTER
-  const menuKeys = ['navAccueil','navProjets','navContact','navApropos','navInfo','navCV', 'allRightsReserved', 'footerMentions'];
+  const menuKeys = ['navAccueil','navProjets','navContact','navApropos','navInfo','navCV', 'theme', 'allRightsReserved', 'footerMentions'];
   menuKeys.forEach(key => {
     const el = document.querySelector(`[data-translate="${key}"]`);
     if (el) el.textContent = t[key];

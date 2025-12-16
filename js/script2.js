@@ -1,4 +1,3 @@
-// Traductions fusionnées avec titres, textes et descriptions des projets
 const translations = {
   fr: {
     navAccueil: "Accueil",
@@ -7,6 +6,7 @@ const translations = {
     navAPropos: "À propos",
     navInfo: "Info",
     navCV: "CV",
+    theme: '🎨 Thème',
 
     proj1title: "Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
@@ -35,7 +35,6 @@ const translations = {
     modalVisit: "Visiter",
     modalClose: "Fermer",
     
-    // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Tous droits réservés",
     footerMentions: "Mentions Légales"
   },
@@ -46,6 +45,7 @@ const translations = {
     navAPropos: "About",
     navInfo: "Info",
     navCV: "CV",
+    theme: '🎨 Theme',
 
     proj1title: "Python Snake Script",
     proj1text: "Click to download a .zip file containing the Snake game.",
@@ -75,7 +75,6 @@ const translations = {
     modalVisit: "Visit",
     modalClose: "Close",
     
-    // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "All rights reserved",
     footerMentions: "Legal Notice"
   },
@@ -86,6 +85,7 @@ const translations = {
     navAPropos: "Sobre",
     navInfo: "Info",
     navCV: "CV",
+    theme: '🎨 Tema',
 
     proj1title: "Script Python Snake",
     proj1text: "Clique para baixar um arquivo .zip contendo o jogo Snake.",
@@ -114,130 +114,302 @@ const translations = {
     modalVisit: "Visitar",
     modalClose: "Fechar",
     
-    // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Todos os direitos reservados",
-    footerMentions: "Aviso Legal" // Corrigé
+    footerMentions: "Aviso Legal"
   }
 };
 
-// ⚡ Project details pour le modal
+// ⚡ Détails des projets pour le modal et le carrousel
+// ATTENTION : Pour éviter les erreurs 'File Not Found', l'image de couverture est dupliquée 3 fois.
+// REMPLACER ces chemins plus tard par des captures d'écran réelles.
 const projectDetails = {
-  1: { image: "../img/snake.png", languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
-  2: { image: "../img/tetris.png", languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },
-  3: { image: "../img/pong.png", languages: ["Python", "Pygame"], download: "../downloads/Pong.zip" },
-  4: { image: "../img/tictactoe.png", languages: ["Python"], download: "../downloads/TicTacToe.zip" },
-  5: { image: "../img/SAE203.png", languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
-  6: { image: "../img/jeu-js.png", languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" },
-  7: { image: "../img/php_project.png", languages: ["PHP","CSS"], link: "../projets/" } 
+  1: { images: ["../img/snake.png", "../img/snake.png", "../img/snake.png"], languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
+  2: { images: ["../img/tetris.png", "../img/tetris.png", "../img/tetris.png"], languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },
+  3: { images: ["../img/pong.png", "../img/pong.png", "../img/pong.png"], languages: ["Python", "Pygame"], download: "../downloads/Pong.zip" },
+  4: { images: ["../img/tictactoe.png", "../img/tictactoe.png", "../img/tictactoe.png"], languages: ["Python"], download: "../downloads/TicTacToe.zip" },
+  5: { images: ["../img/SAE203.png", "../img/SAE203.png", "../img/SAE203.png"], languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
+  6: { images: ["../img/jeu-js.png", "../img/jeu-js.png", "../img/jeu-js.png"], languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" },
+  7: { images: ["../img/php_project.png", "../img/php_project.png", "../img/php_project.png"], languages: ["PHP","CSS"], link: "../projets/" } 
 };
 
 
+// Variables d'état du carrousel
+let currentSlideIndex = 0;
+let currentProjectId = null;
+
+
+// ===================================================================
+// LOGIQUE DE TRADUCTION ET D'AFFICHAGE DU TEXTE
+// ===================================================================
+
 function applyText(lang) {
-  const t = translations[lang];
+  const t = translations[lang] || translations.fr;
+  const currentUrl = window.location.href;
+
+  // Mise à jour des textes des projets sur la carte
+  for (let i = 1; i <= 7; i++) {
+    const card = document.querySelector(`.project-card[data-project-id="${i}"]`);
+    if (card) {
+      card.querySelector('h3').textContent = t[`proj${i}title`];
+      card.querySelector('p').textContent = t[`proj${i}text`];
+      
+      // Mise à jour de la description pour l'accessibilité
+      card.dataset.description = t[`proj${i}desc`]; 
+    }
+  }
+
+  // Mise à jour des textes génériques (navigation, pied de page)
   document.querySelectorAll('[data-translate]').forEach(el => {
     const key = el.getAttribute('data-translate');
-    if (t[key]) el.textContent = t[key];
+    if (t[key]) {
+      el.textContent = t[key];
+    }
   });
 
-  // Mise à jour de la boucle pour inclure le projet 7 (i <= 7)
-  for (let i = 1; i <= 7; i++) {
-    const titleEl = document.getElementById(`proj${i}title`);
-    const textEl = document.getElementById(`proj${i}text`);
-    if (titleEl && t[`proj${i}title`]) titleEl.textContent = t[`proj${i}title`];
-    if (textEl && t[`proj${i}text`]) textEl.textContent = t[`proj${i}text`];
+  // Mise à jour du bouton de la modale pour la langue
+  const actionBtn = document.getElementById('modalActionBtn');
+  if (actionBtn) {
+      if (actionBtn.dataset.action === 'download') {
+          actionBtn.textContent = t.modalDownload;
+      } else if (actionBtn.dataset.action === 'link') {
+          actionBtn.textContent = t.modalVisit;
+      }
   }
 }
 
+// ===================================================================
+// LOGIQUE DU CARROUSEL
+// ===================================================================
 
-function openModal(projectId) {
-  const project = projectDetails[projectId];
-  if (!project) return;
+function showSlides(n) {
+    const details = projectDetails[currentProjectId];
+    const images = details ? details.images : [];
+    const slidesContainer = document.getElementById('slides-container');
+    const dotsContainer = document.getElementById('dot-container');
 
-  const lang = document.getElementById("langSelect").value || "fr";
-  const t = translations[lang];
+    if (!images || images.length === 0) {
+        slidesContainer.innerHTML = '';
+        dotsContainer.innerHTML = '';
+        return;
+    }
 
-  document.getElementById('modalTitle').textContent = t[`proj${projectId}title`];
-  document.getElementById('modalDescription').textContent = t[`proj${projectId}desc`];
+    if (n > images.length - 1) {
+        currentSlideIndex = 0;
+    }
+    if (n < 0) {
+        currentSlideIndex = images.length - 1;
+    }
 
-  const imgEl = document.getElementById('modalImage');
-  if (project.image) {
-    imgEl.src = project.image;
-    imgEl.style.display = 'block';
-  } else imgEl.style.display = 'none';
+    // Affichage des slides par transformation
+    // Le slidesContainer DOIT avoir la largeur totale de TOUTES les slides (e.g., 300% pour 3 slides)
+    slidesContainer.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
 
-  const tagsContainer = document.getElementById('modalTags');
-  tagsContainer.innerHTML = '';
-  project.languages.forEach(langTag => {
-    const span = document.createElement('span');
-    span.className = 'tag';
-    span.textContent = langTag;
-    tagsContainer.appendChild(span);
-  });
+    // Mise à jour des points
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < images.length; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        if (i === currentSlideIndex) {
+            dot.classList.add('active');
+        }
+        // Utilisation de i pour naviguer directement au slide
+        dot.onclick = () => showSlides(i); 
+        dotsContainer.appendChild(dot);
+    }
+}
 
-  const actionBtn = document.getElementById('modalActionBtn');
-  if (project.download) {
-    actionBtn.textContent = t.modalDownload;
-    actionBtn.dataset.action = 'download';
-    actionBtn.dataset.link = project.download;
-  } else if (project.link) {
-    actionBtn.textContent = t.modalVisit;
-    actionBtn.dataset.action = 'link';
-    actionBtn.dataset.link = project.link;
-  }
-
-  const closeBtn = document.querySelector('.modal-btn.secondary');
-  if (closeBtn) closeBtn.textContent = t.modalClose;
-
-  document.getElementById('projectModal').classList.add('active');
+function plusSlides(n) {
+    // n doit être -1 ou 1
+    currentSlideIndex += n;
+    showSlides(currentSlideIndex);
 }
 
 function closeModal() {
-  document.getElementById('projectModal').classList.remove('active');
+    document.getElementById('projectModal').classList.remove('active');
 }
 
 function handleModalAction() {
-  const btn = document.getElementById('modalActionBtn');
-  if (btn.dataset.action === 'download') {
-    const a = document.createElement('a');
-    a.href = btn.dataset.link;
-    a.download = '';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  } else if (btn.dataset.action === 'link') {
-    window.location.href = btn.dataset.link;
-  }
+    const btn = document.getElementById('modalActionBtn');
+    const link = btn.dataset.link;
+    if (link) {
+        if (btn.dataset.action === 'download') {
+            // Création d'un lien temporaire pour forcer le téléchargement
+            const a = document.createElement('a');
+            a.href = link;
+            a.download = ''; // force le navigateur à télécharger
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } else if (btn.dataset.action === 'link') {
+            window.open(link, '_blank'); // Ouvrir dans un nouvel onglet
+        }
+    }
+}
+
+// ===================================================================
+// LOGIQUE D'OUVERTURE DE LA MODALE
+// ===================================================================
+
+function openModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const details = projectDetails[projectId];
+    const card = document.querySelector(`.project-card[data-project-id="${projectId}"]`);
+
+    if (!details || !card) return;
+
+    // Récupérer la langue actuelle pour la description
+    const lang = localStorage.getItem('lang') || 'fr';
+    const t = translations[lang] || translations.fr;
+    const descKey = `proj${projectId}desc`;
+    
+    currentProjectId = projectId;
+    currentSlideIndex = 0; 
+    
+    // Remplir les détails du projet
+    document.getElementById('modalTitle').textContent = t[`proj${projectId}title`];
+    document.getElementById('modalDescription').textContent = t[descKey];
+
+    // Gérer le bouton d'action
+    const actionBtn = document.getElementById('modalActionBtn');
+    actionBtn.style.display = 'block'; 
+
+    if (details.download) {
+        actionBtn.textContent = t.modalDownload;
+        actionBtn.dataset.action = 'download';
+        actionBtn.dataset.link = details.download;
+    } else if (details.link) {
+        actionBtn.textContent = t.modalVisit;
+        actionBtn.dataset.action = 'link';
+        actionBtn.dataset.link = details.link;
+    } else {
+        actionBtn.style.display = 'none';
+        actionBtn.removeAttribute('data-action');
+        actionBtn.removeAttribute('data-link');
+    }
+
+    // Gérer les tags
+    const tagsContainer = document.getElementById('modalTags');
+    tagsContainer.innerHTML = details.languages.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+    // Gérer le carrousel
+    const images = details.images || [];
+    const slidesContainer = document.getElementById('slides-container');
+    slidesContainer.innerHTML = '';
+
+    if (images.length > 0) {
+        // Crée toutes les slides
+        images.forEach(src => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = 'slide';
+            slideDiv.innerHTML = `<img src="${src}" alt="Project image" />`;
+            slidesContainer.appendChild(slideDiv);
+        });
+
+        // Met à jour la largeur du conteneur des slides pour la translation CSS
+        slidesContainer.style.width = `${images.length * 100}%`;
+
+        // Montre/cache les flèches et points si plus d'une image
+        const hasMultipleImages = images.length > 1;
+        document.querySelector('.carousel-container .prev').style.display = hasMultipleImages ? 'block' : 'none';
+        document.querySelector('.carousel-container .next').style.display = hasMultipleImages ? 'block' : 'none';
+        document.getElementById('dot-container').style.display = hasMultipleImages ? 'block' : 'none';
+        
+        showSlides(0); 
+    }
+
+
+    modal.classList.add('active');
 }
 
 
+// ===================================================================
+// Initialisation de la page et gestion des filtres
+// ===================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
-  const langSelect = document.getElementById("langSelect");
-  const savedLang = localStorage.getItem("lang") || "fr";
-  if (langSelect) {
-    langSelect.value = savedLang;
-    langSelect.addEventListener("change", e => {
-      const lang = e.target.value;
-      localStorage.setItem("lang", lang);
-      applyText(lang);
+    // Récupérer tous les éléments nécessaires
+    const filterButtons = document.querySelectorAll('#project-filters button');
+    const statSegments = document.querySelectorAll('.stat-segment');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    // Fonction de filtrage
+    function updateFilter(filter) {
+        filterButtons.forEach(btn => {
+            if (btn.getAttribute('data-filter') === filter) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        statSegments.forEach(segment => {
+            segment.classList.remove('active', 'inactive');
+            if (filter === 'all') {
+                segment.classList.add('active');
+            } else if (
+                (filter === 'python' && segment.classList.contains('stat-python')) ||
+                (filter === 'html' && segment.classList.contains('stat-html')) ||
+                (filter === 'php' && segment.classList.contains('stat-php')) ||
+                (filter === 'js' && segment.classList.contains('stat-js'))
+            ) {
+                segment.classList.add('active');
+            } else {
+                segment.classList.add('inactive');
+            }
+        });
+        
+        projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            
+            if (filter === 'all' || category === filter) {
+                card.style.display = 'block'; 
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Écouteurs pour les boutons de filtre
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            updateFilter(filter);
+        });
     });
-  }
 
-  applyText(savedLang);
+    // Appliquer le filtre initial
+    updateFilter('all');
 
-  // Project cards
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-      openModal(card.dataset.projectId);
+    // Gestion de la langue
+    const langSelect = document.getElementById("langSelect");
+    const savedLang = localStorage.getItem("lang") || "fr";
+    if (langSelect) {
+        langSelect.value = savedLang;
+        langSelect.addEventListener("change", e => {
+            const lang = e.target.value;
+            localStorage.setItem("lang", lang);
+            applyText(lang);
+        });
+    }
+
+    applyText(savedLang);
+
+    // Écouteurs pour les cartes de projet
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // openModal(projectId) prend l'ID du projet
+            openModal(card.dataset.projectId);
+        });
     });
-  });
 
-  // Modal click outside
-  window.addEventListener('click', e => {
-    const modal = document.getElementById('projectModal');
-    if (e.target === modal) closeModal();
-  });
+    // Écouteur pour fermer la modale en cliquant à l'extérieur
+    window.addEventListener('click', e => {
+        if (e.target === document.getElementById('projectModal')) {
+            closeModal();
+        }
+    });
 
-  // Set current year
-  const yearEl = document.getElementById('currentYear');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+    // Mise à jour de l'année
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
