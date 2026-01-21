@@ -10,13 +10,13 @@ const translations = {
 
     proj1title: "Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
-    proj2title: "Script Python Tetris",
+    proj2title: "Tetris – Projet Python / Pygame",
     proj2text: "Clicker pour Télécharger un fichier.zip contenant le Tetris",
     proj3title: "Script Python Pong",
     proj3text: "Clicker pour Télécharger un fichier.zip contenant le Pong",
     proj4title: "Script Python TicTacToe",
     proj4text: "Clicker pour Télécharger un fichier.zip contenant le TicTacToe.",
-    proj5title: "Site HTML Responsive",
+    proj5title: "SAE 203 – Développement d'un site web responsive dynamique",
     proj5text: "Site web responsive et accessible réalisé en HTML/CSS/PHP.",
     proj6title: "Jeu en JS",
     proj6text: "Mini-jeu réalisé avec JavaScript.",
@@ -24,10 +24,10 @@ const translations = {
     proj7text: "Projets de développement utilisant PHP.", 
 
     proj1desc: "Un jeu de serpent classique développé en Python avec Pygame. Le joueur contrôle un serpent qui grandit à chaque nourriture consommée. Le jeu se termine si le serpent se heurte à un mur ou à lui-même.",
-    proj2desc: "Une implémentation du jeu Tetris en Python. Les pièces tombent du haut et le joueur doit les positionner pour remplir des lignes. Chaque ligne complète est supprimée et rapporte des points.",
-    proj3desc: "Le jeu Pong classique en Python. Deux joueurs contrôlent des raquettes pour faire rebondir une balle. C'est un jeu multijoueur simple et addictif.",
+    proj2desc: "Dans le cadre d'un projet de spécialité Numérique et Sciences Informatiques (NSI) au lycée, ce travail consistait à développer un jeu Tetris en utilisant exclusivement le langage Python et la bibliothèque Pygame. Le jeu s'intégrait dans un hub de jeux interactif, permettant de lancer différentes applications depuis une interface commune. Ce projet devait être présenté devant un jury, dans le cadre de l'évaluation finale de la spécialité NSI. L'objectif de ce projet était de reproduire le fonctionnement du jeu Tetris (chute des pièces, rotations, détection des lignes complètes), mettre en œuvre une gestion rigoureuse de la logique de jeu et des collisions, utiliser Pygame pour l'affichage graphique et la gestion des entrées clavier, et développer un jeu fluide, stable et jouable, entièrement codé en Python.",
+    proj3desc: "Ce projet a été réalisé dans le cadre de la spécialité NSI au lycée et consistait à développer un jeu Pong en Python, à l'aide de la bibliothèque Pygame. Le jeu faisait partie d'un hub centralisé, permettant à l'utilisateur de sélectionner et de lancer différents jeux. Le projet a été évalué lors d'une présentation orale devant un jury. L'objectif principal de ce projet était de implémenter un jeu Pong fonctionnel avec gestion des raquettes, de la balle et du score, travailler la gestion des collisions et des déplacements en temps réel, structurer le code de manière claire et maintenable, et assurer une expérience de jeu simple, fluide et responsive aux entrées utilisateur.",
     proj4desc: "Le jeu du Morpion (Tic-Tac-Toe) en Python. Jouez contre l'ordinateur avec une intelligence artificielle simple. C'est un projet pédagogique pour apprendre les algorithmes de base.",
-    proj5desc: "Un site web professionnel et responsive réalisé dans le cadre du projet SAE203. Accessible sur tous les appareils (desktop, tablet, mobile) avec un design moderne et épuré.",
+    proj5desc: "Dans le cadre de la SAE 203 du BUT Métiers du Multimédia et de l'Internet (MMI), il a été demandé de concevoir et développer un site web dynamique et entièrement responsive, en mobilisant les compétences acquises en développement web et en gestion de bases de données. Le projet reposait sur un tirage au sort d'un sujet, imposant à chaque étudiant de s'adapter à une thématique imposée. Cette contrainte visait à reproduire une situation professionnelle réaliste, où le développeur doit répondre à un besoin précis sans choisir lui-même le domaine du projet. Le sujet attribué pour ce projet était les divisions égyptiennes, nécessitant un travail de recherche, de structuration de contenu et de modélisation de données adaptées à cette thématique. L'objectif principal était de réaliser un site web responsive, dynamique et fonctionnel, capable d'afficher et gérer des contenus dynamiques, d'interagir avec une base de données MySQL, d'exploiter un back-end en PHP pour la gestion des données, et d'assurer une navigation fluide sur tous les supports.",
     proj6desc: "Un mini-jeu interactif créé avec JavaScript vanilla. Testez vos réflexes et essayez de battre le meilleur score. Code moderne et optimisé.",
     proj7desc: "Description détaillée du projet PHP.", 
 
@@ -49,13 +49,13 @@ const translations = {
 
     proj1title: "Python Snake Script",
     proj1text: "Click to download a .zip file containing the Snake game.",
-    proj2title: "Python Tetris Script",
+    proj2title: "Tetris – Python / Pygame Project",
     proj2text: "Click to download a .zip file containing the Tetris game.",
     proj3title: "Python Pong Script",
     proj3text: "Click to download a .zip file containing the Pong game.",
     proj4title: "Python TicTacToe Script",
     proj4text: "Click to download a .zip file containing the TicTacToe game.",
-    proj5title: "Responsive HTML Website",
+    proj5title: "SAE 203 – Development of a Dynamic Responsive Website",
     proj5text: "Responsive and accessible site made with HTML/CSS/PHP.",
     proj6title: "JS Game",
     proj6text: "Mini-game made with JavaScript.",
@@ -64,10 +64,10 @@ const translations = {
 
 
     proj1desc: "A classic Snake game developed in Python with Pygame. The player controls a snake that grows with each food eaten. The game ends if the snake hits a wall or itself.",
-    proj2desc: "An implementation of Tetris in Python. Pieces fall from the top, and the player must position them to complete lines. Each completed line is removed and gives points.",
-    proj3desc: "The classic Pong game in Python. Two players control paddles to bounce a ball. It's a simple and addictive multiplayer game.",
+    proj2desc: "As part of a Digital and Computer Science (NSI) specialty project in high school, this work involved developing a Tetris game using exclusively the Python language and the Pygame library. The game was integrated into an interactive game hub, allowing different applications to be launched from a common interface. This project had to be presented to a jury as part of the final evaluation of the NSI specialty. The objective of this project was to reproduce the functioning of the Tetris game (piece falling, rotations, detection of complete lines), implement rigorous management of game logic and collisions, use Pygame for graphic display and keyboard input management, and develop a smooth, stable and playable game, entirely coded in Python.",
+    proj3desc: "This project was carried out as part of the NSI specialty in high school and involved developing a Pong game in Python using the Pygame library. The game was part of a centralized hub, allowing the user to select and launch different games. The project was evaluated during an oral presentation before a jury. The main objective of this project was to implement a functional Pong game with management of paddles, ball and score, work on collision management and real-time movements, structure the code in a clear and maintainable way, and ensure a simple, smooth and responsive gaming experience to user inputs.",
     proj4desc: "Tic-Tac-Toe in Python. Play against the computer with a simple AI. This is an educational project to learn basic algorithms.",
-    proj5desc: "A professional and responsive website made for the SAE203 project. Accessible on all devices (desktop, tablet, mobile) with a modern, clean design.",
+    proj5desc: "As part of the SAE 203 of the BUT Multimedia and Internet Professions (MMI) degree, we were asked to design and develop a dynamic and fully responsive website, mobilizing the skills acquired in web development and database management. The project was based on a random draw of a subject, imposing on each student to adapt to an imposed theme. This constraint aimed to replicate a realistic professional situation, where the developer must meet a specific need without choosing the project domain themselves. The subject assigned for this project was Egyptian divisions, requiring research work, content structuring and data modeling adapted to this theme. The main objective of this SAE was to create a responsive, dynamic and functional website, capable of displaying and managing dynamic content, interacting with a MySQL database, leveraging a PHP back-end for data management, and ensuring smooth navigation across all platforms.",
     proj6desc: "An interactive mini-game created with vanilla JavaScript. Test your reflexes and try to beat the high score. Modern and optimized code.",
     proj7desc: "Detailed description of the PHP project.", 
 
@@ -89,13 +89,13 @@ const translations = {
 
     proj1title: "Script Python Snake",
     proj1text: "Clique para baixar um arquivo .zip contendo o jogo Snake.",
-    proj2title: "Script Python Tetris",
+    proj2title: "Tetris – Projeto Python / Pygame",
     proj2text: "Clique para baixar um arquivo .zip contendo o jogo Tetris.",
     proj3title: "Script Python Pong",
     proj3text: "Clique para baixar um arquivo .zip contendo o jogo Pong.",
     proj4title: "Script Python TicTacToe",
     proj4text: "Clique para baixar um arquivo .zip contendo o jogo TicTacToe.",
-    proj5title: "Site HTML Responsivo",
+    proj5title: "SAE 203 – Desenvolvimento de um Site Responsivo Dinâmico",
     proj5text: "Site responsivo e acessível feito com HTML/CSS/PHP.",
     proj6title: "Jogo JS",
     proj6text: "Mini-jogo feito com JavaScript.",
@@ -103,10 +103,10 @@ const translations = {
     proj7text: "Projetos de desenvolvimento usando PHP.", 
 
     proj1desc: "Um jogo clássico de Snake desenvolvido em Python com Pygame. O jogador controla uma cobra que cresce a cada comida consumida. O jogo termina se a cobra bater em uma parede ou em si mesma.",
-    proj2desc: "Uma implementação do jogo Tetris em Python. As peças caem do topo e o jogador deve posicioná-las para completar linhas. Cada linha completa é removida e gera pontos.",
-    proj3desc: "O jogo clássico Pong em Python. Dois jogadores controlam as raquetes para rebater a bola. É um jogo multiplayer simples e viciante.",
+    proj2desc: "Como parte de um projeto de especialidade em Informática e Ciências Digitais (NSI) no ensino médio, este trabalho consistiu em desenvolver um jogo Tetris usando exclusivamente a linguagem Python e a biblioteca Pygame. O jogo foi integrado em um hub de jogos interativo, permitindo iniciar diferentes aplicações a partir de uma interface comum. Este projeto deveria ser apresentado a um júri como parte da avaliação final da especialidade NSI. O objetivo deste projeto era reproduzir o funcionamento do jogo Tetris (queda de peças, rotações, detecção de linhas completas), implementar uma gestão rigorosa da lógica do jogo e das colisões, usar Pygame para exibição gráfica e gerenciamento de entrada do teclado, e desenvolver um jogo suave, estável e jogável, totalmente codificado em Python.",
+    proj3desc: "Este projeto foi realizado como parte da especialidade NSI no ensino médio e consistia em desenvolver um jogo Pong em Python usando a biblioteca Pygame. O jogo fazia parte de um hub centralizado, permitindo ao usuário selecionar e iniciar diferentes jogos. O projeto foi avaliado durante uma apresentação oral perante um júri. O objetivo principal deste projeto era implementar um jogo Pong funcional com gerenciamento de raquetes, bola e pontuação, trabalhar no gerenciamento de colisões e movimentos em tempo real, estruturar o código de forma clara e mantível, e garantir uma experiência de jogo simples, suave e responsiva às entradas do usuário.",
     proj4desc: "O jogo da velha (Tic-Tac-Toe) em Python. Jogue contra o computador com uma IA simples. É um projeto educacional para aprender algoritmos básicos.",
-    proj5desc: "Um site profissional e responsivo feito para o projeto SAE203. Acessível em todos os dispositivos (desktop, tablet, mobile) com design moderno e limpo.",
+    proj5desc: "Como parte do SAE 203 do Curso de Tecnologia em Multimídia e Internet (MMI), foi solicitado o design e desenvolvimento de um site web dinâmico e totalmente responsivo, mobilizando as habilidades adquiridas em desenvolvimento web e gerenciamento de bases de dados. O projeto foi baseado em um sorteio de um tema, impondo a cada estudante se adaptar a um tema imposto. Essa restrição visava replicar uma situação profissional realista, onde o desenvolvedor deve atender uma necessidade específica sem escolher o domínio do projeto. O tema atribuído para este projeto foi divisões egípcias, exigindo trabalho de pesquisa, estruturação de conteúdo e modelagem de dados adaptadas a este tema. O objetivo principal deste SAE era criar um site responsivo, dinâmico e funcional, capaz de exibir e gerenciar conteúdo dinâmico, interagir com uma base de dados MySQL, aproveitar um back-end PHP para gerenciamento de dados, e garantir navegação suave em todas as plataformas.",
     proj6desc: "Um mini-jogo interativo criado com JavaScript vanilla. Teste seus reflexos e tente bater o recorde. Código moderno e otimizado.",
     proj7desc: "Descrição detalhada do projeto PHP.", 
 
@@ -128,13 +128,13 @@ const translations = {
 
     proj1title: "Script Python Snake",
     proj1text: "Haga clic para descargar un archivo .zip que contiene el juego Snake.",
-    proj2title: "Script Python Tetris",
+    proj2title: "Tetris – Proyecto Python / Pygame",
     proj2text: "Haga clic para descargar un archivo .zip que contiene el juego Tetris.",
     proj3title: "Script Python Pong",
     proj3text: "Haga clic para descargar un archivo .zip que contiene el juego Pong.",
     proj4title: "Script Python TicTacToe",
     proj4text: "Haga clic para descargar un archivo .zip que contiene el juego TicTacToe.",
-    proj5title: "Sitio Web HTML Responsivo",
+    proj5title: "SAE 203 – Desarrollo de un Sitio Web Responsivo Dinámico",
     proj5text: "Sitio responsive y accesible hecho con HTML/CSS/PHP.",
     proj6title: "Juego JS",
     proj6text: "Mini-juego hecho con JavaScript.",
@@ -142,10 +142,10 @@ const translations = {
     proj7text: "Proyectos de desarrollo usando PHP.",
 
     proj1desc: "Un juego clásico de Snake desarrollado en Python con Pygame. El jugador controla una serpiente que crece con cada comida consumida. El juego termina si la serpiente choca con una pared o consigo misma.",
-    proj2desc: "Una implementación del juego Tetris en Python. Las piezas caen desde la parte superior y el jugador debe posicionarlas para completar líneas. Cada línea completada se elimina y genera puntos.",
-    proj3desc: "El clásico juego Pong en Python. Dos jugadores controlan las raquetas para rebotar la pelota. Es un juego multijugador simple y adictivo.",
+    proj2desc: "Como parte de un proyecto de especialidad en Informática y Ciencias Digitales (NSI) en la escuela secundaria, este trabajo consistía en desarrollar un juego Tetris utilizando exclusivamente el lenguaje Python y la biblioteca Pygame. El juego se integró en un hub de juegos interactivo, permitiendo lanzar diferentes aplicaciones desde una interfaz común. Este proyecto debía ser presentado ante un jurado como parte de la evaluación final de la especialidad NSI. El objetivo de este proyecto era reproducir el funcionamiento del juego Tetris (caída de piezas, rotaciones, detección de líneas completas), implementar una gestión rigurosa de la lógica del juego y las colisiones, utilizar Pygame para la visualización gráfica y la gestión de entrada del teclado, y desarrollar un juego suave, estable y jugable, completamente codificado en Python.",
+    proj3desc: "Este proyecto se realizó como parte de la especialidad NSI en la escuela secundaria e implicaba desarrollar un juego Pong en Python utilizando la biblioteca Pygame. El juego era parte de un hub centralizado, permitiendo al usuario seleccionar e iniciar diferentes juegos. El proyecto fue evaluado durante una presentación oral ante un jurado. El objetivo principal de este proyecto era implementar un juego Pong funcional con gestión de raquetas, bola y puntuación, trabajar en la gestión de colisiones y movimientos en tiempo real, estructurar el código de forma clara y mantenible, y garantizar una experiencia de juego simple, suave y receptiva a las entradas del usuario.",
     proj4desc: "El juego del Gato (Tic-Tac-Toe) en Python. Juega contra la computadora con una IA simple. Es un proyecto educativo para aprender algoritmos básicos.",
-    proj5desc: "Un sitio web profesional y responsive hecho para el proyecto SAE203. Accesible en todos los dispositivos (desktop, tablet, mobile) con diseño moderno y limpio.",
+    proj5desc: "Como parte del SAE 203 del Grado de Tecnología en Multimedia e Internet (MMI), se solicitó diseñar y desarrollar un sitio web dinámico y completamente responsivo, movilizando las habilidades adquiridas en desarrollo web y gestión de bases de datos. El proyecto se basaba en un sorteo de un tema, imponiendo a cada estudiante adaptarse a un tema asignado. Esta restricción tenía como objetivo replicar una situación profesional realista, donde el desarrollador debe satisfacer una necesidad específica sin elegir el dominio del proyecto. El tema asignado para este proyecto fueron las divisiones egipcias, requiriendo trabajo de investigación, estructuración de contenido y modelado de datos adaptados a este tema. El objetivo principal de este SAE era crear un sitio web responsivo, dinámico y funcional, capaz de mostrar y gestionar contenido dinámico, interactuar con una base de datos MySQL, aprovechar un back-end PHP para la gestión de datos, y garantizar navegación fluida en todas las plataformas.",
     proj6desc: "Un mini-juego interactivo creado con JavaScript vanilla. Prueba tus reflejos e intenta batir la puntuación más alta. Código moderno y optimizado.",
     proj7desc: "Descripción detallada del proyecto PHP.",
 
@@ -160,11 +160,13 @@ const translations = {
 
 
 const projectDetails = {
+  // ⚠️ IMPORTANT: Images doivent être en 1280×720px minimum (ratio 16:9)
+  // Elles seront automatiquement redimensionnées sans distortion avec object-fit: cover
   1: { images: ["../img/snake.png", "../img/snake.png", "../img/snake.png"], languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
   2: { images: ["../img/tetris.png", "../img/tetris.png", "../img/tetris.png"], languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },
   3: { images: ["../img/pong.png", "../img/pong.png", "../img/pong.png"], languages: ["Python", "Pygame"], download: "../downloads/Pong.zip" },
   4: { images: ["../img/tictactoe.png", "../img/tictactoe.png", "../img/tictactoe.png"], languages: ["Python"], download: "../downloads/TicTacToe.zip" },
-  5: { images: ["../img/SAE203.png", "../img/SAE203.png", "../img/SAE203.png"], languages: ["HTML", "CSS", "PHP"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
+  5: { images: ["../img/SAE203.png", "../img/SAE203.png", "../img/SAE203.png"], languages: ["HTML", "CSS", "PHP","MySQL"], link: "http://81.194.40.26/~antunes--oliveira/SAE203/" },
   6: { images: ["../img/jeu-js.png", "../img/jeu-js.png", "../img/jeu-js.png"], languages: ["JavaScript", "HTML", "CSS"], link: "../projets/jeu-js.html" },
   7: { images: ["../img/php_project.png", "../img/php_project.png", "../img/php_project.png"], languages: ["PHP","CSS"], link: "../projets/" } 
 };
