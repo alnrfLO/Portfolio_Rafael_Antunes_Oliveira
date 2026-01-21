@@ -19,7 +19,7 @@ const translations = {
     placeholder_message: 'Votre message',
     submit: 'Envoyer',
     submitting: 'Envoi...',
-    theme: '🎨 Thème',
+    theme: 'Thème',
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Tous droits réservés",
@@ -43,7 +43,7 @@ const translations = {
     placeholder_message: 'Your message',
     submit: 'Send',
     submitting: 'Sending...',
-    theme: '🎨 Theme',
+    theme: 'Theme',
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "All rights reserved",
@@ -67,11 +67,34 @@ const translations = {
     placeholder_message: 'Sua mensagem',
     submit: 'Enviar',
     submitting: 'A enviar...',
-    theme: '🎨 Tema',
+    theme: 'Tema',
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Todos os direitos reservados",
     footerMentions: "Aviso Legal" // Corrigé
+  },
+  es: {
+    navAccueil: "Inicio",
+    navProjets: "Proyectos",
+    navContact: "Contacto",
+    navAPropos: "Acerca de",
+    navInfo: "Info",
+    navCV: "CV",
+
+    contact_title: 'Contácteme',
+    alert_fill: 'Por favor, rellene todos los campos.',
+    alert_email: 'Por favor, ingrese un correo electrónico válido.',
+    alert_thanks: '¡Gracias por su mensaje! Le responderé pronto.',
+    alert_error: 'Ocurrió un error al enviar. Por favor, inténtelo de nuevo.',
+    placeholder_name: 'Su nombre',
+    placeholder_email: 'Su correo electrónico',
+    placeholder_message: 'Su mensaje',
+    submit: 'Enviar',
+    submitting: 'Enviando...',
+    theme: 'Tema',
+    
+    allRightsReserved: "Todos los derechos reservados",
+    footerMentions: "Aviso Legal"
   }
 };
 

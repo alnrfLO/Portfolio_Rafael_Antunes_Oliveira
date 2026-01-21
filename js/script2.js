@@ -6,7 +6,7 @@ const translations = {
     navAPropos: "À propos",
     navInfo: "Info",
     navCV: "CV",
-    theme: '🎨 Thème',
+    theme: 'Thème',
 
     proj1title: "Script Python snake",
     proj1text: "Clicker pour Télécharger un fichier.zip contenant le Snake.",
@@ -45,7 +45,7 @@ const translations = {
     navAPropos: "About",
     navInfo: "Info",
     navCV: "CV",
-    theme: '🎨 Theme',
+    theme: 'Theme',
 
     proj1title: "Python Snake Script",
     proj1text: "Click to download a .zip file containing the Snake game.",
@@ -85,7 +85,7 @@ const translations = {
     navAPropos: "Sobre",
     navInfo: "Info",
     navCV: "CV",
-    theme: '🎨 Tema',
+    theme: 'Tema',
 
     proj1title: "Script Python Snake",
     proj1text: "Clique para baixar um arquivo .zip contendo o jogo Snake.",
@@ -116,12 +116,49 @@ const translations = {
     
     allRightsReserved: "Todos os direitos reservados",
     footerMentions: "Aviso Legal"
+  },
+  es: {
+    navAccueil: "Inicio",
+    navProjets: "Proyectos",
+    navContact: "Contacto",
+    navAPropos: "Acerca de",
+    navInfo: "Info",
+    navCV: "CV",
+    theme: 'Tema',
+
+    proj1title: "Script Python Snake",
+    proj1text: "Haga clic para descargar un archivo .zip que contiene el juego Snake.",
+    proj2title: "Script Python Tetris",
+    proj2text: "Haga clic para descargar un archivo .zip que contiene el juego Tetris.",
+    proj3title: "Script Python Pong",
+    proj3text: "Haga clic para descargar un archivo .zip que contiene el juego Pong.",
+    proj4title: "Script Python TicTacToe",
+    proj4text: "Haga clic para descargar un archivo .zip que contiene el juego TicTacToe.",
+    proj5title: "Sitio Web HTML Responsivo",
+    proj5text: "Sitio responsive y accesible hecho con HTML/CSS/PHP.",
+    proj6title: "Juego JS",
+    proj6text: "Mini-juego hecho con JavaScript.",
+    proj7title: "Proyecto PHP", 
+    proj7text: "Proyectos de desarrollo usando PHP.",
+
+    proj1desc: "Un juego clásico de Snake desarrollado en Python con Pygame. El jugador controla una serpiente que crece con cada comida consumida. El juego termina si la serpiente choca con una pared o consigo misma.",
+    proj2desc: "Una implementación del juego Tetris en Python. Las piezas caen desde la parte superior y el jugador debe posicionarlas para completar líneas. Cada línea completada se elimina y genera puntos.",
+    proj3desc: "El clásico juego Pong en Python. Dos jugadores controlan las raquetas para rebotar la pelota. Es un juego multijugador simple y adictivo.",
+    proj4desc: "El juego del Gato (Tic-Tac-Toe) en Python. Juega contra la computadora con una IA simple. Es un proyecto educativo para aprender algoritmos básicos.",
+    proj5desc: "Un sitio web profesional y responsive hecho para el proyecto SAE203. Accesible en todos los dispositivos (desktop, tablet, mobile) con diseño moderno y limpio.",
+    proj6desc: "Un mini-juego interactivo creado con JavaScript vanilla. Prueba tus reflejos e intenta batir la puntuación más alta. Código moderno y optimizado.",
+    proj7desc: "Descripción detallada del proyecto PHP.",
+
+    modalDownload: "Descargar",
+    modalVisit: "Visitar",
+    modalClose: "Cerrar",
+    
+    allRightsReserved: "Todos los derechos reservados",
+    footerMentions: "Aviso Legal"
   }
 };
 
-// ⚡ Détails des projets pour le modal et le carrousel
-// ATTENTION : Pour éviter les erreurs 'File Not Found', l'image de couverture est dupliquée 3 fois.
-// REMPLACER ces chemins plus tard par des captures d'écran réelles.
+
 const projectDetails = {
   1: { images: ["../img/snake.png", "../img/snake.png", "../img/snake.png"], languages: ["Python", "Pygame"], download: "../downloads/snake.zip" },
   2: { images: ["../img/tetris.png", "../img/tetris.png", "../img/tetris.png"], languages: ["Python", "Pygame"], download: "../downloads/Tetris.zip" },

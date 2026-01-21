@@ -106,6 +106,7 @@ body.light-theme .profile-name {
       <option value="fr">Français</option>
       <option value="en">English</option>
       <option value="pt">Portugais</option>
+      <option value="es">Español</option>
     </select>
     <button id="themeBtn" class="theme-toggle" onclick="toggleTheme()" data-translate="theme">🎨 Thème</button>
   </div>
@@ -121,22 +122,10 @@ body.light-theme .profile-name {
 <nav class="menu" id="mobileMenu">
   <a href="../index.html" data-translate="navAccueil">Accueil</a>
   
-  <div class="submenu">
-    <button class="submenu-toggle" data-translate="navProjets">Projets</button> 
-    <div class="submenu-list">
-      <a href="ProjetsDev.html" data-translate="navProjetsDev">Projets Développement</a>
-      <a href="ProjetsGraph.html" data-translate="navProjetsGraph">Projets Graphisme</a>
-    </div>
-  </div>
+  <a href="ProjetsDev.html" data-translate="navProjetsDev">Projets</a>
   <a href="Contact.html" data-translate="navContact">Contact</a>
   
-  <div class="submenu">
-    <button class="submenu-toggle" data-translate="navAPropos">À propos</button>
-    <div class="submenu-list">
-      <a href="Info.html" data-translate="navInfo">Info</a>
-      <a href="CV.html" data-translate="navCV">CV</a>
-    </div>
-  </div>
+  <a href="Info.html" data-translate="navInfo">Info</a>
 </nav>
 
 
@@ -175,6 +164,10 @@ body.light-theme .profile-name {
         
         <div id="section-motivation">
           <p data-translate="sectionMotivationText">Mon portfolio est le fruit de ma créativité, mais principalement de beaucoup de travail. Je suis toujours à la recherche d'apprendre, d'affronter de nouveaux défis et de créer des expériences web modernes et agréables pour ceux qui visitent mes sites.</p>
+        </div>
+
+        <div id="section-cv-button" style="text-align: center; margin-top: 2rem;">
+          <a href="../downloads/CV.pdf" download style="display: inline-block; padding: 12px 30px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; transition: 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-translate="cvButtonText">Télécharger mon CV</a>
         </div>
         
       </div>
