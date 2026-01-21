@@ -1,0 +1,120 @@
+/* Custom Cursor Animation Styles */
+
+/* Outer cursor - larger circle */
+.cursor-outer {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #00ffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), inset 0 0 15px rgba(0, 255, 255, 0.3);
+    transition: all 0.1s ease-out;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.2), transparent 70%);
+}
+
+/* Inner cursor - smaller dot */
+.cursor-inner {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: #00ffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Hover state - expand and change color */
+.cursor-outer.hover {
+    width: 70px;
+    height: 70px;
+    border-color: #ff00ff;
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), inset 0 0 20px rgba(255, 0, 255, 0.4);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 0, 255, 0.3), transparent 70%);
+}
+
+.cursor-inner.hover {
+    background: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 1);
+    width: 12px;
+    height: 12px;
+}
+
+/* Active state (on click) */
+.cursor-outer.active {
+    width: 70px;
+    height: 70px;
+    border-color: #ff00ff;
+    box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), inset 0 0 20px rgba(255, 0, 255, 0.4);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 0, 255, 0.3), transparent 70%);
+}
+
+.cursor-inner.active {
+    background: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 1);
+    width: 12px;
+    height: 12px;
+}
+
+/* Light theme cursor colors */
+body.light-theme .cursor-outer {
+    border-color: #0077cc;
+    box-shadow: 0 0 15px rgba(0, 119, 204, 0.6), inset 0 0 15px rgba(0, 119, 204, 0.3);
+    background: radial-gradient(circle at 30% 30%, rgba(0, 119, 204, 0.2), transparent 70%);
+}
+
+body.light-theme .cursor-inner {
+    background: #0077cc;
+    box-shadow: 0 0 10px rgba(0, 119, 204, 0.8);
+}
+
+body.light-theme .cursor-outer.hover {
+    border-color: #ff6b9d;
+    box-shadow: 0 0 25px rgba(255, 107, 157, 0.8), inset 0 0 20px rgba(255, 107, 157, 0.4);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 107, 157, 0.3), transparent 70%);
+}
+
+body.light-theme .cursor-inner.hover {
+    background: #ff6b9d;
+    box-shadow: 0 0 15px rgba(255, 107, 157, 1);
+}
+
+body.light-theme .cursor-outer.active {
+    border-color: #ff6b9d;
+    box-shadow: 0 0 25px rgba(255, 107, 157, 0.8), inset 0 0 20px rgba(255, 107, 157, 0.4);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 107, 157, 0.3), transparent 70%);
+}
+
+body.light-theme .cursor-inner.active {
+    background: #ff6b9d;
+    box-shadow: 0 0 15px rgba(255, 107, 157, 1);
+}
+
+/* Smooth animation */
+@keyframes cursorPulse {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), inset 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.8), inset 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), inset 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+}
+
+.cursor-outer {
+    animation: cursorPulse 2s ease-in-out infinite;
+}
+
+/* Ensure cursor is visible on all backgrounds */
+@media (prefers-reduced-motion: reduce) {
+    .cursor-outer,
+    .cursor-inner {
+        animation: none;
+    }
+}

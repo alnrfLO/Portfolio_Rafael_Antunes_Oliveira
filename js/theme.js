@@ -13,6 +13,8 @@ function applySavedTheme() {
     } else {
       localStorage.setItem("theme", "dark");
     }
+    // Emit theme change event for cursor
+    window.dispatchEvent(new Event('themechange'));
   }
   window.addEventListener("DOMContentLoaded", applySavedTheme);
   
