@@ -21,6 +21,7 @@ const text = {
     sectionCuisineText: "Ce que j'aime surtout dans la cuisine, c'est l'aspect créatif, de pouvoir combiner différents ingrédients et épices pour arriver à un plat unique. C'est un peu comme le développement web, où l'on combine différents éléments pour arriver à un site web fonctionnel et agréable à utiliser.",
     sectionMotivationText: "Mon portfolio est le fruit de la créativité, mais surtout du travail acharné. Je suis toujours à la recherche d'apprendre, d'affronter de nouveaux défis et de créer des expériences web modernes et agréables pour ceux qui visitent mes sites.",
     cvButtonText: "Télécharger mon CV",
+    cvButtonView: "Voir le CV",
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Tous droits réservés",
@@ -48,6 +49,7 @@ const text = {
     sectionCuisineText: "What I especially love about cooking is the creative aspect, of being able to combine different ingredients and spices to arrive at a unique dish. It's a bit like web development, where you combine different elements to arrive at a functional and pleasant website to use.",
     sectionMotivationText: "My portfolio is the fruit of creativity, but above all of hard work. I am always looking to learn, face new challenges and create modern and pleasant web experiences for those who visit my sites.",
     cvButtonText: "Download my CV",
+    cvButtonView: "View CV",
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "All rights reserved",
@@ -75,6 +77,7 @@ const text = {
     sectionCuisineText: "O que mais gosto na culinária é o aspeto criativo, de poder combinar diferentes ingredientes e especiarias para chegar a um prato único. É um pouco como o desenvolvimento web, onde combinamos diferentes elementos para chegar a um site funcional e agradável de usar.",
     sectionMotivationText: "O meu portfólio é fruto de criatividade, mas principalmente de muito trabalho. Estou sempre em busca de aprender, enfrentar novos desafios e criar experiências web modernas e agradáveis para quem visita os meus sites.",
     cvButtonText: "Baixar meu CV",
+    cvButtonView: "Ver CV",
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Todos os direitos reservados",
@@ -102,6 +105,7 @@ const text = {
     sectionCuisineText: "Lo que más me gusta de la cocina es el aspecto creativo, de poder combinar diferentes ingredientes y especias para llegar a un plato único. Es un poco como el desarrollo web, donde combinamos diferentes elementos para llegar a un sitio web funcional y agradable de usar.",
     sectionMotivationText: "Mi portafolio es fruto de la creatividad, pero principalmente del trabajo duro. Siempre estoy buscando aprender, enfrentar nuevos desafíos y crear experiencias web modernas y agradables para quienes visitan mis sitios.",
     cvButtonText: "Descargar mi CV",
+    cvButtonView: "Ver CV",
     
     // TRADUCTIONS FOOTER AJOUTÉES
     allRightsReserved: "Todos los derechos reservados",
@@ -126,7 +130,7 @@ function applyText(lang) {
   document.querySelector('#section-motivation p').textContent = t.sectionMotivationText;
 
   // Menu Hamburger & FOOTER
-  const menuKeys = ['navAccueil','navProjets','navContact','navApropos','navInfo','navCV', 'theme', 'allRightsReserved', 'footerMentions', 'cvButtonText'];
+  const menuKeys = ['navAccueil','navProjets','navContact','navApropos','navInfo','navCV', 'theme', 'allRightsReserved', 'footerMentions', 'cvButtonText','cvButtonView'];
   menuKeys.forEach(key => {
     const el = document.querySelector(`[data-translate="${key}"]`);
     if (el) el.textContent = t[key];
