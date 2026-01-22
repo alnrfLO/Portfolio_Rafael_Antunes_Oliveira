@@ -87,6 +87,46 @@
         padding: 0.3rem 0.5rem;
       }
     }
+
+    .contact-social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .contact-social-links a {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(0, 255, 255, 0.1);
+      color: var(--primary-color, cyan);
+      border: 2px solid var(--primary-color, cyan);
+      transition: all 0.3s ease;
+      font-size: 1.5em;
+    }
+
+    .contact-social-links a:hover {
+      background-color: var(--primary-color, cyan);
+      color: var(--background-color-dark, #1a1a1a);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+
+    @media (max-width: 480px) {
+      .contact-social-links {
+        gap: 15px;
+      }
+
+      .contact-social-links a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2em;
+      }
+    }
   </style>
 </head>
 <body class="fade-out">
@@ -127,7 +167,18 @@
             <input type="email" name="email" placeholder="Votre email" required />
             <textarea rows="5" name="message" placeholder="Votre message" required></textarea>
             <button type="submit">Envoyer</button>
-        </form>        
+        </form>
+        <div class="contact-social-links">
+            <a href="mailto:rafael.atns.dev@gmail.com" title="Envoyer un e-mail à Rafael">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rafatns/" target="_blank" title="Mon profil LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/alnrfLO" target="_blank" title="Mon profil GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
     </div>
     
 <footer class="main-footer">
@@ -136,8 +187,8 @@
         <a href="Mentions.html" data-translate="footerMentions">Mentions Légales</a>
     </div>
     <div class="footer-contact-links">
-        <a href="mailto:raf.atns1103@gmail.com" title="Envoyer un e-mail à Rafael">
-            <i class="fas fa-envelope"></i> raf.atns1103@gmail.com
+        <a href="mailto:rafael.atns.dev@gmail.com" title="Envoyer un e-mail à Rafael">
+            <i class="fas fa-envelope"></i> rafael.atns.dev@gmail.com
         </a>
         <span>|</span>
         <a href="https://www.linkedin.com/in/rafatns/" target="_blank" title="Mon profil LinkedIn">

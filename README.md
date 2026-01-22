@@ -81,4 +81,4 @@ Pour toute question ou opportunité professionnelle, vous pouvez contacter Rafae
 
 * **Site Web:** [https://portfolio-rafael-antunes-oliveira.vercel.app/](https://portfolio-rafael-antunes-oliveira.vercel.app/)
 * **LinkedIn:**  https://www.linkedin.com/in/rafatns/
-* **Email:** raf.atns1103@gmail.com
+* **Email:** rafael.atns.dev@gmail.com
