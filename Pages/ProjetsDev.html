@@ -411,7 +411,7 @@
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       border-radius: 10px;
       border: 1px solid var(--primary-color, #0ff);
@@ -473,6 +473,13 @@
         max-width: 100%;
       }
     }
+
+    /* Masquer flèches et points du carrousel */
+.carousel-container .prev,
+.carousel-container .next,
+.dots-container {
+  display: none ! important;
+}
   </style>
   <script src="../js/menu-hamburger.js" defer></script>
   <script src="../js/theme.js" defer></script>
@@ -537,27 +544,27 @@
 
       <div class="project-card" data-category="python" data-project-id="2" data-download="../downloads/Tetris.zip">
         <h3 id="proj2title">Script Python Tetris</h3>
-        <p id="proj2text">Clicker pour Télécharger un fichier.zip contenant le Tetris</p>
+        <p id="proj2text">Clicker pour Télécharger un fichier.zip contenant le Tetris.</p>
       </div>
 
       <div class="project-card" data-category="python" data-project-id="3" data-download="../downloads/Pong.zip">
         <h3 id="proj3title">Script Python Pong</h3>
-        <p id="proj3text">Clicker pour Télécharger un fichier.zip contenant le Pong</p>
+        <p id="proj3text">Clicker pour Télécharger un fichier.zip contenant le Pong.</p>
       </div>
 
       <div class="project-card" data-category="python" data-project-id="4" data-download="../downloads/TicTacToe.zip">
         <h3 id="proj4title">Script Python TicTacToe</h3>
-        <p id="proj4text">Clicker pour Télécharger un fichier.zip contenant le TicTacToe</p>
+        <p id="proj4text">Clicker pour Télécharger un fichier.zip contenant le TicTacToe.</p>
       </div>
 
-      <div class="project-card" data-category="php" data-project-id="5" data-link="http://81.194.40.26/~antunes--oliveira/SAE203/">
+      <div class="project-card" data-category="php" data-project-id="5" data-link="http://projets.iut-bobigny.univ-paris13.fr/~antunes--oliveira/SAE_203/">
         <h3 id="proj5title">Site SAE 203</h3>
         <p id="proj5text">Site web responsive et accessible réalisé en HTML/CSS/PHP.</p>
       </div>
 
-      <div class="project-card" data-category="js" data-project-id="6" data-link="../projets/jeu-js.html">
-        <h3 id="proj6title">Jeu en JS</h3>
-        <p id="proj6text">Mini-jeu réalisé avec JavaScript.</p>
+      <div class="project-card" data-category="js" data-project-id="6" data-link="http://projets.iut-bobigny.univ-paris13.fr/~antunes--oliveira/SAE303/">
+        <h3 id="proj6title">Site SAE 303</h3>
+        <p id="proj6text">Site web responsive et accessible réalisé en JS/HTML/CSS.</p>
       </div>
 
       <div class="project-card" data-category="html" data-project-id="7" data-link="../projets/">
@@ -583,7 +590,7 @@
       <div class="modal-tags" id="modalTags"></div>
       <div class="modal-action">
         <button class="modal-btn" id="modalActionBtn" onclick="handleModalAction()">Télécharger</button>
-        <button class="modal-btn secondary" onclick="closeModal()">Fermer</button>
+        <button id="modalCloseBtn"class="modal-btn secondary" data-translate="modalClose" onclick="closeModal()">Fermer</button>
       </div>
     </div>
   </div>
