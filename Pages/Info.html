@@ -92,6 +92,239 @@ body.light-theme #profile-picture {
 body.light-theme .profile-name {
     color: #0077cc;
 }
+
+
+/* ===== SKILLS ===== */
+
+#section-skills {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.skill-card i {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.8rem;
+}
+
+.skill-card h4 {
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+/* BAR */
+.skill-bar {
+  background: rgba(255, 255, 255, 0.15);
+  height: 6px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    #ffffffaa
+  );
+  border-radius: 5px;
+  animation: loadSkill 1.2s ease forwards;
+}
+
+/* Animation */
+@keyframes loadSkill {
+  to {
+    width: inherit;
+  }
+}
+
+/* LIGHT THEME */
+body.light-theme .skill-card {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+
+/* ===== PARCOURS - TIMELINE MODERNE ===== */
+
+#section-parcours {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 3rem auto 0;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--primary-color),
+    transparent
+  );
+}
+
+/* ITEM */
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* Décalage animation */
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.5s; }
+
+/* POINT */
+.timeline-dot {
+  position: absolute;
+  left: -30px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--primary-color);
+}
+
+/* CONTENU */
+.timeline-content {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateX(6px);
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LIGHT THEME */
+body.light-theme .timeline-content {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ===== DIPLOMES / CERTIFICATIONS ===== */
+#section-certifications .skills-grid a.skill-card {
+  display: block;
+  text-decoration: none; /* supprime le soulignement bleu */
+  color: inherit; /* conserve la couleur du texte */
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Effet hover */
+#section-certifications .skills-grid a.skill-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.35);
+  background-color: rgba(240, 248, 255, 0.15); /* léger bleu clair */
+}
+
+/* Icone - même couleur que les skills */
+#section-certifications .skills-grid a.skill-card i {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: var(--primary-color); /* harmonisation avec la section skills */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Animation icône au hover */
+#section-certifications .skills-grid a.skill-card:hover i {
+  transform: rotate(15deg) scale(1.1);
+  color: var(--primary-color); /* garde la même couleur au hover */
+}
+
+/* Titre du diplôme */
+#section-certifications .skills-grid a.skill-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Description */
+#section-certifications .skills-grid a.skill-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+/* Barre de compétence */
+#section-certifications .skills-grid a.skill-card .skill-bar {
+  background-color: rgba(0,0,0,0.1);
+  height: 6px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#section-certifications .skills-grid a.skill-card .skill-bar span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary-color); /* harmonisation */
+  border-radius: 5px;
+}
+
+
+
+
   </style>
   
   <script src="../js/menu-hamburger.js" defer></script>
@@ -134,11 +367,6 @@ body.light-theme .profile-name {
   <main>
     <section class="section-content">
       <div class="section-container">
-<div class="profile-container">
-  <img src="../img/rose.png" alt="Photo de Rafael Antunes Oliveira" id="profile-picture">
-  <h2 class="profile-name">Rafael Antunes Oliveira</h2>
-</div>
-
         <div id="section-intro">
           <h3 data-translate="sectionIntroTitle">Introduction</h3>
           <p data-translate="sectionIntroText">Né au Portugal, je suis passionné par le développement web, à la fois front-end et back-end. Et non, tous les geeks ne passent pas *que* leur vie derrière un écran... parfois, on touche aussi de l’herbe (vraie ou en CSS) .</p>
@@ -148,6 +376,149 @@ body.light-theme .profile-name {
           <h3 data-translate="sectionSportTitle">Sport & Karaté</h3>
           <p data-translate="sectionSportText">J'adore énormément le sport, ce qui m’a permis d’avoir une carrière dans le karaté. Toute ma vie tourne autour de ce sport : compétitions, cours donnés à des enfants, coaching d’enfants… Voici quelques résultats marquants :<br>- 2020 : Championnat de France — 3ème place<br>- 2021 : Compétition internationale au Portugal — 1ère place<br>- 2021 : Compétition internationale au Luxembourg — 1ère place<br>- 2022 : Compétition internationale en Belgique — 1ère place</p>
         </div>
+
+
+<div id="section-skills">
+  <h3 data-translate="sectionSkillsTitle">Compétences</h3>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <i class="fa-brands fa-html5"></i>
+      <h4>HTML / CSS</h4>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-js"></i>
+      <h4>JavaScript</h4>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-php"></i>
+      <h4>PHP</h4>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-solid fa-database"></i>
+      <h4>MySQL</h4>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-react"></i>
+      <h4>React</h4>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <i class="fa-brands fa-git-alt"></i>
+      <h4>Git / GitHub</h4>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="section-certifications">
+  <h3 data-translate="sectionCertificationsTitle">Certifications & Diplômes</h3>
+
+  <div class="skills-grid">
+
+    <a href="psc1.html" class="skill-card">
+      <i class="fa-solid fa-kit-medical"></i>
+      <h4>PSC1</h4>
+      <p data-translate="certPSC1">
+        Prévention et Secours Civiques de niveau 1
+      </p>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </a>
+
+    <a href="pssm.html" class="skill-card">
+      <i class="fa-solid fa-water"></i>
+      <h4>PSSM</h4>
+      <p data-translate="certPSSM">
+        Premiers Secours en Santé Mentale
+      </p>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </a>
+
+    <a href="dif-karate.html" class="skill-card">
+      <i class="fa-solid fa-medal"></i>
+      <h4>DIF Karaté</h4>
+      <p data-translate="certDIF">
+        Diplôme d’Instructeur Fédéral — Karaté
+      </p>
+      <div class="skill-bar">
+        <span style="width: 100%"></span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+<div id="section-parcours">
+  <h3 data-translate="sectionParcoursTitle">Parcours</h3>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <span class="timeline-date">2021</span>
+        <p data-translate="parcoursBrevet">
+          Brevet des collèges — Mention Bien<br>
+          Collège Auguste Delaune, Bobigny
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <span class="timeline-date">2023</span>
+        <p data-translate="parcoursBac">
+          Baccalauréat — Spécialités Mathématiques & NSI<br>
+          Lycée Paul Le Rolland, Drancy
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <span class="timeline-date">2023 – Aujourd’hui</span>
+        <p data-translate="parcoursMMI">
+          BUT MMI — 2ᵉ année<br>
+          IUT de Bobigny, Université Sorbonne Paris Nord<br>
+          Parcours Développement Web
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
         <div id="section-cv-button" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
           <a href="../downloads/cv.pdf" download style="display: inline-block; padding: 12px 30px; background-color: var(--primary-color); color: rgb(0, 0, 0); text-decoration: none; border-radius: 5px; font-weight: 600; transition: 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-translate="cvButtonText">Télécharger mon CV</a>
           <a href="../downloads/cv.pdf" target="_blank" style="display: inline-block; padding: 12px 30px; background-color: var(--primary-color); color: rgb(0, 0, 0); text-decoration: none; border-radius: 5px; font-weight: 600; transition: 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-translate="cvButtonView">Voir le CV</a>
